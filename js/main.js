@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initScrollEffects();
   initSmoothScrolling();
   initAnimations();
+  initImageSlideshows();
 });
 
 /* ============================================
@@ -208,6 +209,65 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
   };
+}
+
+/* ============================================
+   IMAGE SLIDESHOW MODULE
+   Fade in/out rotating image gallery
+   ============================================ */
+function initImageSlideshows() {
+  const slideshows = document.querySelectorAll('.image-slideshow');
+
+  slideshows.forEach(slideshow => {
+    const images = slideshow.querySelectorAll('.slideshow-image');
+    if (images.length <= 1) return; // No need for slideshow with single image
+
+    let currentIndex = 0;
+    const totalImages = images.length;
+    const intervalTime = 5000; // 5 seconds between transitions
+
+    // Start the slideshow
+    function nextSlide() {
+      // Fade out current image
+      images[currentIndex].classList.remove('active');
+      images[currentIndex].classList.add('fade-out');
+
+      // Calculate next index
+      currentIndex = (currentIndex + 1) % totalImages;
+
+      // Fade in next image
+      images[currentIndex].classList.remove('fade-out');
+      images[currentIndex].classList.add('active', 'fade-in');
+
+      // Clean up animation classes after transition
+      setTimeout(() => {
+        images.forEach(img => {
+          img.classList.remove('fade-in', 'fade-out');
+        });
+      }, 1500); // Match CSS transition duration
+    }
+
+    // Auto-rotate slides
+    let slideshowInterval = setInterval(nextSlide, intervalTime);
+
+    // Pause on hover (optional - better UX)
+    slideshow.addEventListener('mouseenter', () => {
+      clearInterval(slideshowInterval);
+    });
+
+    slideshow.addEventListener('mouseleave', () => {
+      slideshowInterval = setInterval(nextSlide, intervalTime);
+    });
+
+    // Preload images for smoother transitions
+    images.forEach(img => {
+      const src = img.getAttribute('src');
+      if (src) {
+        const preloadImg = new Image();
+        preloadImg.src = src;
+      }
+    });
+  });
 }
 
 /* ============================================

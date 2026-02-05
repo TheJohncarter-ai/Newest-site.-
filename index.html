@@ -40,6 +40,7 @@
   <link rel="stylesheet" href="css/components/profile.css">
   <link rel="stylesheet" href="css/components/contact.css">
   <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/components/slideshow.css">
 
   <!-- Calendly CSS -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
@@ -317,10 +318,21 @@
 
           <div class="about-visual">
             <div class="about-image-container">
-              <img src="https://thejohncarter-ai.github.io/John-Carter/profile%20pic.jpeg"
-                   alt="John Carter - Venture Capitalist"
-                   class="about-image"
-                   loading="lazy">
+              <!-- Image Slideshow with Fade Effect -->
+              <div class="image-slideshow" id="aboutSlideshow">
+                <img src="assets/photo-1.jpg"
+                     alt="John Carter - Professional Portrait"
+                     class="slideshow-image active"
+                     loading="lazy">
+                <img src="assets/photo-2.jpg"
+                     alt="John Carter - Executive Portrait"
+                     class="slideshow-image"
+                     loading="lazy">
+                <img src="assets/photo-3.jpg"
+                     alt="John Carter - At Trade Conference"
+                     class="slideshow-image"
+                     loading="lazy">
+              </div>
               <div class="about-image-decoration"></div>
             </div>
           </div>
@@ -341,9 +353,21 @@
         <div class="profile-card">
           <div class="profile-header">
             <div class="profile-avatar">
-              <img src="https://thejohncarter-ai.github.io/John-Carter/profile%20pic.jpeg"
-                   alt="John Carter"
-                   loading="lazy">
+              <!-- Profile Image Slideshow -->
+              <div class="image-slideshow" id="profileSlideshow">
+                <img src="assets/photo-1.jpg"
+                     alt="John Carter"
+                     class="slideshow-image active"
+                     loading="lazy">
+                <img src="assets/photo-2.jpg"
+                     alt="John Carter"
+                     class="slideshow-image"
+                     loading="lazy">
+                <img src="assets/photo-3.jpg"
+                     alt="John Carter"
+                     class="slideshow-image"
+                     loading="lazy">
+              </div>
             </div>
             <div class="profile-info">
               <h3 class="profile-name">John Carter</h3>
