@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
   initSmoothScrolling();
   initAnimations();
   initImageSlideshows();
+  initScrollReveal();
+  initParallaxEffects();
+  initMagneticButtons();
 });
 
 /* ============================================
@@ -310,4 +313,242 @@ document.querySelectorAll('.social-link, .footer-social a').forEach(link => {
     console.log(`Social link clicked: ${platform}`);
     // Add analytics tracking here if needed
   });
+});
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   Reveal elements as they enter viewport
+   ============================================ */
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll(
+    '.section-header, .service-card, .highlight, .profile-card, .contact-method, .about-content, .about-visual'
+  );
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Add staggered delay based on element position
+        setTimeout(() => {
+          entry.target.classList.add('revealed');
+        }, index * 100);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  revealElements.forEach(el => {
+    el.classList.add('pre-reveal');
+    revealObserver.observe(el);
+  });
+
+  // Add reveal styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .pre-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                  transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .revealed {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+/* ============================================
+   PARALLAX EFFECTS
+   Subtle parallax on scroll
+   ============================================ */
+function initParallaxEffects() {
+  const parallaxElements = document.querySelectorAll('.hero-background, .about-image-decoration');
+
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY;
+
+        parallaxElements.forEach(el => {
+          const speed = el.dataset.parallaxSpeed || 0.3;
+          const yPos = -(scrolled * speed);
+          el.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        });
+
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+/* ============================================
+   MAGNETIC BUTTONS
+   Buttons follow cursor on hover
+   ============================================ */
+function initMagneticButtons() {
+  const magneticElements = document.querySelectorAll('.btn-primary, .nav-cta, .logo');
+
+  magneticElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+      el.style.transition = 'transform 0.3s ease';
+    });
+
+    el.addEventListener('mouseenter', () => {
+      el.style.transition = 'transform 0.1s ease';
+    });
+  });
+}
+
+/* ============================================
+   CURSOR GLOW EFFECT
+   Custom cursor glow following mouse
+   ============================================ */
+(function initCursorGlow() {
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  document.body.appendChild(glow);
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .cursor-glow.active {
+      opacity: 1;
+    }
+    @media (max-width: 768px) {
+      .cursor-glow { display: none; }
+    }
+  `;
+  document.head.appendChild(style);
+
+  let mouseX = 0, mouseY = 0;
+  let glowX = 0, glowY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    glow.classList.add('active');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    glow.classList.remove('active');
+  });
+
+  // Smooth follow animation
+  function animateGlow() {
+    glowX += (mouseX - glowX) * 0.1;
+    glowY += (mouseY - glowY) * 0.1;
+
+    glow.style.left = glowX + 'px';
+    glow.style.top = glowY + 'px';
+
+    requestAnimationFrame(animateGlow);
+  }
+  animateGlow();
+})();
+
+/* ============================================
+   TEXT SCRAMBLE EFFECT
+   Scramble text on hover for titles
+   ============================================ */
+class TextScramble {
+  constructor(el) {
+    this.el = el;
+    this.chars = '!<>-_\\/[]{}—=+*^?#________';
+    this.update = this.update.bind(this);
+  }
+
+  setText(newText) {
+    const oldText = this.el.innerText;
+    const length = Math.max(oldText.length, newText.length);
+    const promise = new Promise(resolve => this.resolve = resolve);
+    this.queue = [];
+
+    for (let i = 0; i < length; i++) {
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random() * 20);
+      const end = start + Math.floor(Math.random() * 20);
+      this.queue.push({ from, to, start, end });
+    }
+
+    cancelAnimationFrame(this.frameRequest);
+    this.frame = 0;
+    this.update();
+    return promise;
+  }
+
+  update() {
+    let output = '';
+    let complete = 0;
+
+    for (let i = 0, n = this.queue.length; i < n; i++) {
+      let { from, to, start, end, char } = this.queue[i];
+
+      if (this.frame >= end) {
+        complete++;
+        output += to;
+      } else if (this.frame >= start) {
+        if (!char || Math.random() < 0.28) {
+          char = this.chars[Math.floor(Math.random() * this.chars.length)];
+          this.queue[i].char = char;
+        }
+        output += `<span class="scramble-char">${char}</span>`;
+      } else {
+        output += from;
+      }
+    }
+
+    this.el.innerHTML = output;
+
+    if (complete === this.queue.length) {
+      this.resolve();
+    } else {
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
+    }
+  }
+}
+
+// Apply to stat numbers on scroll
+document.querySelectorAll('.stat-number').forEach(el => {
+  const originalText = el.innerText;
+  const scrambler = new TextScramble(el);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        scrambler.setText(originalText);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(el);
 });
