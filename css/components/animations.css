@@ -263,6 +263,60 @@
   left: 100%;
 }
 
+/* ============================================
+   ORANGE GLOW ON HOVER
+   Warm orange undertone for button interactions
+   ============================================ */
+
+.btn:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.nav-cta:hover {
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.4),
+              0 0 40px rgba(251, 146, 60, 0.25),
+              0 0 60px rgba(255, 120, 0, 0.15),
+              inset 0 0 20px rgba(255, 165, 0, 0.1);
+  transition: all 0.3s ease, box-shadow 0.4s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg,
+    var(--color-primary) 0%,
+    rgba(255, 165, 0, 0.3) 50%,
+    var(--color-primary) 100%);
+  background-size: 200% 200%;
+  animation: orangeShimmer 1.5s ease infinite;
+}
+
+@keyframes orangeShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Orange glow keyframe for pulsing effect on hover */
+@keyframes orangePulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.3),
+                0 0 40px rgba(251, 146, 60, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.5),
+                0 0 60px rgba(251, 146, 60, 0.3),
+                0 0 80px rgba(255, 120, 0, 0.2);
+  }
+}
+
+.btn:hover {
+  animation: orangePulseGlow 2s ease-in-out infinite;
+}
+
 .stat {
   animation: floatSlow 5s ease-in-out infinite;
 }
@@ -290,6 +344,9 @@
 
 .service-card:hover {
   transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+              0 0 30px rgba(255, 165, 0, 0.15),
+              0 0 60px rgba(251, 146, 60, 0.1);
 }
 
 .service-card:hover .service-icon {
@@ -339,6 +396,8 @@
 
 .highlight:hover {
   transform: translateX(10px);
+  box-shadow: 0 5px 25px rgba(255, 165, 0, 0.2),
+              0 0 15px rgba(251, 146, 60, 0.15);
 }
 
 .highlight:hover .highlight-icon {
@@ -375,7 +434,8 @@
 
 .tag:hover {
   transform: scale(1.1) translateY(-3px);
-  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 5px 15px rgba(255, 165, 0, 0.35),
+              0 0 20px rgba(251, 146, 60, 0.2);
 }
 
 .social-link {
@@ -388,6 +448,11 @@
 
 .social-link:hover svg {
   animation: rubberBand 0.6s ease;
+}
+
+.social-link:hover {
+  box-shadow: 0 5px 25px rgba(255, 165, 0, 0.3),
+              0 0 15px rgba(251, 146, 60, 0.2);
 }
 
 /* ============================================
@@ -406,6 +471,11 @@
   animation: float 1s ease-in-out;
 }
 
+.contact-method:hover {
+  box-shadow: 0 10px 30px rgba(255, 165, 0, 0.2),
+              0 0 20px rgba(251, 146, 60, 0.15);
+}
+
 .calendly-wrapper {
   animation: borderGlow 3s ease-in-out infinite;
 }
@@ -420,6 +490,8 @@
 
 .footer-social a:hover {
   transform: translateY(-5px) rotate(10deg);
+  box-shadow: 0 5px 20px rgba(255, 165, 0, 0.3),
+              0 0 15px rgba(251, 146, 60, 0.2);
 }
 
 /* ============================================
