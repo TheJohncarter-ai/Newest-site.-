@@ -124,6 +124,7 @@
 .calendly-inline-widget {
   border-radius: var(--radius-xl);
   overflow: hidden;
+  min-height: 950px;
 }
 
 /* Override Calendly iframe styles */
@@ -176,6 +177,6 @@
   }
 
   .calendly-inline-widget {
-    min-height: 700px;
+    min-height: 900px;
   }
 }
