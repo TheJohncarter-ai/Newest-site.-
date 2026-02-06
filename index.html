@@ -2,20 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>John Carter | Venture Capital & Investment Portfolio</title>
+
+  <!-- Performance: DNS Prefetch -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://assets.calendly.com">
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="John Carter - International venture investor specializing in Pre-IPO investments, AI & Space Venture Capital, Web3 Development, and Business Consulting. Based in Silicon Valley.">
   <meta name="keywords" content="venture capital, pre-ipo investment, ai investment, space technology, web3 development, blockchain, consulting, silicon valley">
   <meta name="author" content="John Carter">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Mobile Web App -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="John Carter | Venture Capital & Investment Portfolio">
   <meta property="og:description" content="International venture investor specializing in Pre-IPO investments, AI & Space Venture Capital, Web3 Development, and Business Consulting.">
-  <meta property="og:image" content="https://thejohncarter-ai.github.io/John-Carter/profile%20pic.jpeg">
+  <meta property="og:image" content="assets/photo-1.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +38,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 
-  <!-- Fonts -->
+  <!-- Preload Critical Assets -->
+  <link rel="preload" href="assets/photo-1.jpg" as="image">
+  <link rel="preload" href="css/styles.css" as="style">
+
+  <!-- Fonts - with display swap for faster rendering -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -42,9 +58,11 @@
   <link rel="stylesheet" href="css/components/footer.css">
   <link rel="stylesheet" href="css/components/slideshow.css">
   <link rel="stylesheet" href="css/components/animations.css">
+  <link rel="stylesheet" href="css/components/mobile.css">
 
-  <!-- Calendly CSS -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <!-- Calendly CSS - loaded async -->
+  <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
 </head>
 <body>
   <!-- ============================================
@@ -608,9 +626,9 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts - defer for non-blocking loading -->
+  <script src="js/particles.js" defer></script>
+  <script src="js/main.js" defer></script>
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  <script src="js/particles.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>

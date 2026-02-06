@@ -1,6 +1,7 @@
 /* ============================================
    SPACE PARTICLES & CONSTELLATION SYSTEM
    Interactive animated background
+   Optimized for mobile performance
    ============================================ */
 
 class ParticleSystem {
@@ -12,15 +13,52 @@ class ParticleSystem {
     this.particles = [];
     this.mouse = { x: null, y: null, radius: 150 };
     this.animationId = null;
+    this.isVisible = true;
+    this.lastFrameTime = 0;
+    this.targetFPS = 30; // Limit FPS for performance
+    this.frameInterval = 1000 / this.targetFPS;
 
-    // Configuration
-    this.config = {
-      particleCount: 80,
+    // Detect mobile/low-power devices
+    this.isMobile = window.innerWidth <= 768 ||
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    this.isLowPower = navigator.hardwareConcurrency ? navigator.hardwareConcurrency <= 4 : this.isMobile;
+
+    // Configuration - adjusted for device capability
+    this.config = this.getConfig();
+
+    this.init();
+  }
+
+  getConfig() {
+    // Reduced settings for mobile/low-power devices
+    if (this.isMobile) {
+      return {
+        particleCount: 25,
+        particleMinSize: 1,
+        particleMaxSize: 2,
+        lineDistance: 100,
+        particleSpeed: 0.2,
+        mouseInteraction: false, // Disable on mobile
+        drawLines: true,
+        drawGlow: false, // Disable glow on mobile for performance
+        colors: {
+          particle: 'rgba(99, 102, 241, 0.8)',
+          line: 'rgba(99, 102, 241, 0.12)'
+        }
+      };
+    }
+
+    // Full settings for desktop
+    return {
+      particleCount: 60,
       particleMinSize: 1,
       particleMaxSize: 3,
       lineDistance: 150,
       particleSpeed: 0.3,
       mouseInteraction: true,
+      drawLines: true,
+      drawGlow: true,
       colors: {
         particle: 'rgba(99, 102, 241, 0.8)',
         particleGlow: 'rgba(99, 102, 241, 0.3)',
@@ -28,8 +66,6 @@ class ParticleSystem {
         lineHover: 'rgba(6, 182, 212, 0.3)'
       }
     };
-
-    this.init();
   }
 
   init() {
@@ -40,8 +76,21 @@ class ParticleSystem {
   }
 
   resize() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
+    // Use device pixel ratio for crisp rendering, but cap it for performance
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    this.canvas.width = width * dpr;
+    this.canvas.height = height * dpr;
+    this.canvas.style.width = width + 'px';
+    this.canvas.style.height = height + 'px';
+
+    this.ctx.scale(dpr, dpr);
+
+    // Store display dimensions
+    this.displayWidth = width;
+    this.displayHeight = height;
   }
 
   createParticles() {
@@ -50,56 +99,77 @@ class ParticleSystem {
 
     for (let i = 0; i < particleCount; i++) {
       this.particles.push({
-        x: Math.random() * this.canvas.width,
-        y: Math.random() * this.canvas.height,
+        x: Math.random() * this.displayWidth,
+        y: Math.random() * this.displayHeight,
         size: Math.random() * (particleMaxSize - particleMinSize) + particleMinSize,
         speedX: (Math.random() - 0.5) * particleSpeed,
         speedY: (Math.random() - 0.5) * particleSpeed,
         opacity: Math.random() * 0.5 + 0.3,
-        pulse: Math.random() * Math.PI * 2, // For twinkling effect
+        pulse: Math.random() * Math.PI * 2,
         pulseSpeed: Math.random() * 0.02 + 0.01
       });
     }
   }
 
   bindEvents() {
+    // Debounced resize handler
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-      this.resize();
-      this.createParticles();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // Recalculate mobile status on resize
+        this.isMobile = window.innerWidth <= 768;
+        this.config = this.getConfig();
+        this.resize();
+        this.createParticles();
+      }, 250);
     });
 
-    window.addEventListener('mousemove', (e) => {
-      this.mouse.x = e.clientX;
-      this.mouse.y = e.clientY;
-    });
+    // Only add mouse events on desktop
+    if (!this.isMobile) {
+      window.addEventListener('mousemove', (e) => {
+        this.mouse.x = e.clientX;
+        this.mouse.y = e.clientY;
+      }, { passive: true });
 
-    window.addEventListener('mouseout', () => {
-      this.mouse.x = null;
-      this.mouse.y = null;
+      window.addEventListener('mouseout', () => {
+        this.mouse.x = null;
+        this.mouse.y = null;
+      });
+    }
+
+    // Pause animation when tab is not visible
+    document.addEventListener('visibilitychange', () => {
+      this.isVisible = !document.hidden;
+      if (this.isVisible && !this.animationId) {
+        this.animate();
+      }
     });
   }
 
   drawParticle(particle) {
-    const { colors } = this.config;
+    const { drawGlow } = this.config;
 
     // Twinkling effect
     particle.pulse += particle.pulseSpeed;
     const twinkle = Math.sin(particle.pulse) * 0.3 + 0.7;
     const currentOpacity = particle.opacity * twinkle;
 
-    // Glow effect
-    const gradient = this.ctx.createRadialGradient(
-      particle.x, particle.y, 0,
-      particle.x, particle.y, particle.size * 3
-    );
-    gradient.addColorStop(0, `rgba(99, 102, 241, ${currentOpacity})`);
-    gradient.addColorStop(0.5, `rgba(99, 102, 241, ${currentOpacity * 0.3})`);
-    gradient.addColorStop(1, 'rgba(99, 102, 241, 0)');
+    // Glow effect (desktop only)
+    if (drawGlow) {
+      const gradient = this.ctx.createRadialGradient(
+        particle.x, particle.y, 0,
+        particle.x, particle.y, particle.size * 3
+      );
+      gradient.addColorStop(0, `rgba(99, 102, 241, ${currentOpacity})`);
+      gradient.addColorStop(0.5, `rgba(99, 102, 241, ${currentOpacity * 0.3})`);
+      gradient.addColorStop(1, 'rgba(99, 102, 241, 0)');
 
-    this.ctx.beginPath();
-    this.ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
-    this.ctx.fillStyle = gradient;
-    this.ctx.fill();
+      this.ctx.beginPath();
+      this.ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
+      this.ctx.fillStyle = gradient;
+      this.ctx.fill();
+    }
 
     // Core particle
     this.ctx.beginPath();
@@ -109,20 +179,25 @@ class ParticleSystem {
   }
 
   drawLines() {
-    const { lineDistance, colors, mouseInteraction } = this.config;
+    const { lineDistance, mouseInteraction } = this.config;
+    const particleCount = this.particles.length;
 
-    for (let i = 0; i < this.particles.length; i++) {
-      for (let j = i + 1; j < this.particles.length; j++) {
+    // Use spatial partitioning for better performance on mobile
+    for (let i = 0; i < particleCount; i++) {
+      for (let j = i + 1; j < particleCount; j++) {
         const dx = this.particles[i].x - this.particles[j].x;
         const dy = this.particles[i].y - this.particles[j].y;
+
+        // Quick distance check before expensive sqrt
+        if (Math.abs(dx) > lineDistance || Math.abs(dy) > lineDistance) continue;
+
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < lineDistance) {
           const opacity = (1 - distance / lineDistance) * 0.3;
-
-          // Check if near mouse for highlight effect
           let lineColor = `rgba(99, 102, 241, ${opacity})`;
 
+          // Mouse hover effect (desktop only)
           if (mouseInteraction && this.mouse.x && this.mouse.y) {
             const midX = (this.particles[i].x + this.particles[j].x) / 2;
             const midY = (this.particles[i].y + this.particles[j].y) / 2;
@@ -152,7 +227,7 @@ class ParticleSystem {
     const { mouseInteraction } = this.config;
 
     this.particles.forEach(particle => {
-      // Mouse interaction - particles move away from cursor
+      // Mouse interaction (desktop only)
       if (mouseInteraction && this.mouse.x && this.mouse.y) {
         const dx = particle.x - this.mouse.x;
         const dy = particle.y - this.mouse.y;
@@ -171,21 +246,34 @@ class ParticleSystem {
       particle.y += particle.speedY;
 
       // Wrap around edges
-      if (particle.x < 0) particle.x = this.canvas.width;
-      if (particle.x > this.canvas.width) particle.x = 0;
-      if (particle.y < 0) particle.y = this.canvas.height;
-      if (particle.y > this.canvas.height) particle.y = 0;
+      if (particle.x < 0) particle.x = this.displayWidth;
+      if (particle.x > this.displayWidth) particle.x = 0;
+      if (particle.y < 0) particle.y = this.displayHeight;
+      if (particle.y > this.displayHeight) particle.y = 0;
     });
   }
 
-  animate() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  animate(currentTime = 0) {
+    if (!this.isVisible) {
+      this.animationId = null;
+      return;
+    }
 
-    this.drawLines();
+    this.animationId = requestAnimationFrame((time) => this.animate(time));
+
+    // Frame rate limiting for performance
+    const elapsed = currentTime - this.lastFrameTime;
+    if (elapsed < this.frameInterval) return;
+    this.lastFrameTime = currentTime - (elapsed % this.frameInterval);
+
+    // Clear and draw
+    this.ctx.clearRect(0, 0, this.displayWidth, this.displayHeight);
+
+    if (this.config.drawLines) {
+      this.drawLines();
+    }
     this.particles.forEach(particle => this.drawParticle(particle));
     this.updateParticles();
-
-    this.animationId = requestAnimationFrame(() => this.animate());
   }
 
   destroy() {
@@ -198,22 +286,37 @@ class ParticleSystem {
 /* ============================================
    SHOOTING STARS
    Occasional shooting star animations
+   Disabled on mobile for performance
    ============================================ */
 
 class ShootingStars {
   constructor(canvasId) {
+    // Skip on mobile devices
+    this.isMobile = window.innerWidth <= 768 ||
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (this.isMobile) return;
+
     this.canvas = document.getElementById(canvasId);
     if (!this.canvas) return;
 
     this.ctx = this.canvas.getContext('2d');
     this.stars = [];
     this.lastSpawn = 0;
-    this.spawnInterval = 3000; // New star every 3 seconds
+    this.spawnInterval = 4000; // New star every 4 seconds
+    this.isVisible = true;
+
+    // Pause when tab not visible
+    document.addEventListener('visibilitychange', () => {
+      this.isVisible = !document.hidden;
+    });
 
     this.animate();
   }
 
   spawnStar() {
+    if (!this.isVisible) return;
+
     const side = Math.random() > 0.5 ? 'top' : 'right';
     let x, y, angle;
 
@@ -237,11 +340,13 @@ class ShootingStars {
   }
 
   animate() {
+    if (this.isMobile) return;
+
     const now = Date.now();
 
     // Spawn new stars occasionally
-    if (now - this.lastSpawn > this.spawnInterval) {
-      if (Math.random() > 0.5) { // 50% chance
+    if (now - this.lastSpawn > this.spawnInterval && this.isVisible) {
+      if (Math.random() > 0.6) { // 40% chance
         this.spawnStar();
       }
       this.lastSpawn = now;
@@ -254,7 +359,7 @@ class ShootingStars {
       star.life -= 0.02;
       star.opacity = star.life;
 
-      if (star.life > 0) {
+      if (star.life > 0 && this.isVisible) {
         const gradient = this.ctx.createLinearGradient(
           star.x, star.y,
           star.x - Math.cos(star.angle) * star.length,
@@ -289,6 +394,14 @@ class ShootingStars {
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Check if user prefers reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    console.log('Particles disabled: user prefers reduced motion');
+    return;
+  }
+
   // Create canvas element
   const canvas = document.createElement('canvas');
   canvas.id = 'particleCanvas';
