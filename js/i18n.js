@@ -46,11 +46,11 @@ const translations = {
     'services.card2.f3': 'Succession planning support',
 
     // Service Card 3
-    'services.card3.title': 'Web3 Development',
-    'services.card3.desc': 'Building the future of decentralized applications. We create secure, scalable blockchain solutions and smart contracts for the next generation of the web.',
-    'services.card3.f1': 'Smart contract development',
-    'services.card3.f2': 'DeFi solutions',
-    'services.card3.f3': 'NFT & tokenization',
+    'services.card3.title': 'Full Stack Web Development',
+    'services.card3.desc': 'End-to-end web solutions from modern website design to complex platform development. We build responsive Web2 applications, Web3 integrations, and everything in between.',
+    'services.card3.f1': 'Website & platform design',
+    'services.card3.f2': 'Full stack development',
+    'services.card3.f3': 'Web3 & blockchain integration',
 
     // Service Card 4
     'services.card4.title': 'Business Consulting',
@@ -106,7 +106,7 @@ const translations = {
     'footer.connect': 'Connect',
     'footer.s1': 'Investment Advisory',
     'footer.s2': 'Private Wealth',
-    'footer.s3': 'Web3 Development',
+    'footer.s3': 'Web Development',
     'footer.s4': 'Business Consulting'
   },
 
@@ -152,11 +152,11 @@ const translations = {
     'services.card2.f3': 'Soporte en planificación sucesoria',
 
     // Service Card 3
-    'services.card3.title': 'Desarrollo Web3',
-    'services.card3.desc': 'Construyendo el futuro de las aplicaciones descentralizadas. Creamos soluciones blockchain seguras y escalables y contratos inteligentes para la próxima generación de la web.',
-    'services.card3.f1': 'Desarrollo de contratos inteligentes',
-    'services.card3.f2': 'Soluciones DeFi',
-    'services.card3.f3': 'NFT y tokenización',
+    'services.card3.title': 'Desarrollo Web Full Stack',
+    'services.card3.desc': 'Soluciones web integrales desde diseño de sitios web modernos hasta desarrollo de plataformas complejas. Construimos aplicaciones Web2 responsivas, integraciones Web3 y todo lo intermedio.',
+    'services.card3.f1': 'Diseño de sitios web y plataformas',
+    'services.card3.f2': 'Desarrollo full stack',
+    'services.card3.f3': 'Integración Web3 y blockchain',
 
     // Service Card 4
     'services.card4.title': 'Consultoría Empresarial',
@@ -212,7 +212,7 @@ const translations = {
     'footer.connect': 'Conectar',
     'footer.s1': 'Asesoría de Inversión',
     'footer.s2': 'Patrimonio Privado',
-    'footer.s3': 'Desarrollo Web3',
+    'footer.s3': 'Desarrollo Web',
     'footer.s4': 'Consultoría Empresarial'
   }
 };
