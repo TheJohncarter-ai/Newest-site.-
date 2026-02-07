@@ -206,4 +206,77 @@
     display: inline-flex;
     margin-top: var(--space-4);
   }
+
+  .lang-toggle {
+    order: -1;
+    margin-right: auto;
+    margin-left: var(--space-4);
+  }
+}
+
+/* ============================================
+   LANGUAGE TOGGLE
+   Sleek EN/ES language switcher
+   ============================================ */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  position: relative;
+  margin-left: var(--space-4);
+  transition: all var(--transition-base);
+}
+
+.lang-toggle:hover {
+  border-color: var(--border-color-hover);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-option {
+  position: relative;
+  z-index: 2;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: var(--font-semibold);
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+  user-select: none;
+}
+
+.lang-option.active {
+  color: var(--color-white);
+}
+
+.lang-slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  border-radius: var(--radius-full);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.lang-toggle[data-lang="es"] .lang-slider {
+  transform: translateX(100%);
+}
+
+/* Hover effect on inactive option */
+.lang-option:not(.active):hover {
+  color: var(--text-secondary);
+}
+
+/* Focus styles for accessibility */
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

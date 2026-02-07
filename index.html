@@ -75,14 +75,21 @@
       </a>
 
       <ul class="nav-menu" id="navMenu">
-        <li><a href="#hero" class="nav-link active">Home</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#profile" class="nav-link">Profile</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#hero" class="nav-link active" data-i18n="nav.home">Home</a></li>
+        <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+        <li><a href="#profile" class="nav-link" data-i18n="nav.profile">Profile</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
       </ul>
 
-      <a href="#contact" class="nav-cta">Schedule Call</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.schedule">Schedule Call</a>
+
+      <!-- Language Toggle -->
+      <div class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span class="lang-option active" data-lang="en">EN</span>
+        <span class="lang-slider"></span>
+        <span class="lang-option" data-lang="es">ES</span>
+      </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
         <span class="hamburger"></span>
@@ -101,39 +108,39 @@
       </div>
 
       <div class="hero-content container">
-        <span class="hero-badge">International Consultant</span>
+        <span class="hero-badge" data-i18n="hero.badge">International Consultant</span>
         <h1 class="hero-title">
           <span class="hero-name">John Carter</span>
-          <span class="hero-subtitle">Strategic Advisory & Business Consulting</span>
+          <span class="hero-subtitle" data-i18n="hero.subtitle">Strategic Advisory & Business Consulting</span>
         </h1>
-        <p class="hero-description">
+        <p class="hero-description" data-i18n="hero.description">
           International business consultant with deep expertise advising investment firms,
           boutique investment banks, private wealth managers, and family offices.
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">
-            <span>Let's Connect</span>
+            <span data-i18n="hero.cta">Let's Connect</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
           <a href="#services" class="btn btn-secondary">
-            <span>View Services</span>
+            <span data-i18n="hero.services">View Services</span>
           </a>
         </div>
 
         <div class="hero-stats">
           <div class="stat">
             <span class="stat-number">50+</span>
-            <span class="stat-label">Global Clients</span>
+            <span class="stat-label" data-i18n="hero.stat1">Global Clients</span>
           </div>
           <div class="stat">
             <span class="stat-number">20+</span>
-            <span class="stat-label">Countries Served</span>
+            <span class="stat-label" data-i18n="hero.stat2">Countries Served</span>
           </div>
           <div class="stat">
             <span class="stat-number">15+</span>
-            <span class="stat-label">Years Experience</span>
+            <span class="stat-label" data-i18n="hero.stat3">Years Experience</span>
           </div>
         </div>
       </div>
@@ -150,9 +157,9 @@
     <section class="services" id="services">
       <div class="container">
         <header class="section-header">
-          <span class="section-badge">What I Offer</span>
-          <h2 class="section-title">Consulting Services</h2>
-          <p class="section-description">
+          <span class="section-badge" data-i18n="services.badge">What I Offer</span>
+          <h2 class="section-title" data-i18n="services.title">Consulting Services</h2>
+          <p class="section-description" data-i18n="services.description">
             Strategic advisory services for financial institutions and high-net-worth
             clients navigating complex markets and emerging opportunities.
           </p>
@@ -166,20 +173,20 @@
                 <path d="M13 7l5 5-5 5M6 7l5 5-5 5"/>
               </svg>
             </div>
-            <span class="service-badge">Popular</span>
-            <h3 class="service-title">Investment Firm Advisory</h3>
-            <p class="service-description">
+            <span class="service-badge" data-i18n="services.card1.badge">Popular</span>
+            <h3 class="service-title" data-i18n="services.card1.title">Investment Firm Advisory</h3>
+            <p class="service-description" data-i18n="services.card1.desc">
               Strategic consulting for investment firms and boutique investment banks
               seeking to optimize operations, expand market presence, and identify
               emerging opportunities.
             </p>
             <ul class="service-features">
-              <li>Market analysis & research</li>
-              <li>Due diligence support</li>
-              <li>Strategic positioning</li>
+              <li data-i18n="services.card1.f1">Market analysis & research</li>
+              <li data-i18n="services.card1.f2">Due diligence support</li>
+              <li data-i18n="services.card1.f3">Strategic positioning</li>
             </ul>
             <a href="#contact" class="service-link">
-              Learn More
+              <span data-i18n="services.learnMore">Learn More</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -193,20 +200,20 @@
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
               </svg>
             </div>
-            <span class="service-badge highlight">High Demand</span>
-            <h3 class="service-title">Private Wealth & Family Office</h3>
-            <p class="service-description">
+            <span class="service-badge highlight" data-i18n="services.card2.badge">High Demand</span>
+            <h3 class="service-title" data-i18n="services.card2.title">Private Wealth & Family Office</h3>
+            <p class="service-description" data-i18n="services.card2.desc">
               Tailored advisory services for private wealth managers and family offices
               seeking strategic guidance on portfolio optimization, emerging markets,
               and alternative opportunities.
             </p>
             <ul class="service-features">
-              <li>Wealth strategy consulting</li>
-              <li>Alternative asset guidance</li>
-              <li>Succession planning support</li>
+              <li data-i18n="services.card2.f1">Wealth strategy consulting</li>
+              <li data-i18n="services.card2.f2">Alternative asset guidance</li>
+              <li data-i18n="services.card2.f3">Succession planning support</li>
             </ul>
             <a href="#contact" class="service-link">
-              Learn More
+              <span data-i18n="services.learnMore">Learn More</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -221,19 +228,19 @@
                 <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
               </svg>
             </div>
-            <h3 class="service-title">Web3 Development</h3>
-            <p class="service-description">
+            <h3 class="service-title" data-i18n="services.card3.title">Web3 Development</h3>
+            <p class="service-description" data-i18n="services.card3.desc">
               Building the future of decentralized applications. We create secure,
               scalable blockchain solutions and smart contracts for the next
               generation of the web.
             </p>
             <ul class="service-features">
-              <li>Smart contract development</li>
-              <li>DeFi solutions</li>
-              <li>NFT & tokenization</li>
+              <li data-i18n="services.card3.f1">Smart contract development</li>
+              <li data-i18n="services.card3.f2">DeFi solutions</li>
+              <li data-i18n="services.card3.f3">NFT & tokenization</li>
             </ul>
             <a href="#contact" class="service-link">
-              Learn More
+              <span data-i18n="services.learnMore">Learn More</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -249,19 +256,19 @@
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
               </svg>
             </div>
-            <h3 class="service-title">Business Consulting</h3>
-            <p class="service-description">
+            <h3 class="service-title" data-i18n="services.card4.title">Business Consulting</h3>
+            <p class="service-description" data-i18n="services.card4.desc">
               Expert guidance for businesses and startups focusing on growth,
               innovation, and market expansion. Leverage our global network
               and experience for success.
             </p>
             <ul class="service-features">
-              <li>Growth strategy</li>
-              <li>Market expansion</li>
-              <li>Operational excellence</li>
+              <li data-i18n="services.card4.f1">Growth strategy</li>
+              <li data-i18n="services.card4.f2">Market expansion</li>
+              <li data-i18n="services.card4.f3">Operational excellence</li>
             </ul>
             <a href="#contact" class="service-link">
-              Learn More
+              <span data-i18n="services.learnMore">Learn More</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
@@ -278,15 +285,15 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-content">
-            <span class="section-badge">About Me</span>
-            <h2 class="section-title">Guiding Financial Excellence</h2>
-            <p class="about-text">
+            <span class="section-badge" data-i18n="about.badge">About Me</span>
+            <h2 class="section-title" data-i18n="about.title">Guiding Financial Excellence</h2>
+            <p class="about-text" data-i18n="about.text1">
               With over 15 years of international experience, I've partnered with
               investment firms, boutique investment banks, private wealth managers,
               and family offices across the globe. My approach combines deep industry
               expertise with a worldwide network to deliver strategic insights.
             </p>
-            <p class="about-text">
+            <p class="about-text" data-i18n="about.text2">
               Based in Annapolis, Maryland with a global reach, I specialize in helping
               financial institutions navigate complex markets, emerging technologies,
               and evolving regulatory landscapes. My mission is to empower clients
@@ -302,8 +309,8 @@
                   </svg>
                 </div>
                 <div class="highlight-content">
-                  <h4>Proven Track Record</h4>
-                  <p>Successfully advised 50+ institutional clients worldwide</p>
+                  <h4 data-i18n="about.h1.title">Proven Track Record</h4>
+                  <p data-i18n="about.h1.text">Successfully advised 50+ institutional clients worldwide</p>
                 </div>
               </div>
 
@@ -316,8 +323,8 @@
                   </svg>
                 </div>
                 <div class="highlight-content">
-                  <h4>Global Network</h4>
-                  <p>Connections across the Americas, Europe, and Asia</p>
+                  <h4 data-i18n="about.h2.title">Global Network</h4>
+                  <p data-i18n="about.h2.text">Connections across the Americas, Europe, and Asia</p>
                 </div>
               </div>
 
@@ -328,8 +335,8 @@
                   </svg>
                 </div>
                 <div class="highlight-content">
-                  <h4>Industry Recognition</h4>
-                  <p>Trusted advisor to leading financial institutions</p>
+                  <h4 data-i18n="about.h3.title">Industry Recognition</h4>
+                  <p data-i18n="about.h3.text">Trusted advisor to leading financial institutions</p>
                 </div>
               </div>
             </div>
@@ -373,8 +380,8 @@
     <section class="profile" id="profile">
       <div class="container">
         <header class="section-header">
-          <span class="section-badge">Personal Profile</span>
-          <h2 class="section-title">Meet John Carter</h2>
+          <span class="section-badge" data-i18n="profile.badge">Personal Profile</span>
+          <h2 class="section-title" data-i18n="profile.title">Meet John Carter</h2>
         </header>
 
         <div class="profile-card">
@@ -406,7 +413,7 @@
             </div>
             <div class="profile-info">
               <h3 class="profile-name">John Carter</h3>
-              <p class="profile-title">International Business Consultant</p>
+              <p class="profile-title" data-i18n="profile.role">International Business Consultant</p>
               <p class="profile-location">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -418,14 +425,14 @@
           </div>
 
           <div class="profile-bio">
-            <h4>Biography</h4>
-            <p>
+            <h4 data-i18n="profile.bioTitle">Biography</h4>
+            <p data-i18n="profile.bio1">
               John Carter is an accomplished international business consultant with extensive
               experience advising investment firms, boutique investment banks, private wealth
               managers, and family offices. His expertise spans strategic advisory, market
               analysis, and helping clients navigate complex financial landscapes.
             </p>
-            <p>
+            <p data-i18n="profile.bio2">
               With a client-first philosophy centered on delivering actionable insights and
               measurable results, John has built lasting partnerships with financial institutions
               across the globe. His deep understanding of emerging technologies and global markets
@@ -434,21 +441,21 @@
           </div>
 
           <div class="profile-expertise">
-            <h4>Areas of Expertise</h4>
+            <h4 data-i18n="profile.expertiseTitle">Areas of Expertise</h4>
             <div class="expertise-tags">
-              <span class="tag">Strategic Advisory</span>
-              <span class="tag">Investment Firms</span>
-              <span class="tag">Boutique Investment Banks</span>
-              <span class="tag">Private Wealth</span>
-              <span class="tag">Family Offices</span>
-              <span class="tag">Market Analysis</span>
-              <span class="tag">International Business</span>
-              <span class="tag">Emerging Technologies</span>
+              <span class="tag" data-i18n="profile.tag1">Strategic Advisory</span>
+              <span class="tag" data-i18n="profile.tag2">Investment Firms</span>
+              <span class="tag" data-i18n="profile.tag3">Boutique Investment Banks</span>
+              <span class="tag" data-i18n="profile.tag4">Private Wealth</span>
+              <span class="tag" data-i18n="profile.tag5">Family Offices</span>
+              <span class="tag" data-i18n="profile.tag6">Market Analysis</span>
+              <span class="tag" data-i18n="profile.tag7">International Business</span>
+              <span class="tag" data-i18n="profile.tag8">Emerging Technologies</span>
             </div>
           </div>
 
           <div class="profile-social">
-            <h4>Connect With Me</h4>
+            <h4 data-i18n="profile.connectTitle">Connect With Me</h4>
             <div class="social-links">
               <a href="https://www.linkedin.com/in/john-carter-231b5a251/"
                  target="_blank"
@@ -491,9 +498,9 @@
       <div class="container">
         <div class="contact-grid">
           <div class="contact-info">
-            <span class="section-badge">Get In Touch</span>
-            <h2 class="section-title">Let's Build the Future Together</h2>
-            <p class="contact-description">
+            <span class="section-badge" data-i18n="contact.badge">Get In Touch</span>
+            <h2 class="section-title" data-i18n="contact.title">Let's Build the Future Together</h2>
+            <p class="contact-description" data-i18n="contact.description">
               Ready to discuss how strategic consulting can benefit your organization?
               Schedule a call to start the conversation.
             </p>
@@ -507,7 +514,7 @@
                   </svg>
                 </div>
                 <div class="contact-details">
-                  <h4>Email</h4>
+                  <h4 data-i18n="contact.email">Email</h4>
                   <a href="mailto:Johncarter@lucreativity.io">Johncarter@lucreativity.io</a>
                 </div>
               </div>
@@ -520,7 +527,7 @@
                   </svg>
                 </div>
                 <div class="contact-details">
-                  <h4>Location</h4>
+                  <h4 data-i18n="contact.location">Location</h4>
                   <p>Annapolis, Maryland</p>
                 </div>
               </div>
@@ -535,8 +542,8 @@
                   </svg>
                 </div>
                 <div class="contact-details">
-                  <h4>Schedule</h4>
-                  <p>Available for meetings Mon-Fri</p>
+                  <h4 data-i18n="contact.schedule">Schedule</h4>
+                  <p data-i18n="contact.availability">Available for meetings Mon-Fri</p>
                 </div>
               </div>
             </div>
@@ -544,7 +551,7 @@
 
           <div class="contact-scheduler">
             <div class="calendly-wrapper">
-              <h3>Schedule a Meeting</h3>
+              <h3 data-i18n="contact.scheduleMeeting">Schedule a Meeting</h3>
               <!-- Calendly inline widget -->
               <div class="calendly-inline-widget"
                    data-url="https://calendly.com/lucreativity/johncarter?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=6366f1"
@@ -567,32 +574,32 @@
           <a href="#hero" class="footer-logo">
             <span class="logo-text">JC</span>
           </a>
-          <p class="footer-tagline">Strategic insights for financial excellence.</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">Strategic insights for financial excellence.</p>
         </div>
 
         <div class="footer-links">
           <div class="footer-column">
-            <h4>Navigation</h4>
+            <h4 data-i18n="footer.navigation">Navigation</h4>
             <ul>
-              <li><a href="#hero">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+              <li><a href="#services" data-i18n="nav.services">Services</a></li>
+              <li><a href="#about" data-i18n="nav.about">About</a></li>
+              <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
           </div>
 
           <div class="footer-column">
-            <h4>Services</h4>
+            <h4 data-i18n="footer.services">Services</h4>
             <ul>
-              <li><a href="#services">Investment Advisory</a></li>
-              <li><a href="#services">Private Wealth</a></li>
-              <li><a href="#services">Web3 Development</a></li>
-              <li><a href="#services">Business Consulting</a></li>
+              <li><a href="#services" data-i18n="footer.s1">Investment Advisory</a></li>
+              <li><a href="#services" data-i18n="footer.s2">Private Wealth</a></li>
+              <li><a href="#services" data-i18n="footer.s3">Web3 Development</a></li>
+              <li><a href="#services" data-i18n="footer.s4">Business Consulting</a></li>
             </ul>
           </div>
 
           <div class="footer-column">
-            <h4>Connect</h4>
+            <h4 data-i18n="footer.connect">Connect</h4>
             <div class="footer-social">
               <a href="https://www.linkedin.com/in/john-carter-231b5a251/"
                  target="_blank"
@@ -627,6 +634,7 @@
   </footer>
 
   <!-- Scripts - defer for non-blocking loading -->
+  <script src="js/i18n.js" defer></script>
   <script src="js/particles.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
