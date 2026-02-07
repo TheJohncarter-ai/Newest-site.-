@@ -258,27 +258,50 @@ function initI18n() {
 }
 
 // Set language and update UI
-function setLanguage(lang) {
+function setLanguage(lang, animate = true) {
+  const previousLang = currentLang;
   currentLang = lang;
   localStorage.setItem('lang', lang);
 
   // Update toggle UI
   const langToggle = document.getElementById('langToggle');
   if (langToggle) {
+    // Add transitioning class for bounce animation
+    if (animate && previousLang !== lang) {
+      langToggle.classList.add('transitioning');
+
+      // Remove transitioning class after animation completes
+      setTimeout(() => {
+        langToggle.classList.remove('transitioning');
+      }, 500);
+    }
+
     langToggle.dataset.lang = lang;
     langToggle.setAttribute('aria-checked', lang === 'es');
 
-    // Update active states
+    // Update active states with slight delay for visual effect
     langToggle.querySelectorAll('.lang-option').forEach(opt => {
-      opt.classList.toggle('active', opt.dataset.lang === lang);
+      const isActive = opt.dataset.lang === lang;
+      if (isActive) {
+        opt.classList.add('active');
+      } else {
+        opt.classList.remove('active');
+      }
     });
   }
 
-  // Update all translatable elements
+  // Update all translatable elements with fade effect
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
+      // Subtle fade transition for text
+      el.style.transition = 'opacity 0.2s ease';
+      el.style.opacity = '0.7';
+
+      setTimeout(() => {
+        el.textContent = translations[lang][key];
+        el.style.opacity = '1';
+      }, 100);
     }
   });
 
