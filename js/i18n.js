@@ -9,105 +9,138 @@ const translations = {
     'nav.home': 'Home',
     'nav.services': 'Services',
     'nav.about': 'About',
-    'nav.profile': 'Profile',
+    'nav.markets': 'Markets',
     'nav.contact': 'Contact',
-    'nav.schedule': 'Schedule Call',
+    'nav.cta': 'Get in Touch',
 
     // Hero Section
-    'hero.badge': 'International Consultant',
-    'hero.subtitle': 'Strategic Advisory & Business Consulting',
-    'hero.description': 'International business consultant with deep expertise advising investment firms, boutique investment banks, private wealth managers, and family offices.',
+    'hero.badge': 'LATAM · Family Office · Venture Capital',
+    'hero.subtitle': 'Strategic Advisory & Business Development',
+    'hero.description': "Connecting venture capital and private wealth firms with family office networks across Latin America's most active emerging markets. Fluent in the language, culture, and relationships that matter.",
     'hero.cta': "Let's Connect",
     'hero.services': 'View Services',
-    'hero.stat1': 'Global Clients',
-    'hero.stat2': 'Countries Served',
-    'hero.stat3': 'Years Experience',
+    // Who This Is For
+    'hero.fit.label': 'This is right for you if —',
+    'hero.fit.1': "You're a U.S. fund actively raising or deploying in LATAM",
+    'hero.fit.2': "You've tried cold outreach into the region and hit a wall",
+    'hero.fit.3': 'You need boots-on-the-ground in Colombia, Mexico, or Central America',
+
+    'hero.stat1': 'Active Family Office Contacts',
+    'hero.stat2': 'Markets Across the Americas',
+    'hero.stat3': 'One-on-One Meetings Facilitated',
 
     // Services Section
     'services.badge': 'What I Offer',
     'services.title': 'Consulting Services',
-    'services.description': 'Strategic advisory services for financial institutions and high-net-worth clients navigating complex markets and emerging opportunities.',
+    'services.description': 'Specialized advisory for investment firms and capital allocators seeking to build presence, pipeline, and relationships in Latin American markets.',
     'services.learnMore': 'Learn More',
 
     // Service Card 1
-    'services.card1.badge': 'Popular',
-    'services.card1.title': 'Investment Firm Advisory',
-    'services.card1.desc': 'Strategic consulting for investment firms and boutique investment banks seeking to optimize operations, expand market presence, and identify emerging opportunities.',
-    'services.card1.f1': 'Market analysis & research',
-    'services.card1.f2': 'Due diligence support',
-    'services.card1.f3': 'Strategic positioning',
+    'services.card1.badge': 'Core Service',
+    'services.card1.title': 'LATAM Market Entry & Business Development',
+    'services.card1.desc': 'For U.S.-based investment firms seeking to build presence and develop deal flow in Colombia, Mexico, and broader Latin America.',
+    'services.card1.f1': 'On-the-ground market research and intelligence',
+    'services.card1.f2': 'Family office and private wealth prospecting',
+    'services.card1.f3': 'LP identification and pipeline building',
 
     // Service Card 2
     'services.card2.badge': 'High Demand',
-    'services.card2.title': 'Private Wealth & Family Office',
-    'services.card2.desc': 'Tailored advisory services for private wealth managers and family offices seeking strategic guidance on portfolio optimization, emerging markets, and alternative opportunities.',
-    'services.card2.f1': 'Wealth strategy consulting',
-    'services.card2.f2': 'Alternative asset guidance',
-    'services.card2.f3': 'Succession planning support',
+    'services.card2.title': 'Family Office Network Access',
+    'services.card2.desc': 'Warm introductions and relationship facilitation with active private wealth and family office networks across key LATAM and U.S. gateway markets.',
+    'services.card2.f1': 'Conference representation and attendance',
+    'services.card2.f2': 'Warm introductions to qualified contacts',
+    'services.card2.f3': 'Relationship management and follow-through',
 
     // Service Card 3
-    'services.card3.title': 'Full Stack Web Development',
-    'services.card3.desc': 'End-to-end web solutions from modern website design to complex platform development. We build responsive Web2 applications, Web3 integrations, and everything in between.',
-    'services.card3.f1': 'Website & platform design',
-    'services.card3.f2': 'Full stack development',
-    'services.card3.f3': 'Web3 & blockchain integration',
-
-    // Service Card 4
-    'services.card4.title': 'Business Consulting',
-    'services.card4.desc': 'Expert guidance for businesses and startups focusing on growth, innovation, and market expansion. Leverage our global network and experience for success.',
-    'services.card4.f1': 'Growth strategy',
-    'services.card4.f2': 'Market expansion',
-    'services.card4.f3': 'Operational excellence',
+    'services.card3.title': 'Strategic Consulting & Market Intelligence',
+    'services.card3.desc': 'Actionable market intelligence, LP prospect identification, and strategic advisory for firms navigating emerging market expansion.',
+    'services.card3.f1': 'Weekly progress reporting and debriefs',
+    'services.card3.f2': 'Competitive landscape analysis',
+    'services.card3.f3': 'Strategic positioning for emerging markets',
 
     // About Section
     'about.badge': 'About Me',
-    'about.title': 'Guiding Financial Excellence',
-    'about.text1': "With over 15 years of international experience, I've partnered with investment firms, boutique investment banks, private wealth managers, and family offices across the globe. My approach combines deep industry expertise with a worldwide network to deliver strategic insights.",
-    'about.text2': 'Based in Annapolis, Maryland with a global reach, I specialize in helping financial institutions navigate complex markets, emerging technologies, and evolving regulatory landscapes. My mission is to empower clients with the strategic clarity they need to achieve their objectives.',
-    'about.h1.title': 'Proven Track Record',
-    'about.h1.text': 'Successfully advised 50+ institutional clients worldwide',
-    'about.h2.title': 'Global Network',
-    'about.h2.text': 'Connections across the Americas, Europe, and Asia',
-    'about.h3.title': 'Industry Recognition',
-    'about.h3.text': 'Trusted advisor to leading financial institutions',
+    'about.title': 'Eight Years. Six Markets. One Specialization.',
+    'about.text1': "With over eight years of international business development experience, I specialize in one thing most consultants can't offer: genuine, on-the-ground relationships with family offices and private wealth networks across Latin America.",
+    'about.text2': "Over the past year, I've completed multiple consulting engagements for U.S.-based investment firms focused on LATAM market expansion — conducting on-the-ground market research, developing family office relationships, and identifying LP prospects across Colombia, Mexico, and Central America.",
+    'about.text3': "My approach is grounded in patience, cultural fluency, and a genuine understanding that relationships in this region are built over time — not forced. That's a feature, not a limitation.",
+    'about.h1.title': 'Bilingual',
+    'about.h1.text': 'Native-level English and Spanish — critical for authentic operation across LATAM markets',
+    'about.h2.title': 'Blockchain & Digital Assets',
+    'about.h2.text': 'Certifications from Wharton, Columbia Business School & University of Pennsylvania',
+    'about.h3.title': 'Cross-Sector Track Record',
+    'about.h3.text': '$6M+ sales pipeline generated across Central & South American markets',
 
     // Profile Section
     'profile.badge': 'Personal Profile',
-    'profile.title': 'Meet John Carter',
-    'profile.role': 'International Business Consultant',
+    'profile.title': 'John Carter Powell',
+    'profile.role': 'LATAM Business Development Consultant',
     'profile.bioTitle': 'Biography',
-    'profile.bio1': 'John Carter is an accomplished international business consultant with extensive experience advising investment firms, boutique investment banks, private wealth managers, and family offices. His expertise spans strategic advisory, market analysis, and helping clients navigate complex financial landscapes.',
-    'profile.bio2': 'With a client-first philosophy centered on delivering actionable insights and measurable results, John has built lasting partnerships with financial institutions across the globe. His deep understanding of emerging technologies and global markets enables him to provide strategic guidance that drives meaningful outcomes.',
+    'profile.bio1': 'John Carter Powell is a bilingual (English/Spanish) business development consultant specializing in LATAM family office and private wealth networks. He has completed multiple consulting engagements for U.S.-based investment firms — attending six major family office conferences across Monterrey, Mexico City, Bogotá, Miami, San Diego, and Honduras.',
+    'profile.bio2': 'With an active pipeline of 60+ warm contacts and 24+ facilitated introductory meetings across multiple markets, his approach is grounded in cultural fluency, patience, and genuine relationship-building — not transaction-first outreach.',
     'profile.expertiseTitle': 'Areas of Expertise',
-    'profile.tag1': 'Strategic Advisory',
-    'profile.tag2': 'Investment Firms',
-    'profile.tag3': 'Boutique Investment Banks',
-    'profile.tag4': 'Private Wealth',
-    'profile.tag5': 'Family Offices',
-    'profile.tag6': 'Market Analysis',
-    'profile.tag7': 'International Business',
-    'profile.tag8': 'Emerging Technologies',
+    'profile.tag1': 'LATAM Business Development',
+    'profile.tag2': 'Family Office Relations',
+    'profile.tag3': 'Private Wealth Networks',
+    'profile.tag4': 'LP Prospecting',
+    'profile.tag5': 'Venture Capital BD',
+    'profile.tag6': 'Emerging Markets',
+    'profile.tag7': 'Bilingual Advisory',
+    'profile.tag8': 'Blockchain & Digital Assets',
     'profile.connectTitle': 'Connect With Me',
+
+    // Markets Section
+    'markets.badge': 'Track Record',
+    'markets.title': 'In the Room Across Six Markets',
+    'markets.description': "Family office relationships in Latin America are not built through cold email. They're built through physical presence, cultural trust, and consistent follow-through over time.",
+    'markets.m1': 'Family Office Contacts Built',
+    'markets.m2': 'One-on-One Meetings',
+    'markets.m3': 'Conferences Attended',
+    'markets.m4': 'Countries of Active Coverage',
+    'markets.body': "Over the past year I've attended six major family office and private wealth conferences across the Americas — representing client firms, developing relationships, and cultivating a pipeline that is currently active and in development across all markets.",
+    'markets.footprintLabel': 'Conference Presence 2024–2025',
+    'markets.bilingualBadge': 'Bilingual: English / Spanish',
+
+    // Opportunity Section
+    'opportunity.badge': 'Availability',
+    'opportunity.title': 'Available for the Right Opportunity',
+    'opportunity.quote': "I'm fully focused on delivering for current consulting clients while also exploring what the right long-term role looks like. I'm building something durable in LATAM — and I'm open to doing that as a full-time member of the right firm, not just as an outside advisor.",
+    'opportunity.col1.label': 'Available Now',
+    'opportunity.col1.title': 'Independent Consulting Engagements',
+    'opportunity.col1.desc': 'Available for project-based consulting with investment firms seeking LATAM business development, family office access, or market entry strategy. Proven SOW-based working model.',
+    'opportunity.col2.label': 'Open To',
+    'opportunity.col2.title': 'Full-Time BD or Venture Partner Role',
+    'opportunity.col2.desc': 'Seeking a formalized role at a VC fund, family office, or investment firm where my active LATAM network and relationship pipeline become a permanent strategic asset.',
 
     // Contact Section
     'contact.badge': 'Get In Touch',
-    'contact.title': "Let's Build the Future Together",
-    'contact.description': 'Ready to discuss how strategic consulting can benefit your organization? Schedule a call to start the conversation.',
-    'contact.email': 'Email',
-    'contact.location': 'Location',
-    'contact.schedule': 'Schedule',
-    'contact.availability': 'Available for meetings Mon-Fri',
-    'contact.scheduleMeeting': 'Schedule a Meeting',
+    'contact.title': "Let's Talk",
+    'contact.description': "Whether you're an investment firm exploring LATAM, a fund building out your BD function, or someone looking to connect — I'd like to hear from you.",
+    'contact.emailLabel': 'Email',
+    'contact.phoneLabel': 'Phone',
+    'contact.locationLabel': 'Location',
+    'contact.tab.message': 'Send a Message',
+    'contact.tab.schedule': 'Schedule a Call',
+    'contact.form.name': 'Name',
+    'contact.form.email': 'Email',
+    'contact.form.orgType': 'Organization Type',
+    'contact.form.orgPlaceholder': 'Select your organization type',
+    'contact.form.org1': 'Venture Capital Fund',
+    'contact.form.org2': 'Family Office',
+    'contact.form.org3': 'Investment Bank',
+    'contact.form.org4': 'Private Wealth Manager',
+    'contact.form.org5': 'Other',
+    'contact.form.message': 'Message',
+    'contact.form.submit': 'Send Message',
 
     // Footer
-    'footer.tagline': 'Strategic insights for financial excellence.',
+    'footer.tagline': 'LATAM business development & family office advisory.',
     'footer.navigation': 'Navigation',
     'footer.services': 'Services',
     'footer.connect': 'Connect',
-    'footer.s1': 'Investment Advisory',
-    'footer.s2': 'Private Wealth',
-    'footer.s3': 'Web Development',
-    'footer.s4': 'Business Consulting'
+    'footer.s1': 'LATAM Market Entry',
+    'footer.s2': 'Family Office Access',
+    'footer.s3': 'Strategic Consulting'
   },
 
   es: {
@@ -115,105 +148,138 @@ const translations = {
     'nav.home': 'Inicio',
     'nav.services': 'Servicios',
     'nav.about': 'Acerca',
-    'nav.profile': 'Perfil',
+    'nav.markets': 'Mercados',
     'nav.contact': 'Contacto',
-    'nav.schedule': 'Agendar Llamada',
+    'nav.cta': 'Contáctame',
 
     // Hero Section
-    'hero.badge': 'Consultor Internacional',
-    'hero.subtitle': 'Asesoría Estratégica y Consultoría Empresarial',
-    'hero.description': 'Consultor empresarial internacional con amplia experiencia asesorando firmas de inversión, bancos de inversión boutique, gestores de patrimonio privado y family offices.',
+    'hero.badge': 'LATAM · Family Office · Capital de Riesgo',
+    'hero.subtitle': 'Asesoría Estratégica y Desarrollo de Negocios',
+    'hero.description': 'Conectando firmas de capital de riesgo y patrimonio privado con redes de family offices en los mercados emergentes más activos de América Latina. Fluido en el idioma, la cultura y las relaciones que importan.',
     'hero.cta': 'Conectemos',
     'hero.services': 'Ver Servicios',
-    'hero.stat1': 'Clientes Globales',
-    'hero.stat2': 'Países Atendidos',
-    'hero.stat3': 'Años de Experiencia',
+    // Who This Is For (ES)
+    'hero.fit.label': 'Esto es para ti si —',
+    'hero.fit.1': 'Eres un fondo en EE.UU. que está levantando capital o invirtiendo en LATAM',
+    'hero.fit.2': 'Has intentado contacto en frío en la región y no ha funcionado',
+    'hero.fit.3': 'Necesitas presencia en terreno en Colombia, México o Centroamérica',
+
+    'hero.stat1': 'Contactos Activos de Family Office',
+    'hero.stat2': 'Mercados en las Américas',
+    'hero.stat3': 'Reuniones Individuales Facilitadas',
 
     // Services Section
     'services.badge': 'Lo Que Ofrezco',
     'services.title': 'Servicios de Consultoría',
-    'services.description': 'Servicios de asesoría estratégica para instituciones financieras y clientes de alto patrimonio que navegan mercados complejos y oportunidades emergentes.',
+    'services.description': 'Asesoría especializada para firmas de inversión y asignadores de capital que buscan construir presencia, flujo de oportunidades y relaciones en los mercados latinoamericanos.',
     'services.learnMore': 'Más Información',
 
     // Service Card 1
-    'services.card1.badge': 'Popular',
-    'services.card1.title': 'Asesoría a Firmas de Inversión',
-    'services.card1.desc': 'Consultoría estratégica para firmas de inversión y bancos de inversión boutique que buscan optimizar operaciones, expandir presencia de mercado e identificar oportunidades emergentes.',
-    'services.card1.f1': 'Análisis e investigación de mercado',
-    'services.card1.f2': 'Soporte de debida diligencia',
-    'services.card1.f3': 'Posicionamiento estratégico',
+    'services.card1.badge': 'Servicio Principal',
+    'services.card1.title': 'Entrada al Mercado LATAM y Desarrollo de Negocios',
+    'services.card1.desc': 'Para firmas de inversión con base en EE.UU. que buscan construir presencia y desarrollar flujo de operaciones en Colombia, México y América Latina en general.',
+    'services.card1.f1': 'Investigación e inteligencia de mercado in situ',
+    'services.card1.f2': 'Prospección de family offices y patrimonio privado',
+    'services.card1.f3': 'Identificación de LPs y construcción de pipeline',
 
     // Service Card 2
     'services.card2.badge': 'Alta Demanda',
-    'services.card2.title': 'Patrimonio Privado y Family Office',
-    'services.card2.desc': 'Servicios de asesoría personalizados para gestores de patrimonio privado y family offices que buscan orientación estratégica en optimización de cartera, mercados emergentes y oportunidades alternativas.',
-    'services.card2.f1': 'Consultoría de estrategia patrimonial',
-    'services.card2.f2': 'Orientación en activos alternativos',
-    'services.card2.f3': 'Soporte en planificación sucesoria',
+    'services.card2.title': 'Acceso a Redes de Family Office',
+    'services.card2.desc': 'Presentaciones cálidas y facilitación de relaciones con redes activas de patrimonio privado y family offices en mercados clave de LATAM y gateway en EE.UU.',
+    'services.card2.f1': 'Representación y asistencia a conferencias',
+    'services.card2.f2': 'Presentaciones cálidas a contactos calificados',
+    'services.card2.f3': 'Gestión de relaciones y seguimiento',
 
     // Service Card 3
-    'services.card3.title': 'Desarrollo Web Full Stack',
-    'services.card3.desc': 'Soluciones web integrales desde diseño de sitios web modernos hasta desarrollo de plataformas complejas. Construimos aplicaciones Web2 responsivas, integraciones Web3 y todo lo intermedio.',
-    'services.card3.f1': 'Diseño de sitios web y plataformas',
-    'services.card3.f2': 'Desarrollo full stack',
-    'services.card3.f3': 'Integración Web3 y blockchain',
-
-    // Service Card 4
-    'services.card4.title': 'Consultoría Empresarial',
-    'services.card4.desc': 'Orientación experta para empresas y startups enfocadas en crecimiento, innovación y expansión de mercado. Aprovecha nuestra red global y experiencia para el éxito.',
-    'services.card4.f1': 'Estrategia de crecimiento',
-    'services.card4.f2': 'Expansión de mercado',
-    'services.card4.f3': 'Excelencia operativa',
+    'services.card3.title': 'Consultoría Estratégica e Inteligencia de Mercado',
+    'services.card3.desc': 'Inteligencia de mercado accionable, identificación de prospectos LP y asesoría estratégica para firmas que navegan la expansión en mercados emergentes.',
+    'services.card3.f1': 'Reportes semanales de progreso y reuniones informativas',
+    'services.card3.f2': 'Análisis del panorama competitivo',
+    'services.card3.f3': 'Posicionamiento estratégico para mercados emergentes',
 
     // About Section
     'about.badge': 'Sobre Mí',
-    'about.title': 'Guiando la Excelencia Financiera',
-    'about.text1': 'Con más de 15 años de experiencia internacional, he colaborado con firmas de inversión, bancos de inversión boutique, gestores de patrimonio privado y family offices en todo el mundo. Mi enfoque combina una profunda experiencia en la industria con una red mundial para ofrecer perspectivas estratégicas.',
-    'about.text2': 'Con base en Annapolis, Maryland y alcance global, me especializo en ayudar a instituciones financieras a navegar mercados complejos, tecnologías emergentes y panoramas regulatorios en evolución. Mi misión es empoderar a los clientes con la claridad estratégica que necesitan para lograr sus objetivos.',
-    'about.h1.title': 'Trayectoria Comprobada',
-    'about.h1.text': 'Más de 50 clientes institucionales asesorados exitosamente en todo el mundo',
-    'about.h2.title': 'Red Global',
-    'about.h2.text': 'Conexiones en las Américas, Europa y Asia',
-    'about.h3.title': 'Reconocimiento de la Industria',
-    'about.h3.text': 'Asesor de confianza para instituciones financieras líderes',
+    'about.title': 'Ocho Años. Seis Mercados. Una Especialización.',
+    'about.text1': 'Con más de ocho años de experiencia en desarrollo de negocios internacionales, me especializo en algo que la mayoría de los consultores no pueden ofrecer: relaciones genuinas y presenciales con family offices y redes de patrimonio privado en toda América Latina.',
+    'about.text2': 'Durante el último año, completé múltiples compromisos de consultoría para firmas de inversión con base en EE.UU. enfocadas en la expansión al mercado LATAM — realizando investigación de mercado in situ, desarrollando relaciones con family offices e identificando prospectos LP en Colombia, México y América Central.',
+    'about.text3': 'Mi enfoque se fundamenta en la paciencia, la fluidez cultural y una comprensión genuina de que las relaciones en esta región se construyen con el tiempo — no a la fuerza. Eso es una ventaja, no una limitación.',
+    'about.h1.title': 'Bilingüe',
+    'about.h1.text': 'Inglés y español a nivel nativo — fundamental para operar auténticamente en los mercados latinoamericanos',
+    'about.h2.title': 'Blockchain y Activos Digitales',
+    'about.h2.text': 'Certificaciones de Wharton, Columbia Business School y la Universidad de Pennsylvania',
+    'about.h3.title': 'Trayectoria Multisectorial',
+    'about.h3.text': 'Pipeline de ventas de más de $6M generado en mercados de Centro y Sudamérica',
 
     // Profile Section
     'profile.badge': 'Perfil Personal',
-    'profile.title': 'Conoce a John Carter',
-    'profile.role': 'Consultor Empresarial Internacional',
+    'profile.title': 'John Carter Powell',
+    'profile.role': 'Consultor de Desarrollo de Negocios en LATAM',
     'profile.bioTitle': 'Biografía',
-    'profile.bio1': 'John Carter es un destacado consultor empresarial internacional con amplia experiencia asesorando firmas de inversión, bancos de inversión boutique, gestores de patrimonio privado y family offices. Su experiencia abarca asesoría estratégica, análisis de mercado y ayuda a clientes para navegar panoramas financieros complejos.',
-    'profile.bio2': 'Con una filosofía centrada en el cliente y enfocada en ofrecer perspectivas accionables y resultados medibles, John ha construido asociaciones duraderas con instituciones financieras en todo el mundo. Su profundo conocimiento de tecnologías emergentes y mercados globales le permite proporcionar orientación estratégica que impulsa resultados significativos.',
-    'profile.expertiseTitle': 'Áreas de Experiencia',
-    'profile.tag1': 'Asesoría Estratégica',
-    'profile.tag2': 'Firmas de Inversión',
-    'profile.tag3': 'Bancos de Inversión Boutique',
-    'profile.tag4': 'Patrimonio Privado',
-    'profile.tag5': 'Family Offices',
-    'profile.tag6': 'Análisis de Mercado',
-    'profile.tag7': 'Negocios Internacionales',
-    'profile.tag8': 'Tecnologías Emergentes',
+    'profile.bio1': 'John Carter Powell es un consultor de desarrollo de negocios bilingüe (inglés/español) especializado en redes de family offices y patrimonio privado en LATAM. Ha completado múltiples compromisos de consultoría para firmas de inversión con base en EE.UU. — asistiendo a seis grandes conferencias de family offices en Monterrey, Ciudad de México, Bogotá, Miami, San Diego y Honduras.',
+    'profile.bio2': 'Con un pipeline activo de más de 60 contactos cálidos y más de 24 reuniones introductorias facilitadas en múltiples mercados, su enfoque se fundamenta en la fluidez cultural, la paciencia y la construcción genuina de relaciones — no en el contacto transaccional.',
+    'profile.expertiseTitle': 'Áreas de Especialización',
+    'profile.tag1': 'Desarrollo de Negocios LATAM',
+    'profile.tag2': 'Relaciones con Family Offices',
+    'profile.tag3': 'Redes de Patrimonio Privado',
+    'profile.tag4': 'Prospección de LPs',
+    'profile.tag5': 'BD para Capital de Riesgo',
+    'profile.tag6': 'Mercados Emergentes',
+    'profile.tag7': 'Asesoría Bilingüe',
+    'profile.tag8': 'Blockchain y Activos Digitales',
     'profile.connectTitle': 'Conéctate Conmigo',
+
+    // Markets Section
+    'markets.badge': 'Trayectoria',
+    'markets.title': 'Presente en Seis Mercados',
+    'markets.description': 'Las relaciones con family offices en América Latina no se construyen por correo electrónico en frío. Se construyen mediante presencia física, confianza cultural y seguimiento consistente a lo largo del tiempo.',
+    'markets.m1': 'Contactos de Family Office Construidos',
+    'markets.m2': 'Reuniones Individuales',
+    'markets.m3': 'Conferencias Asistidas',
+    'markets.m4': 'Países de Cobertura Activa',
+    'markets.body': 'Durante el último año asistí a seis grandes conferencias de family offices y patrimonio privado en las Américas — representando a firmas cliente, desarrollando relaciones y cultivando un pipeline que actualmente se encuentra activo y en desarrollo en todos los mercados.',
+    'markets.footprintLabel': 'Presencia en Conferencias 2024–2025',
+    'markets.bilingualBadge': 'Bilingüe: Inglés / Español',
+
+    // Opportunity Section
+    'opportunity.badge': 'Disponibilidad',
+    'opportunity.title': 'Disponible para la Oportunidad Correcta',
+    'opportunity.quote': 'Estoy completamente enfocado en entregar resultados para mis clientes de consultoría actuales, mientras exploro cómo sería el rol a largo plazo correcto. Estoy construyendo algo duradero en LATAM — y estoy abierto a hacerlo como miembro de tiempo completo de la firma correcta, no solo como asesor externo.',
+    'opportunity.col1.label': 'Disponible Ahora',
+    'opportunity.col1.title': 'Compromisos de Consultoría Independiente',
+    'opportunity.col1.desc': 'Disponible para consultoría por proyecto con firmas de inversión que buscan desarrollo de negocios en LATAM, acceso a family offices o estrategia de entrada al mercado. Modelo de trabajo basado en SOW comprobado.',
+    'opportunity.col2.label': 'Abierto A',
+    'opportunity.col2.title': 'Rol de Tiempo Completo en BD o Venture Partner',
+    'opportunity.col2.desc': 'Busco un rol formalizado en un fondo de capital de riesgo, family office o firma de inversión donde mi red activa en LATAM y mi pipeline de relaciones se conviertan en un activo estratégico permanente.',
 
     // Contact Section
     'contact.badge': 'Ponte en Contacto',
-    'contact.title': 'Construyamos el Futuro Juntos',
-    'contact.description': '¿Listo para discutir cómo la consultoría estratégica puede beneficiar a tu organización? Agenda una llamada para iniciar la conversación.',
-    'contact.email': 'Correo',
-    'contact.location': 'Ubicación',
-    'contact.schedule': 'Horario',
-    'contact.availability': 'Disponible para reuniones Lun-Vie',
-    'contact.scheduleMeeting': 'Agendar una Reunión',
+    'contact.title': 'Hablemos',
+    'contact.description': 'Ya seas una firma de inversión explorando LATAM, un fondo que amplía su función de BD, o alguien que busca conectar — me gustaría escucharte.',
+    'contact.emailLabel': 'Correo Electrónico',
+    'contact.phoneLabel': 'Teléfono',
+    'contact.locationLabel': 'Ubicación',
+    'contact.tab.message': 'Enviar Mensaje',
+    'contact.tab.schedule': 'Agendar Llamada',
+    'contact.form.name': 'Nombre',
+    'contact.form.email': 'Correo',
+    'contact.form.orgType': 'Tipo de Organización',
+    'contact.form.orgPlaceholder': 'Selecciona tu tipo de organización',
+    'contact.form.org1': 'Fondo de Capital de Riesgo',
+    'contact.form.org2': 'Family Office',
+    'contact.form.org3': 'Banco de Inversión',
+    'contact.form.org4': 'Gestor de Patrimonio Privado',
+    'contact.form.org5': 'Otro',
+    'contact.form.message': 'Mensaje',
+    'contact.form.submit': 'Enviar Mensaje',
 
     // Footer
-    'footer.tagline': 'Perspectivas estratégicas para la excelencia financiera.',
+    'footer.tagline': 'Desarrollo de negocios en LATAM y asesoría de family offices.',
     'footer.navigation': 'Navegación',
     'footer.services': 'Servicios',
     'footer.connect': 'Conectar',
-    'footer.s1': 'Asesoría de Inversión',
-    'footer.s2': 'Patrimonio Privado',
-    'footer.s3': 'Desarrollo Web',
-    'footer.s4': 'Consultoría Empresarial'
+    'footer.s1': 'Entrada al Mercado LATAM',
+    'footer.s2': 'Acceso a Family Offices',
+    'footer.s3': 'Consultoría Estratégica'
   }
 };
 
@@ -266,11 +332,8 @@ function setLanguage(lang, animate = true) {
   // Update toggle UI
   const langToggle = document.getElementById('langToggle');
   if (langToggle) {
-    // Add transitioning class for bounce animation
     if (animate && previousLang !== lang) {
       langToggle.classList.add('transitioning');
-
-      // Remove transitioning class after animation completes
       setTimeout(() => {
         langToggle.classList.remove('transitioning');
       }, 500);
@@ -279,7 +342,6 @@ function setLanguage(lang, animate = true) {
     langToggle.dataset.lang = lang;
     langToggle.setAttribute('aria-checked', lang === 'es');
 
-    // Update active states with slight delay for visual effect
     langToggle.querySelectorAll('.lang-option').forEach(opt => {
       const isActive = opt.dataset.lang === lang;
       if (isActive) {
@@ -294,7 +356,6 @@ function setLanguage(lang, animate = true) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (translations[lang] && translations[lang][key]) {
-      // Subtle fade transition for text
       el.style.transition = 'opacity 0.2s ease';
       el.style.opacity = '0.7';
 
@@ -308,7 +369,7 @@ function setLanguage(lang, animate = true) {
   // Update document language
   document.documentElement.lang = lang;
 
-  // Dispatch custom event for other scripts that might need to know
+  // Dispatch custom event for other scripts
   window.dispatchEvent(new CustomEvent('languageChange', { detail: { lang } }));
 }
 
