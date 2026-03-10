@@ -19,6 +19,12 @@ const translations = {
     'hero.description': "Connecting venture capital and private wealth firms with family office networks across Latin America's most active emerging markets. Fluent in the language, culture, and relationships that matter.",
     'hero.cta': "Let's Connect",
     'hero.services': 'View Services',
+    // Who This Is For
+    'hero.fit.label': 'This is right for you if —',
+    'hero.fit.1': "You're a U.S. fund actively raising or deploying in LATAM",
+    'hero.fit.2': "You've tried cold outreach into the region and hit a wall",
+    'hero.fit.3': 'You need boots-on-the-ground in Colombia, Mexico, or Central America',
+
     'hero.stat1': 'Active Family Office Contacts',
     'hero.stat2': 'Markets Across the Americas',
     'hero.stat3': 'One-on-One Meetings Facilitated',
@@ -98,7 +104,7 @@ const translations = {
     // Opportunity Section
     'opportunity.badge': 'Availability',
     'opportunity.title': 'Available for the Right Opportunity',
-    'opportunity.quote': "I'm currently consulting independently while actively pursuing a senior Business Development or Venture Partner role at a growth-stage fund with emerging market exposure. My pipeline isn't committed to any firm — and the right opportunity changes that.",
+    'opportunity.quote': "I'm fully focused on delivering for current consulting clients while also exploring what the right long-term role looks like. I'm building something durable in LATAM — and I'm open to doing that as a full-time member of the right firm, not just as an outside advisor.",
     'opportunity.col1.label': 'Available Now',
     'opportunity.col1.title': 'Independent Consulting Engagements',
     'opportunity.col1.desc': 'Available for project-based consulting with investment firms seeking LATAM business development, family office access, or market entry strategy. Proven SOW-based working model.',
@@ -152,6 +158,12 @@ const translations = {
     'hero.description': 'Conectando firmas de capital de riesgo y patrimonio privado con redes de family offices en los mercados emergentes más activos de América Latina. Fluido en el idioma, la cultura y las relaciones que importan.',
     'hero.cta': 'Conectemos',
     'hero.services': 'Ver Servicios',
+    // Who This Is For (ES)
+    'hero.fit.label': 'Esto es para ti si —',
+    'hero.fit.1': 'Eres un fondo en EE.UU. que está levantando capital o invirtiendo en LATAM',
+    'hero.fit.2': 'Has intentado contacto en frío en la región y no ha funcionado',
+    'hero.fit.3': 'Necesitas presencia en terreno en Colombia, México o Centroamérica',
+
     'hero.stat1': 'Contactos Activos de Family Office',
     'hero.stat2': 'Mercados en las Américas',
     'hero.stat3': 'Reuniones Individuales Facilitadas',
@@ -231,7 +243,7 @@ const translations = {
     // Opportunity Section
     'opportunity.badge': 'Disponibilidad',
     'opportunity.title': 'Disponible para la Oportunidad Correcta',
-    'opportunity.quote': 'Actualmente estoy consultando de forma independiente mientras busco activamente un rol senior de Desarrollo de Negocios o Venture Partner en un fondo en etapa de crecimiento con exposición a mercados emergentes. Mi pipeline no está comprometido con ninguna firma — y la oportunidad correcta cambia eso.',
+    'opportunity.quote': 'Estoy completamente enfocado en entregar resultados para mis clientes de consultoría actuales, mientras exploro cómo sería el rol a largo plazo correcto. Estoy construyendo algo duradero en LATAM — y estoy abierto a hacerlo como miembro de tiempo completo de la firma correcta, no solo como asesor externo.',
     'opportunity.col1.label': 'Disponible Ahora',
     'opportunity.col1.title': 'Compromisos de Consultoría Independiente',
     'opportunity.col1.desc': 'Disponible para consultoría por proyecto con firmas de inversión que buscan desarrollo de negocios en LATAM, acceso a family offices o estrategia de entrada al mercado. Modelo de trabajo basado en SOW comprobado.',

@@ -437,27 +437,6 @@ function initContactTabs() {
     });
   });
 
-  // Contact form: build mailto on submit
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('form-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const org = document.getElementById('form-org').value;
-      const message = document.getElementById('form-message').value.trim();
-
-      const subject = encodeURIComponent('Inquiry from ' + name + ' \u2014 ' + org);
-      const body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Organization Type: ' + org + '\n\n' +
-        'Message:\n' + message
-      );
-
-      window.location.href = 'mailto:powelljohn9521@gmail.com?subject=' + subject + '&body=' + body;
-    });
-  }
 }
 
 /* ============================================

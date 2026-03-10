@@ -184,6 +184,17 @@
   letter-spacing: 0.08em;
 }
 
+.conference-link {
+  text-decoration: none;
+  transition: background var(--transition-base), border-color var(--transition-base), color var(--transition-base);
+}
+
+.conference-link:hover {
+  background: rgba(6, 182, 212, 0.16);
+  border-color: rgba(6, 182, 212, 0.4);
+  color: var(--color-accent-light);
+}
+
 /* ============================================
    CONFERENCE FOOTPRINT PILLS
    ============================================ */
