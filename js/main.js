@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initScrollReveal();
   initParallaxEffects();
   initMagneticButtons();
+  initContactTabs();
 });
 
 /* ============================================
@@ -414,6 +415,72 @@ function initMagneticButtons() {
     });
   });
 }
+
+/* ============================================
+   CONTACT TABS
+   Tab switching between message form and Calendly
+   ============================================ */
+function initContactTabs() {
+  const tabBtns = document.querySelectorAll('.contact-tab-btn');
+  const tabPanels = document.querySelectorAll('.contact-tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetTab = this.dataset.tab;
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+
+      this.classList.add('active');
+      const panel = document.getElementById('tab-' + targetTab);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // Contact form: build mailto on submit
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('form-name').value.trim();
+      const email = document.getElementById('form-email').value.trim();
+      const org = document.getElementById('form-org').value;
+      const message = document.getElementById('form-message').value.trim();
+
+      const subject = encodeURIComponent('Inquiry from ' + name + ' \u2014 ' + org);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Organization Type: ' + org + '\n\n' +
+        'Message:\n' + message
+      );
+
+      window.location.href = 'mailto:powelljohn9521@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  }
+}
+
+/* ============================================
+   LOGO COMPASS — add gap between SVG and text
+   ============================================ */
+(function styleLogoCompass() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-compass {
+      flex-shrink: 0;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .logo:hover .logo-compass {
+      transform: rotate(45deg);
+    }
+  `;
+  document.head.appendChild(style);
+})();
 
 /* ============================================
    CURSOR GLOW EFFECT

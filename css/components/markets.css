@@ -1,0 +1,300 @@
+/* ============================================
+   MARKETS SECTION STYLES
+   Track record, conference grid, metrics
+   ============================================ */
+
+.markets {
+  padding: var(--space-24) 0;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.markets::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+/* Subtle compass rose watermark in background */
+.markets::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 500px;
+  height: 500px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,2 54,43 50,38 46,43' fill='none' stroke='rgba(99,102,241,0.15)' stroke-width='0.5'/%3E%3Cpolygon points='50,98 54,57 50,62 46,57' fill='none' stroke='rgba(99,102,241,0.15)' stroke-width='0.5'/%3E%3Cpolygon points='98,50 57,54 62,50 57,46' fill='none' stroke='rgba(99,102,241,0.15)' stroke-width='0.5'/%3E%3Cpolygon points='2,50 43,54 38,50 43,46' fill='none' stroke='rgba(99,102,241,0.15)' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='4' fill='none' stroke='rgba(99,102,241,0.15)' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='20' fill='none' stroke='rgba(99,102,241,0.06)' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='35' fill='none' stroke='rgba(99,102,241,0.04)' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   METRICS GRID
+   ============================================ */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-16);
+  position: relative;
+  z-index: 1;
+}
+
+.metric-card {
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-2xl);
+  transition: all var(--transition-base);
+}
+
+.metric-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+}
+
+.metric-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-2);
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+/* ============================================
+   MARKETS BODY COPY
+   ============================================ */
+.markets-body {
+  max-width: 680px;
+  margin: 0 auto var(--space-16);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.markets-body p {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ============================================
+   CONFERENCE CARDS GRID
+   ============================================ */
+.conference-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+  position: relative;
+  z-index: 1;
+}
+
+.conference-card {
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.conference-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.conference-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+}
+
+.conference-card:hover::before {
+  opacity: 1;
+}
+
+.conference-number {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-primary-light);
+  opacity: 0.4;
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.15em;
+}
+
+.conference-city {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.conference-country {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+}
+
+.conference-type {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--color-accent-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   CONFERENCE FOOTPRINT PILLS
+   ============================================ */
+.conference-footprint {
+  margin-bottom: var(--space-10);
+  position: relative;
+  z-index: 1;
+}
+
+.footprint-label {
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.market-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.market-pill {
+  padding: var(--space-2) var(--space-5);
+  background: rgba(99, 102, 241, 0.07);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-primary-light);
+  transition: all var(--transition-base);
+  cursor: default;
+}
+
+.market-pill:hover {
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   BILINGUAL BADGE
+   ============================================ */
+.bilingual-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-8);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin: 0 auto;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+}
+
+.bilingual-badge .flags {
+  font-size: var(--text-base);
+  letter-spacing: 0.1em;
+}
+
+.bilingual-badge .divider {
+  color: var(--border-color-hover);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .conference-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .markets::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .markets {
+    padding: var(--space-16) 0;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .metric-number {
+    font-size: var(--text-4xl);
+  }
+
+  .conference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bilingual-badge {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}
