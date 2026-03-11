@@ -87,9 +87,33 @@
   fill: #25D366;
 }
 
+/* WhatsApp QR toggle button */
+.whatsapp-qr-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: #25D366;
+  font-size: var(--text-sm);
+  font-family: inherit;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.whatsapp-qr-toggle:hover {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: #25D366;
+}
+.whatsapp-qr-toggle--active {
+  background: rgba(37, 211, 102, 0.12);
+  border-color: #25D366;
+}
+
 /* WhatsApp QR block */
 .whatsapp-qr {
-  display: flex;
+  display: none;
   align-items: center;
   gap: var(--space-3);
   margin-top: var(--space-3);
@@ -98,6 +122,9 @@
   border: 1px solid rgba(37, 211, 102, 0.15);
   border-radius: var(--radius-lg);
   width: fit-content;
+}
+.whatsapp-qr--visible {
+  display: flex;
 }
 
 .whatsapp-qr img {

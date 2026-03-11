@@ -737,7 +737,7 @@
                 </div>
                 <div class="contact-details">
                   <h4 data-i18n="contact.whatsappLabel">WhatsApp</h4>
-                  <a href="https://wa.me/14436992612" target="_blank" rel="noopener noreferrer" data-i18n="contact.whatsappLink">Message me on WhatsApp</a>
+                  <button class="whatsapp-qr-toggle" onclick="this.closest('.contact-details').querySelector('.whatsapp-qr').classList.toggle('whatsapp-qr--visible'); this.classList.toggle('whatsapp-qr-toggle--active')" data-i18n="contact.whatsappLink">Message me on WhatsApp</button>
                   <div class="whatsapp-qr">
                     <img src="assets/whatsapp-qr.png" alt="Scan to open WhatsApp chat">
                     <div class="whatsapp-qr-caption">
