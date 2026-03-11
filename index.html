@@ -737,14 +737,7 @@
                 </div>
                 <div class="contact-details">
                   <h4 data-i18n="contact.whatsappLabel">WhatsApp</h4>
-                  <button class="whatsapp-qr-toggle" onclick="this.closest('.contact-details').querySelector('.whatsapp-qr').classList.toggle('whatsapp-qr--visible'); this.classList.toggle('whatsapp-qr-toggle--active')" data-i18n="contact.whatsappLink">Message me on WhatsApp</button>
-                  <div class="whatsapp-qr">
-                    <img src="assets/whatsapp-qr.png" alt="Scan to open WhatsApp chat">
-                    <div class="whatsapp-qr-caption">
-                      <strong data-i18n="contact.qrScan">Scan to Chat</strong>
-                      <span data-i18n="contact.qrHint">Open WhatsApp camera<br>and point at code</span>
-                    </div>
-                  </div>
+                  <button class="whatsapp-qr-toggle" id="whatsappBtn" onclick="handleWhatsAppClick(this)" data-i18n="contact.whatsappLink">Message me on WhatsApp</button>
                 </div>
               </div>
 
@@ -895,10 +888,42 @@
     </div>
   </footer>
 
+  <!-- WhatsApp QR Modal -->
+  <div id="whatsappQrModal" class="wa-modal" onclick="if(event.target===this)closeWhatsAppModal()">
+    <div class="wa-modal__card">
+      <button class="wa-modal__close" onclick="closeWhatsAppModal()" aria-label="Close">&#x2715;</button>
+      <img src="assets/whatsapp-qr.png" alt="Scan to open WhatsApp chat" class="wa-modal__img">
+      <p class="wa-modal__caption">Scan with your WhatsApp camera</p>
+    </div>
+  </div>
+
   <!-- Scripts - defer for non-blocking loading -->
   <script src="js/i18n.js" defer></script>
   <script src="js/particles.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script>
+    var _waClicks = 0;
+    function handleWhatsAppClick(btn) {
+      _waClicks++;
+      if (_waClicks === 1) {
+        btn.classList.add('whatsapp-qr-toggle--primed');
+      } else {
+        _waClicks = 0;
+        btn.classList.remove('whatsapp-qr-toggle--primed');
+        btn.classList.add('whatsapp-qr-toggle--open');
+        document.getElementById('whatsappQrModal').classList.add('wa-modal--visible');
+      }
+    }
+    function closeWhatsAppModal() {
+      document.getElementById('whatsappQrModal').classList.remove('wa-modal--visible');
+      var btn = document.getElementById('whatsappBtn');
+      btn.classList.remove('whatsapp-qr-toggle--open');
+      _waClicks = 0;
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeWhatsAppModal();
+    });
+  </script>
 </body>
 </html>
