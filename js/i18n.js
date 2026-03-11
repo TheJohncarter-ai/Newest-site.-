@@ -99,6 +99,7 @@ const translations = {
     'markets.m4': 'Countries of Active Coverage',
     'markets.body': "Over the past year I've attended six major family office and private wealth conferences across the Americas — representing client firms, developing relationships, and cultivating a pipeline that is currently active and in development across all markets.",
     'markets.footprintLabel': 'Conference Presence 2024–2025',
+    'markets.galleryLabel': 'In the Field',
     'markets.bilingualBadge': 'Bilingual: English / Spanish',
 
     // Opportunity Section
@@ -238,6 +239,7 @@ const translations = {
     'markets.m4': 'Países de Cobertura Activa',
     'markets.body': 'Durante el último año asistí a seis grandes conferencias de family offices y patrimonio privado en las Américas — representando a firmas cliente, desarrollando relaciones y cultivando un pipeline que actualmente se encuentra activo y en desarrollo en todos los mercados.',
     'markets.footprintLabel': 'Presencia en Conferencias 2024–2025',
+    'markets.galleryLabel': 'En el Campo',
     'markets.bilingualBadge': 'Bilingüe: Inglés / Español',
 
     // Opportunity Section
