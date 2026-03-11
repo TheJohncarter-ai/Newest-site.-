@@ -140,44 +140,55 @@
 }
 .wa-modal__card {
   position: relative;
-  background: #111;
-  border: 1px solid rgba(37, 211, 102, 0.25);
-  border-radius: 16px;
-  padding: 32px 28px 24px;
+  background: #0d0d0d;
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  border-radius: 20px;
+  padding: 48px 44px 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  box-shadow: 0 0 40px rgba(37, 211, 102, 0.12);
-  max-width: 90vw;
+  gap: 24px;
+  box-shadow: 0 0 60px rgba(37, 211, 102, 0.18), 0 24px 64px rgba(0,0,0,0.6);
+  max-width: 92vw;
+  width: 520px;
 }
 .wa-modal__close {
   position: absolute;
-  top: 10px;
-  right: 12px;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.35);
-  font-size: 14px;
+  top: 14px;
+  right: 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.55);
+  font-size: 16px;
   cursor: pointer;
   line-height: 1;
-  transition: color 0.15s;
-  padding: 4px 6px;
+  transition: background 0.15s, color 0.15s;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .wa-modal__close:hover {
-  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.14);
+  color: #fff;
 }
 .wa-modal__img {
-  width: 220px;
-  height: 220px;
-  border-radius: 10px;
+  width: 420px;
+  height: 420px;
+  max-width: 80vw;
+  max-height: 80vw;
+  border-radius: 12px;
   display: block;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
 }
 .wa-modal__caption {
-  font-size: 13px;
-  color: rgba(255,255,255,0.45);
+  font-size: 15px;
+  color: rgba(255,255,255,0.5);
   margin: 0;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
 
 .contact-details h4 {
