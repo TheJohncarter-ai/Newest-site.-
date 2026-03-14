@@ -1048,21 +1048,28 @@
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Return
+        <span data-i18n="arcana.return">Return</span>
       </button>
+
+      <!-- Language toggle — inverted for light Arcana theme -->
+      <div class="arcana-lang-toggle" id="arcanaLangToggle" aria-label="Toggle language">
+        <div class="arcana-lang-slider"></div>
+        <span class="arcana-lang-option active" data-lang="en">EN</span>
+        <span class="arcana-lang-option" data-lang="es">ES</span>
+      </div>
 
       <div class="arcana-panel-inner">
 
         <!-- Header -->
         <header class="arcana-header">
-          <div class="arcana-classification">Unfinished Transmissions · Works in Progress</div>
+          <div class="arcana-classification" data-i18n="arcana.classification">Unfinished Transmissions · Works in Progress</div>
           <h1 class="arcana-title">ARCANA</h1>
-          <p class="arcana-subtitle">Experiments. Concepts. Things not yet ready for the world.</p>
+          <p class="arcana-subtitle" data-i18n="arcana.subtitle">Experiments. Concepts. Things not yet ready for the world.</p>
         </header>
 
         <!-- Divider -->
         <div class="arcana-divider">
-          <span class="arcana-divider-glyph">⬡ &nbsp; Active Files &nbsp; ⬡</span>
+          <span class="arcana-divider-glyph">⬡ &nbsp; <span data-i18n="arcana.activeFiles">Active Files</span> &nbsp; ⬡</span>
         </div>
 
         <!-- Project Cards -->
@@ -1070,112 +1077,118 @@
 
           <!-- Card 1 — PROCEDA FEATURED -->
           <div class="arcana-card arcana-card--featured" data-status="progress">
-            <div class="arcana-card-status">Live Prototype</div>
-            <h3 class="arcana-card-title">PROCEDA</h3>
-            <p class="arcana-card-subtitle">Procedural Intelligence Platform</p>
-            <p class="arcana-card-desc">Automated capture of procedure-level delivery data across surgical and radiation oncology devices. Six verticals. 94% automation rate. The dataset that has never existed at scale.</p>
-            <div class="proceda-stats">
-              <div class="proceda-stat">
-                <div class="proceda-stat-val">6</div>
-                <div class="proceda-stat-label">Verticals</div>
+            <div class="arcana-card-status" data-i18n="arcana.proceda.status">Live Prototype</div>
+
+            <div class="proceda-teaser-header">
+              <div class="proceda-teaser-wordmark">PROCEDA</div>
+              <div class="proceda-teaser-sub" data-i18n="arcana.proceda.sub">Procedural Intelligence Platform</div>
+            </div>
+
+            <p class="proceda-teaser-hook" data-i18n="arcana.proceda.hook">Every precision procedure generates 80–200 data fields the moment it executes. That data has never been captured. Until now.</p>
+
+            <div class="proceda-teaser-stats">
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">$4B<span class="proceda-teaser-sup">+</span></div>
+                <div class="proceda-teaser-label" data-i18n="arcana.proceda.s1.label">Addressable Market</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.proceda.s1.desc">procedural device real-world evidence</div>
               </div>
-              <div class="proceda-stat">
-                <div class="proceda-stat-val">94%</div>
-                <div class="proceda-stat-label">Automated</div>
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">4</div>
+                <div class="proceda-teaser-label" data-i18n="arcana.proceda.s2.label">Revenue Streams</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.proceda.s2.desc">SaaS · data · trials · subscriptions</div>
               </div>
-              <div class="proceda-stat">
-                <div class="proceda-stat-val">1,247</div>
-                <div class="proceda-stat-label">Cases</div>
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">~$50M</div>
+                <div class="proceda-teaser-label" data-i18n="arcana.proceda.s3.label">ARR at Exit</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.proceda.s3.desc">target across 3–4 device verticals</div>
               </div>
-              <div class="proceda-stat">
-                <div class="proceda-stat-val">24</div>
-                <div class="proceda-stat-label">Sites</div>
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">3</div>
+                <div class="proceda-teaser-label" data-i18n="arcana.proceda.s4.label">Tier-1 Acquirer Profiles</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.proceda.s4.desc">Owkin · Flatiron / Roche · Varian</div>
               </div>
             </div>
+
             <div class="arcana-card-actions">
-              <button class="arcana-action-btn arcana-action-btn--primary" onclick="openProcedaDemo()">
+              <button class="arcana-action-btn arcana-action-btn--primary" onclick="openProcedaDocs()">
                 <span class="proceda-btn-pulse"></span>
-                Launch Demo
-              </button>
-              <button class="arcana-action-btn arcana-action-btn--secondary" onclick="openProcedaDocs()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                Intelligence Briefing
+                <span data-i18n="arcana.proceda.cta">Read the Intelligence Briefing</span>
               </button>
             </div>
           </div>
 
           <!-- Card 2 -->
           <div class="arcana-card" data-status="progress">
-            <div class="arcana-card-status">In Progress</div>
-            <h3 class="arcana-card-title">Family Office Network Map</h3>
-            <p class="arcana-card-desc">A visual intelligence layer for relationship mapping across six LATAM markets — charting the invisible architecture of private capital flows.</p>
+            <div class="arcana-card-status" data-i18n="arcana.status.progress">In Progress</div>
+            <h3 class="arcana-card-title" data-i18n="arcana.card2.title">Family Office Network Map</h3>
+            <p class="arcana-card-desc" data-i18n="arcana.card2.desc">A visual intelligence layer for relationship mapping across six LATAM markets — charting the invisible architecture of private capital flows.</p>
             <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Intelligence</span>
-              <span class="arcana-card-link">Classified ⬡</span>
+              <span class="arcana-card-tag" data-i18n="arcana.tag.intelligence">Intelligence</span>
+              <span class="arcana-card-link" data-i18n="arcana.classified">Classified ⬡</span>
             </div>
           </div>
 
           <!-- Card 3 -->
           <div class="arcana-card" data-status="drafting">
-            <div class="arcana-card-status">Drafting</div>
-            <h3 class="arcana-card-title">The Bilingual Pitch Protocol</h3>
-            <p class="arcana-card-desc">A structured system for translating investment narratives across cultural registers — not just EN/ES, but the unspoken language of trust.</p>
+            <div class="arcana-card-status" data-i18n="arcana.status.drafting">Drafting</div>
+            <h3 class="arcana-card-title" data-i18n="arcana.card3.title">The Bilingual Pitch Protocol</h3>
+            <p class="arcana-card-desc" data-i18n="arcana.card3.desc">A structured system for translating investment narratives across cultural registers — not just EN/ES, but the unspoken language of trust.</p>
             <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Methodology</span>
-              <span class="arcana-card-link">Classified ⬡</span>
+              <span class="arcana-card-tag" data-i18n="arcana.tag.methodology">Methodology</span>
+              <span class="arcana-card-link" data-i18n="arcana.classified">Classified ⬡</span>
             </div>
           </div>
 
           <!-- Card 4 -->
           <div class="arcana-card" data-status="concept">
-            <div class="arcana-card-status">Concept Stage</div>
-            <h3 class="arcana-card-title">Capital Access Protocol</h3>
-            <p class="arcana-card-desc">A field-tested framework for navigating warm introductions into closed-door networks. The architecture of the introduction that actually gets answered.</p>
+            <div class="arcana-card-status" data-i18n="arcana.status.concept">Concept Stage</div>
+            <h3 class="arcana-card-title" data-i18n="arcana.card4.title">Capital Access Protocol</h3>
+            <p class="arcana-card-desc" data-i18n="arcana.card4.desc">A field-tested framework for navigating warm introductions into closed-door networks. The architecture of the introduction that actually gets answered.</p>
             <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Protocol</span>
-              <span class="arcana-card-link">Classified ⬡</span>
+              <span class="arcana-card-tag" data-i18n="arcana.tag.protocol">Protocol</span>
+              <span class="arcana-card-link" data-i18n="arcana.classified">Classified ⬡</span>
             </div>
           </div>
 
           <!-- Card 5 -->
           <div class="arcana-card" data-status="concept">
-            <div class="arcana-card-status">Concept Stage</div>
-            <h3 class="arcana-card-title">The Annex</h3>
-            <p class="arcana-card-desc">A long-form conversation series at the intersection of capital, culture, and language — for the people doing the work that never makes it into the pitch deck.</p>
+            <div class="arcana-card-status" data-i18n="arcana.status.concept">Concept Stage</div>
+            <h3 class="arcana-card-title" data-i18n="arcana.card5.title">The Annex</h3>
+            <p class="arcana-card-desc" data-i18n="arcana.card5.desc">A long-form conversation series at the intersection of capital, culture, and language — for the people doing the work that never makes it into the pitch deck.</p>
             <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Series</span>
-              <span class="arcana-card-link">Classified ⬡</span>
+              <span class="arcana-card-tag" data-i18n="arcana.tag.series">Series</span>
+              <span class="arcana-card-link" data-i18n="arcana.classified">Classified ⬡</span>
             </div>
           </div>
 
           <!-- Card 6 -->
           <div class="arcana-card" data-status="research">
-            <div class="arcana-card-status">Early Research</div>
-            <h3 class="arcana-card-title">Colombia Venture Atlas</h3>
-            <p class="arcana-card-desc">Mapping the emerging startup and investment ecosystem across Bogotá, Medellín, and Cali — tracking the founders and capital pools forming outside the noise.</p>
+            <div class="arcana-card-status" data-i18n="arcana.status.research">Early Research</div>
+            <h3 class="arcana-card-title" data-i18n="arcana.card6.title">Colombia Venture Atlas</h3>
+            <p class="arcana-card-desc" data-i18n="arcana.card6.desc">Mapping the emerging startup and investment ecosystem across Bogotá, Medellín, and Cali — tracking the founders and capital pools forming outside the noise.</p>
             <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Research</span>
-              <span class="arcana-card-link">Classified ⬡</span>
+              <span class="arcana-card-tag" data-i18n="arcana.tag.research">Research</span>
+              <span class="arcana-card-link" data-i18n="arcana.classified">Classified ⬡</span>
             </div>
           </div>
 
           <!-- Card 7 — Placeholder -->
           <div class="arcana-card arcana-card--placeholder" data-status="placeholder">
-            <div class="arcana-card-status" style="color:#cbd5e1;">Forthcoming</div>
-            <h3 class="arcana-card-title">Transmission Pending</h3>
-            <p class="arcana-card-desc">Something is forming. Not ready to be named yet.</p>
+            <div class="arcana-card-status" style="color:#cbd5e1;" data-i18n="arcana.status.forthcoming">Forthcoming</div>
+            <h3 class="arcana-card-title" data-i18n="arcana.placeholder.title">Transmission Pending</h3>
+            <p class="arcana-card-desc" data-i18n="arcana.placeholder.desc">Something is forming. Not ready to be named yet.</p>
             <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Unknown</span>
+              <span class="arcana-card-tag" data-i18n="arcana.tag.unknown">Unknown</span>
             </div>
           </div>
 
           <!-- Card 8 — Placeholder -->
           <div class="arcana-card arcana-card--placeholder" data-status="placeholder">
-            <div class="arcana-card-status" style="color:#cbd5e1;">Forthcoming</div>
-            <h3 class="arcana-card-title">Transmission Pending</h3>
-            <p class="arcana-card-desc">Something is forming. Not ready to be named yet.</p>
+            <div class="arcana-card-status" style="color:#cbd5e1;" data-i18n="arcana.status.forthcoming">Forthcoming</div>
+            <h3 class="arcana-card-title" data-i18n="arcana.placeholder.title">Transmission Pending</h3>
+            <p class="arcana-card-desc" data-i18n="arcana.placeholder.desc">Something is forming. Not ready to be named yet.</p>
             <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Unknown</span>
+              <span class="arcana-card-tag" data-i18n="arcana.tag.unknown">Unknown</span>
             </div>
           </div>
 
@@ -1183,7 +1196,7 @@
 
         <!-- Footer -->
         <footer class="arcana-panel-footer">
-          <p>// End of current transmissions // More to follow //</p>
+          <p data-i18n="arcana.footer">// End of current transmissions // More to follow //</p>
         </footer>
 
       </div><!-- /.arcana-panel-inner -->
@@ -1194,22 +1207,6 @@
   <!-- ============================================
        PROCEDA DEMO MODAL — iframe overlay
        ============================================ -->
-  <div id="procedaModal" class="proceda-demo-modal" role="dialog" aria-modal="true" aria-label="PROCEDA Demo">
-    <div class="proceda-demo-topbar">
-      <div class="proceda-demo-name">
-        <span class="proceda-demo-wordmark">PROCEDA</span>
-        <span class="proceda-demo-divider"></span>
-        <span class="proceda-demo-live-dot"></span>
-        <span class="proceda-demo-badge">LIVE DEMO</span>
-      </div>
-      <button class="proceda-demo-close" onclick="closeProcedaDemo()">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        Return to Arcana
-      </button>
-    </div>
-    <iframe id="procedaIframe" class="proceda-demo-iframe" src="" title="PROCEDA — Procedural Intelligence Platform"></iframe>
-  </div>
-
   <!-- ============================================
        PROCEDA INTELLIGENCE BRIEFING MODAL
        ============================================ -->
@@ -1222,19 +1219,19 @@
       </div>
       <button class="proceda-docs-close" onclick="closeProcedaDocs()">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-        Return
+        <span data-i18n="arcana.return">Return</span>
       </button>
     </div>
     <!-- ── EMAIL GATE ── -->
     <div class="proceda-gate" id="procedaGate">
       <div class="proceda-gate__inner">
-        <div class="proceda-gate__badge">CONFIDENTIAL BRIEFING</div>
+        <div class="proceda-gate__badge" data-i18n="arcana.gate.badge">CONFIDENTIAL BRIEFING</div>
         <div class="proceda-gate__title">PROCEDA</div>
-        <div class="proceda-gate__sub">Procedural Intelligence Platform · Standalone Business Model</div>
-        <p class="proceda-gate__text">This document contains proprietary business intelligence. Enter your email address to access the full briefing. Your access will be logged and the PROCEDA team will be notified.</p>
+        <div class="proceda-gate__sub" data-i18n="arcana.gate.sub">Procedural Intelligence Platform · Standalone Business Model</div>
+        <p class="proceda-gate__text" data-i18n="arcana.gate.text">This document contains proprietary business intelligence. Enter your email address to access the full briefing. Your access will be logged and the PROCEDA team will be notified.</p>
         <form class="proceda-gate__form" id="procedaGateForm" onsubmit="submitProcedaGate(event)">
           <input type="email" class="proceda-gate__input" id="procedaGateEmail" placeholder="your@email.com" required autocomplete="email" />
-          <button type="submit" class="proceda-gate__btn" id="procedaGateBtn">Access Briefing &rarr;</button>
+          <button type="submit" class="proceda-gate__btn" id="procedaGateBtn" data-i18n="arcana.gate.cta">Access Briefing →</button>
         </form>
         <div class="proceda-gate__status" id="procedaGateStatus"></div>
       </div>
@@ -1245,19 +1242,20 @@
       <!-- Sidebar nav -->
       <nav class="proceda-docs-nav">
         <div class="proceda-docs-nav-label">Sections</div>
-        <button class="pdoc-tab active" data-tab="overview" onclick="switchDocTab('overview',this)"><span class="pdoc-tab-dot"></span>The Insight</button>
-        <button class="pdoc-tab" data-tab="platform" onclick="switchDocTab('platform',this)"><span class="pdoc-tab-dot"></span>The Platform</button>
-        <button class="pdoc-tab" data-tab="verticals" onclick="switchDocTab('verticals',this)"><span class="pdoc-tab-dot"></span>Verticals</button>
-        <button class="pdoc-tab" data-tab="dataset" onclick="switchDocTab('dataset',this)"><span class="pdoc-tab-dot"></span>Revenue Model</button>
-        <button class="pdoc-tab" data-tab="financials" onclick="switchDocTab('financials',this)"><span class="pdoc-tab-dot"></span>Financials</button>
-        <button class="pdoc-tab" data-tab="exit" onclick="switchDocTab('exit',this)"><span class="pdoc-tab-dot"></span>Exit Thesis</button>
+        <button class="pdoc-tab active" data-section="pdoc-overview" onclick="scrollToSection('pdoc-overview',this)"><span class="pdoc-tab-dot"></span>The Insight</button>
+        <button class="pdoc-tab" data-section="pdoc-platform" onclick="scrollToSection('pdoc-platform',this)"><span class="pdoc-tab-dot"></span>The Platform</button>
+        <button class="pdoc-tab" data-section="pdoc-verticals" onclick="scrollToSection('pdoc-verticals',this)"><span class="pdoc-tab-dot"></span>Verticals</button>
+        <button class="pdoc-tab" data-section="pdoc-dataset" onclick="scrollToSection('pdoc-dataset',this)"><span class="pdoc-tab-dot"></span>Revenue Model</button>
+        <button class="pdoc-tab" data-section="pdoc-financials" onclick="scrollToSection('pdoc-financials',this)"><span class="pdoc-tab-dot"></span>Financials</button>
+        <button class="pdoc-tab" data-section="pdoc-exit" onclick="scrollToSection('pdoc-exit',this)"><span class="pdoc-tab-dot"></span>Exit Thesis</button>
+        <button class="pdoc-tab pdoc-tab--demo" data-section="pdoc-demo" onclick="scrollToSection('pdoc-demo',this)"><span class="pdoc-tab-dot"></span>Live Demo</button>
       </nav>
 
       <!-- Content area -->
       <div class="proceda-docs-content">
 
         <!-- ── OVERVIEW / THE INSIGHT ── -->
-        <div class="pdoc-panel active" id="pdoc-overview">
+        <div class="pdoc-panel" id="pdoc-overview">
           <div class="pdoc-section-title">The Founding Insight</div>
           <div class="pdoc-section-sub">The data already exists. No one has captured it.</div>
 
@@ -1723,6 +1721,19 @@
           </div>
         </div>
 
+        <!-- ── LIVE DEMO ── -->
+        <div class="pdoc-panel pdoc-panel--demo" id="pdoc-demo">
+          <div class="pdoc-section-title">Live Demo</div>
+          <div class="pdoc-section-sub">PROCEDA Platform &mdash; Interactive Prototype</div>
+          <div class="pdoc-demo-frame-wrap">
+            <div class="pdoc-demo-topbar">
+              <span class="pdoc-demo-live-dot"></span>
+              <span class="pdoc-demo-live-label">PROCEDA &mdash; LIVE DEMO</span>
+            </div>
+            <iframe id="procedaInlineIframe" class="pdoc-demo-iframe" src="" title="PROCEDA — Procedural Intelligence Platform" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
       </div><!-- /.proceda-docs-content -->
     </div><!-- /.proceda-docs-body -->
   </div><!-- /#procedaDocsModal -->
@@ -1795,51 +1806,42 @@
       // Close on Escape
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-          if (document.getElementById('procedaModal').classList.contains('open')) { closeProcedaDemo(); return; }
           if (document.getElementById('procedaDocsModal').classList.contains('open')) { closeProcedaDocs(); return; }
           if (_arcanaOpen) closeArcana();
         }
       });
     })();
 
-    // ── PROCEDA DEMO MODAL ──
-    var _procedaDemoLoaded = false;
-    window.openProcedaDemo = function() {
-      var modal = document.getElementById('procedaModal');
-      var iframe = document.getElementById('procedaIframe');
-      if (!_procedaDemoLoaded) {
-        iframe.src = 'proceda-demo.html';
-        _procedaDemoLoaded = true;
-      }
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    };
-    window.closeProcedaDemo = function() {
-      document.getElementById('procedaModal').classList.remove('open');
-      document.body.style.overflow = 'hidden'; // arcana panel still open
-    };
-
     // ── PROCEDA DOCS MODAL ──
+    var _procedaIframeLoaded = false;
+
     window.openProcedaDocs = function() {
       var modal = document.getElementById('procedaDocsModal');
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
+      // Lazy-load the inline demo iframe
+      if (!_procedaIframeLoaded) {
+        document.getElementById('procedaInlineIframe').src = 'proceda-demo.html';
+        _procedaIframeLoaded = true;
+      }
       // Check if gate already passed this session
       var gate = document.getElementById('procedaGate');
       if (sessionStorage.getItem('proceda_gate_passed')) {
         gate.style.display = 'none';
       } else {
         gate.style.display = 'flex';
+        // Scroll content to top when gate is showing
+        var content = document.querySelector('.proceda-docs-content');
+        if (content) content.scrollTop = 0;
       }
     };
+
     window.closeProcedaDocs = function() {
       document.getElementById('procedaDocsModal').classList.remove('open');
       document.body.style.overflow = 'hidden';
     };
 
     // ── EMAIL GATE ──
-    // SETUP: Go to formspree.io → "New Form" → set recipient to powerlljohn9521@gmail.com
-    //        Copy the form ID (looks like "xabcdefg") and replace FORM_ID below.
     var PROCEDA_FORM_ID = 'mgonzllw';
 
     window.submitProcedaGate = function(e) {
@@ -1854,7 +1856,6 @@
         document.getElementById('procedaGate').style.display = 'none';
       };
 
-      // If form not yet configured, still let user through
       if (PROCEDA_FORM_ID === 'FORM_ID') { unlock(); return; }
 
       btn.disabled = true;
@@ -1880,19 +1881,37 @@
           btn.textContent = 'Access Briefing \u2192';
         }
       })
-      .catch(function() {
-        // Soft gate: network failure still grants access
-        unlock();
-      });
+      .catch(function() { unlock(); });
     };
 
-    // ── DOCS TAB SWITCHER ──
-    window.switchDocTab = function(id, btn) {
+    // ── SCROLL NAV ──
+    window.scrollToSection = function(id, btn) {
+      var el = document.getElementById(id);
+      var content = document.querySelector('.proceda-docs-content');
+      if (!el || !content) return;
+      // Highlight clicked tab immediately
       document.querySelectorAll('.pdoc-tab').forEach(function(t) { t.classList.remove('active'); });
-      document.querySelectorAll('.pdoc-panel').forEach(function(p) { p.classList.remove('active'); });
       btn.classList.add('active');
-      document.getElementById('pdoc-' + id).classList.add('active');
+      content.scrollTo({ top: el.offsetTop - 20, behavior: 'smooth' });
     };
+
+    // IntersectionObserver to sync nav highlight while scrolling
+    (function() {
+      var content = document.querySelector('.proceda-docs-content');
+      if (!content || !window.IntersectionObserver) return;
+      var tabs = document.querySelectorAll('.pdoc-tab[data-section]');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            tabs.forEach(function(t) {
+              t.classList.toggle('active', t.dataset.section === id);
+            });
+          }
+        });
+      }, { root: content, threshold: 0.25 });
+      document.querySelectorAll('.pdoc-panel').forEach(function(p) { observer.observe(p); });
+    })();
   </script>
 
   <!-- Scripts - defer for non-blocking loading -->

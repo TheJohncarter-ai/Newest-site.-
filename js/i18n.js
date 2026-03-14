@@ -145,7 +145,54 @@ const translations = {
     'footer.connect': 'Connect',
     'footer.s1': 'LATAM Market Entry',
     'footer.s2': 'Family Office Access',
-    'footer.s3': 'Strategic Consulting'
+    'footer.s3': 'Strategic Consulting',
+
+    // Arcana Panel
+    'arcana.return': 'Return',
+    'arcana.classification': 'Unfinished Transmissions · Works in Progress',
+    'arcana.subtitle': 'Experiments. Concepts. Things not yet ready for the world.',
+    'arcana.activeFiles': 'Active Files',
+    'arcana.footer': '// End of current transmissions // More to follow //',
+    'arcana.classified': 'Classified ⬡',
+    'arcana.proceda.status': 'Live Prototype',
+    'arcana.proceda.sub': 'Procedural Intelligence Platform',
+    'arcana.proceda.hook': 'Every precision procedure generates 80–200 data fields the moment it executes. That data has never been captured. Until now.',
+    'arcana.proceda.s1.label': 'Addressable Market',
+    'arcana.proceda.s1.desc': 'procedural device real-world evidence',
+    'arcana.proceda.s2.label': 'Revenue Streams',
+    'arcana.proceda.s2.desc': 'SaaS · data · trials · subscriptions',
+    'arcana.proceda.s3.label': 'ARR at Exit',
+    'arcana.proceda.s3.desc': 'target across 3–4 device verticals',
+    'arcana.proceda.s4.label': 'Tier-1 Acquirer Profiles',
+    'arcana.proceda.s4.desc': 'Owkin · Flatiron / Roche · Varian',
+    'arcana.proceda.cta': 'Read the Intelligence Briefing',
+    'arcana.status.progress': 'In Progress',
+    'arcana.status.drafting': 'Drafting',
+    'arcana.status.concept': 'Concept Stage',
+    'arcana.status.research': 'Early Research',
+    'arcana.status.forthcoming': 'Forthcoming',
+    'arcana.card2.title': 'Family Office Network Map',
+    'arcana.card2.desc': 'A visual intelligence layer for relationship mapping across six LATAM markets — charting the invisible architecture of private capital flows.',
+    'arcana.card3.title': 'The Bilingual Pitch Protocol',
+    'arcana.card3.desc': 'A structured system for translating investment narratives across cultural registers — not just EN/ES, but the unspoken language of trust.',
+    'arcana.card4.title': 'Capital Access Protocol',
+    'arcana.card4.desc': 'A field-tested framework for navigating warm introductions into closed-door networks. The architecture of the introduction that actually gets answered.',
+    'arcana.card5.title': 'The Annex',
+    'arcana.card5.desc': 'A long-form conversation series at the intersection of capital, culture, and language — for the people doing the work that never makes it into the pitch deck.',
+    'arcana.card6.title': 'Colombia Venture Atlas',
+    'arcana.card6.desc': 'Mapping the emerging startup and investment ecosystem across Bogotá, Medellín, and Cali — tracking the founders and capital pools forming outside the noise.',
+    'arcana.placeholder.title': 'Transmission Pending',
+    'arcana.placeholder.desc': 'Something is forming. Not ready to be named yet.',
+    'arcana.tag.intelligence': 'Intelligence',
+    'arcana.tag.methodology': 'Methodology',
+    'arcana.tag.protocol': 'Protocol',
+    'arcana.tag.series': 'Series',
+    'arcana.tag.research': 'Research',
+    'arcana.tag.unknown': 'Unknown',
+    'arcana.gate.badge': 'CONFIDENTIAL BRIEFING',
+    'arcana.gate.sub': 'Procedural Intelligence Platform · Standalone Business Model',
+    'arcana.gate.text': 'This document contains proprietary business intelligence. Enter your email address to access the full briefing. Your access will be logged and the PROCEDA team will be notified.',
+    'arcana.gate.cta': 'Access Briefing →'
   },
 
   es: {
@@ -289,47 +336,117 @@ const translations = {
     'footer.connect': 'Conectar',
     'footer.s1': 'Entrada al Mercado LATAM',
     'footer.s2': 'Acceso a Family Offices',
-    'footer.s3': 'Consultoría Estratégica'
+    'footer.s3': 'Consultoría Estratégica',
+
+    // Arcana Panel (ES)
+    'arcana.return': 'Volver',
+    'arcana.classification': 'Transmisiones sin Terminar · Obras en Progreso',
+    'arcana.subtitle': 'Experimentos. Conceptos. Cosas que aún no están listas para el mundo.',
+    'arcana.activeFiles': 'Archivos Activos',
+    'arcana.footer': '// Fin de las transmisiones actuales // Más por venir //',
+    'arcana.classified': 'Clasificado ⬡',
+    'arcana.proceda.status': 'Prototipo en Vivo',
+    'arcana.proceda.sub': 'Plataforma de Inteligencia Procedimental',
+    'arcana.proceda.hook': 'Cada procedimiento de precisión genera 80–200 campos de datos en el momento en que se ejecuta. Esos datos nunca han sido capturados. Hasta ahora.',
+    'arcana.proceda.s1.label': 'Mercado Objetivo',
+    'arcana.proceda.s1.desc': 'evidencia del mundo real en dispositivos procedimentales',
+    'arcana.proceda.s2.label': 'Fuentes de Ingreso',
+    'arcana.proceda.s2.desc': 'SaaS · datos · ensayos · suscripciones',
+    'arcana.proceda.s3.label': 'ARR al Salir',
+    'arcana.proceda.s3.desc': 'objetivo en 3–4 verticales de dispositivos',
+    'arcana.proceda.s4.label': 'Perfiles de Compradores Tier-1',
+    'arcana.proceda.s4.desc': 'Owkin · Flatiron / Roche · Varian',
+    'arcana.proceda.cta': 'Leer el Informe de Inteligencia',
+    'arcana.status.progress': 'En Progreso',
+    'arcana.status.drafting': 'En Borrador',
+    'arcana.status.concept': 'Etapa Conceptual',
+    'arcana.status.research': 'Investigación Inicial',
+    'arcana.status.forthcoming': 'Próximamente',
+    'arcana.card2.title': 'Mapa de Red de Family Offices',
+    'arcana.card2.desc': 'Una capa de inteligencia visual para mapear relaciones en seis mercados LATAM — trazando la arquitectura invisible de los flujos de capital privado.',
+    'arcana.card3.title': 'El Protocolo de Pitch Bilingüe',
+    'arcana.card3.desc': 'Un sistema estructurado para traducir narrativas de inversión a través de registros culturales — no solo EN/ES, sino el lenguaje no dicho de la confianza.',
+    'arcana.card4.title': 'Protocolo de Acceso al Capital',
+    'arcana.card4.desc': 'Un marco probado en campo para navegar presentaciones cálidas en redes de puertas cerradas. La arquitectura de la introducción que realmente recibe respuesta.',
+    'arcana.card5.title': 'El Anexo',
+    'arcana.card5.desc': 'Una serie de conversaciones de largo aliento en la intersección del capital, la cultura y el lenguaje — para quienes hacen el trabajo que nunca llega al pitch deck.',
+    'arcana.card6.title': 'Atlas Venture de Colombia',
+    'arcana.card6.desc': 'Mapeando el ecosistema emergente de startups e inversión en Bogotá, Medellín y Cali — rastreando a los fundadores y pools de capital que se forman fuera del ruido.',
+    'arcana.placeholder.title': 'Transmisión Pendiente',
+    'arcana.placeholder.desc': 'Algo se está formando. Aún no está listo para ser nombrado.',
+    'arcana.tag.intelligence': 'Inteligencia',
+    'arcana.tag.methodology': 'Metodología',
+    'arcana.tag.protocol': 'Protocolo',
+    'arcana.tag.series': 'Serie',
+    'arcana.tag.research': 'Investigación',
+    'arcana.tag.unknown': 'Desconocido',
+    'arcana.gate.badge': 'INFORME CONFIDENCIAL',
+    'arcana.gate.sub': 'Plataforma de Inteligencia Procedimental · Modelo de Negocio',
+    'arcana.gate.text': 'Este documento contiene inteligencia de negocio propietaria. Ingresa tu correo electrónico para acceder al informe completo. Tu acceso será registrado y el equipo de PROCEDA será notificado.',
+    'arcana.gate.cta': 'Acceder al Informe →'
   }
 };
 
 // Language state
 let currentLang = localStorage.getItem('lang') || 'en';
 
+// Wire a single toggle element (navbar or Arcana)
+function wireToggle(toggle, isArcana) {
+  if (!toggle) return;
+
+  const optionClass   = isArcana ? '.arcana-lang-option' : '.lang-option';
+  const sliderClass   = isArcana ? '.arcana-lang-slider'  : '.lang-slider';
+  const transitioning = isArcana ? 'arcana-transitioning' : 'transitioning';
+
+  toggle.setAttribute('tabindex', '0');
+  toggle.setAttribute('role', 'switch');
+  toggle.setAttribute('aria-checked', currentLang === 'es');
+
+  toggle.addEventListener('click', (e) => {
+    const clicked = e.target.closest(optionClass);
+    const newLang = clicked
+      ? (clicked.dataset.lang !== currentLang ? clicked.dataset.lang : null)
+      : (currentLang === 'en' ? 'es' : 'en');
+    if (newLang) setLanguage(newLang);
+  });
+
+  toggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setLanguage(currentLang === 'en' ? 'es' : 'en');
+    }
+  });
+}
+
 // Initialize i18n
 function initI18n() {
   const langToggle = document.getElementById('langToggle');
   if (!langToggle) return;
 
-  // Set initial state
+  wireToggle(langToggle, false);
+  // Arcana toggle may not exist yet — wire it once the portal is first opened
+  const arcanaToggle = document.getElementById('arcanaLangToggle');
+  if (arcanaToggle) wireToggle(arcanaToggle, true);
+
+  // Set initial state (renders translations + syncs both toggles)
   setLanguage(currentLang);
+}
 
-  // Click handler for the toggle
-  langToggle.addEventListener('click', (e) => {
-    const clickedOption = e.target.closest('.lang-option');
-    if (clickedOption) {
-      const newLang = clickedOption.dataset.lang;
-      if (newLang && newLang !== currentLang) {
-        setLanguage(newLang);
-      }
-    } else {
-      // Toggle between languages when clicking the toggle itself
-      const newLang = currentLang === 'en' ? 'es' : 'en';
-      setLanguage(newLang);
-    }
-  });
+// Update a single toggle element's visual state
+function syncToggleUI(toggle, lang, isArcana, animate) {
+  if (!toggle) return;
+  const optionClass   = isArcana ? '.arcana-lang-option' : '.lang-option';
+  const transitioning = isArcana ? 'arcana-transitioning' : 'transitioning';
 
-  // Keyboard support
-  langToggle.setAttribute('tabindex', '0');
-  langToggle.setAttribute('role', 'switch');
-  langToggle.setAttribute('aria-checked', currentLang === 'es');
+  if (animate) {
+    toggle.classList.add(transitioning);
+    setTimeout(() => toggle.classList.remove(transitioning), 500);
+  }
 
-  langToggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      const newLang = currentLang === 'en' ? 'es' : 'en';
-      setLanguage(newLang);
-    }
+  toggle.dataset.lang = lang;
+  toggle.setAttribute('aria-checked', lang === 'es');
+  toggle.querySelectorAll(optionClass).forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
   });
 }
 
@@ -339,28 +456,9 @@ function setLanguage(lang, animate = true) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
 
-  // Update toggle UI
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    if (animate && previousLang !== lang) {
-      langToggle.classList.add('transitioning');
-      setTimeout(() => {
-        langToggle.classList.remove('transitioning');
-      }, 500);
-    }
-
-    langToggle.dataset.lang = lang;
-    langToggle.setAttribute('aria-checked', lang === 'es');
-
-    langToggle.querySelectorAll('.lang-option').forEach(opt => {
-      const isActive = opt.dataset.lang === lang;
-      if (isActive) {
-        opt.classList.add('active');
-      } else {
-        opt.classList.remove('active');
-      }
-    });
-  }
+  // Sync both toggles
+  syncToggleUI(document.getElementById('langToggle'),       lang, false, animate && previousLang !== lang);
+  syncToggleUI(document.getElementById('arcanaLangToggle'), lang, true,  animate && previousLang !== lang);
 
   // Update all translatable elements with fade effect
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -368,7 +466,6 @@ function setLanguage(lang, animate = true) {
     if (translations[lang] && translations[lang][key]) {
       el.style.transition = 'opacity 0.2s ease';
       el.style.opacity = '0.7';
-
       setTimeout(() => {
         el.textContent = translations[lang][key];
         el.style.opacity = '1';
