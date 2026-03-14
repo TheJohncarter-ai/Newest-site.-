@@ -219,7 +219,7 @@
   overflow-x: hidden;
 
   /* Clinical, cold-white background with tech grid */
-  background-color: #eef3fb;
+  background-color: #dde6f5;
   background-image:
     linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
@@ -292,6 +292,92 @@
   height: 12px;
   stroke: currentColor;
   stroke-width: 2;
+}
+
+/* ---- ARCANA LANGUAGE TOGGLE (inverted — dark-on-light) ---- */
+.arcana-lang-toggle {
+  position: fixed;
+  top: 24px;
+  left: 32px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background: rgba(15, 23, 42, 0.1);
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+}
+
+.arcana-lang-toggle:hover {
+  background: rgba(15, 23, 42, 0.15);
+  border-color: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+}
+
+.arcana-lang-option {
+  position: relative;
+  z-index: 2;
+  padding: 7px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(15, 23, 42, 0.35);
+  border-radius: 50px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  text-transform: uppercase;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.arcana-lang-option.active {
+  color: #ffffff;
+}
+
+/* Slider — dark navy, moves right for ES */
+.arcana-lang-slider {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: calc(50% - 5px);
+  height: calc(100% - 10px);
+  background: #0a1628;
+  border-radius: 50px;
+  transition: transform 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 2px 8px rgba(10, 22, 40, 0.3);
+}
+
+.arcana-lang-toggle[data-lang="es"] .arcana-lang-slider {
+  transform: translateX(calc(100%));
+}
+
+.arcana-lang-toggle.arcana-transitioning .arcana-lang-slider {
+  animation: arcanaSliderBounce 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes arcanaSliderBounce {
+  0%   { transform: translateX(0) scale(1); }
+  30%  { transform: translateX(50%) scale(1.1, 0.9); }
+  60%  { transform: translateX(100%) scale(0.95, 1.05); }
+  100% { transform: translateX(100%) scale(1); }
+}
+
+.arcana-lang-toggle[data-lang="en"].arcana-transitioning .arcana-lang-slider {
+  animation: arcanaSliderBounceRev 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes arcanaSliderBounceRev {
+  0%   { transform: translateX(100%) scale(1); }
+  30%  { transform: translateX(50%) scale(1.1, 0.9); }
+  60%  { transform: translateX(0) scale(0.95, 1.05); }
+  100% { transform: translateX(0) scale(1); }
+}
+
+.arcana-lang-option:not(.active):hover {
+  color: rgba(15, 23, 42, 0.65);
 }
 
 /* ---- ARCANA HEADER ---- */
@@ -380,8 +466,8 @@
 }
 
 .arcana-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: #e8f0f9;
+  border: 1px solid #ccd8ec;
   border-radius: 3px;
   padding: 28px 28px 24px;
   position: relative;
@@ -476,7 +562,7 @@
   text-transform: uppercase;
   color: #94a3b8;
   padding: 3px 8px;
-  background: #f8fafc;
+  background: #dfe9f5;
   border: 1px solid #e2e8f0;
   border-radius: 2px;
 }
@@ -498,7 +584,7 @@
 
 /* "Coming Soon" placeholder card */
 .arcana-card.arcana-card--placeholder {
-  background: #f8fafc;
+  background: #dfe9f5;
   border-style: dashed;
   border-color: #cbd5e1;
 }
@@ -544,7 +630,7 @@
    ============================================ */
 .arcana-card--featured {
   grid-column: span 2;
-  background: #f8fbff;
+  background: #d8e6f6;
   border-color: #c8d8f0;
 }
 
@@ -558,39 +644,97 @@
   margin-bottom: 4px;
 }
 
-/* Mini PROCEDA stats panel — dark window into the platform */
-.proceda-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: #1a2a3a;
-  border: 1px solid #1a2a3a;
-  border-radius: 3px;
-  overflow: hidden;
-  margin: 14px 0 16px;
+/* ── PROCEDA TEASER CARD ── */
+.proceda-teaser-header {
+  margin-bottom: 10px;
 }
 
-.proceda-stat {
-  background: #080f18;
-  padding: 12px 10px;
-  text-align: center;
-}
-
-.proceda-stat-val {
+.proceda-teaser-wordmark {
   font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: #00d4aa;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #0a1628;
   line-height: 1;
-  margin-bottom: 5px;
 }
 
-.proceda-stat-label {
+.proceda-teaser-sub {
   font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #2a5a7a;
+  color: #7a9abb;
+  margin-top: 4px;
+}
+
+.proceda-teaser-hook {
+  font-size: 0.88rem;
+  color: #4a5568;
+  line-height: 1.65;
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #dde8f4;
+  font-style: italic;
+}
+
+/* 2×2 teaser stat grid */
+.proceda-teaser-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: #c8d8f0;
+  border: 1px solid #c8d8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.proceda-teaser-stat {
+  background: #d6e4f5;
+  padding: 18px 20px;
+  position: relative;
+  transition: background 0.15s;
+}
+
+.proceda-teaser-stat:hover {
+  background: #c8d8ee;
+}
+
+.proceda-teaser-val {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a1628;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.proceda-teaser-sup {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 2px;
+  color: #00a880;
+}
+
+.proceda-teaser-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0a1628;
+  margin-bottom: 4px;
+}
+
+.proceda-teaser-desc {
+  font-size: 0.72rem;
+  color: #6a8aaa;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
 }
 
 /* Action buttons */
@@ -763,6 +907,75 @@
 }
 
 /* ============================================
+   INLINE DEMO (inside Intelligence Briefing scroll)
+   ============================================ */
+.pdoc-demo-frame-wrap {
+  border: 1px solid #0e1f2e;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdoc-demo-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #060d15;
+  border-bottom: 1px solid #0e1f2e;
+  padding: 10px 16px;
+}
+
+.pdoc-demo-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00d4aa;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+.pdoc-demo-live-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #3a6a8a;
+}
+
+.pdoc-demo-iframe {
+  width: 100%;
+  height: 780px;
+  border: none;
+  display: block;
+  background: #030a10;
+}
+
+/* Live Demo nav button — accent */
+.pdoc-tab--demo {
+  margin-top: 10px;
+  border-top: 1px solid #0e1f2e;
+  padding-top: 14px;
+}
+
+.pdoc-tab--demo.active {
+  border-left-color: #00d4aa;
+  color: #00d4aa;
+}
+
+.pdoc-tab--demo .pdoc-tab-dot {
+  background: #003a2a;
+}
+
+.pdoc-tab--demo.active .pdoc-tab-dot {
+  background: #00d4aa;
+}
+
+/* ============================================
    PROCEDA INTELLIGENCE BRIEFING MODAL
    ============================================ */
 .proceda-docs-modal {
@@ -923,8 +1136,25 @@
   background: #060c16;
 }
 
-.pdoc-panel { display: none; }
-.pdoc-panel.active { display: block; }
+/* All panels always visible — scroll layout */
+.pdoc-panel {
+  display: block;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #0e1f2e;
+  margin-bottom: 40px;
+  scroll-margin-top: 20px;
+}
+
+.pdoc-panel:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Demo panel — no extra bottom padding needed */
+.pdoc-panel--demo {
+  padding-bottom: 0;
+}
 
 .pdoc-section-title {
   font-family: 'Cinzel', Georgia, serif;
@@ -1419,8 +1649,12 @@
     grid-column: span 1;
   }
 
-  .proceda-stats {
-    grid-template-columns: repeat(2, 1fr);
+  .proceda-teaser-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proceda-teaser-val {
+    font-size: 1.6rem;
   }
 
   .pdoc-vert-grid {
@@ -1444,6 +1678,11 @@
     top: 16px;
     right: 16px;
     padding: 7px 14px;
+  }
+
+  .arcana-lang-toggle {
+    top: 16px;
+    left: 16px;
   }
 }
 
