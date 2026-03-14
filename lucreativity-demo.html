@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucreativity &#8212; Community Infrastructure Finance Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cr:#F7F3EC;--ms:#1E3A1E;--fn:#2D5A2D;--lf:#4A7C3A;
+  --lm:#7AB840;--mg:#D4900A;--bl:#B84070;--sky:#3A8CB8;
+  --dk:#141E14;--tx:#243024;--mu:#687868;--bd:#DDD5C0;--sd:#E8DFC8;
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--tx);overflow-x:hidden;}
+.sc{display:none;animation:fadeIn .25s ease;}
+.sc.on{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.tb{background:var(--ms);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.tl{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--cr);letter-spacing:.02em;}
+.tl b{color:var(--lm);font-weight:400;}
+.tnav{display:flex;gap:4px;}
+.tnb{background:transparent;border:none;padding:6px 13px;border-radius:20px;font-size:11px;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;}
+.tnb.on{background:rgba(255,255,255,.14);color:var(--lm);}
+.tbk{color:var(--lm);font-size:11px;cursor:pointer;padding:5px 12px;border-radius:16px;background:rgba(255,255,255,.1);border:none;font-family:'DM Sans',sans-serif;}
+.bp{padding:1.2rem;}
+.st{font-size:10px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--lf);margin-bottom:10px;}
+.bf{width:100%;background:var(--ms);color:var(--cr);border:none;border-radius:28px;padding:13px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:6px;transition:all .2s;}
+.bf:hover{background:var(--fn);}
+.bf.lm{background:var(--lm);color:var(--dk);}
+.bf.lm:hover{background:#90D050;}
+.bo{width:100%;background:transparent;border:1.5px solid var(--lf);color:var(--lf);border-radius:28px;padding:11px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;transition:all .15s;}
+.bo:hover{background:#F2FAE8;}
+#sw{background:var(--ms);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;position:relative;overflow:hidden;}
+#sw.on{display:flex;}
+.wlvs{position:absolute;inset:0;pointer-events:none;}
+.wl{position:absolute;}
+.wey{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--lm);margin-bottom:1.2rem;position:relative;z-index:2;}
+.wtit{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:var(--cr);line-height:1.05;margin-bottom:.9rem;position:relative;z-index:2;}
+.wtit em{font-style:italic;color:var(--lm);}
+.wsub{font-size:14px;color:#8AAA8A;line-height:1.7;max-width:380px;margin:0 auto 2.5rem;position:relative;z-index:2;}
+.wbtn{background:var(--lm);color:var(--dk);border:none;padding:14px 36px;border-radius:40px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;position:relative;z-index:2;animation:float 3s ease-in-out infinite;}
+.wbtn:hover{background:#90D050;transform:translateY(-2px)!important;}
+.wstats{display:flex;gap:2rem;margin-top:2.5rem;position:relative;z-index:2;}
+.wstat{text-align:center;}
+.wstat-v{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cr);}
+.wstat-l{font-size:10px;color:#6A8A6A;margin-top:2px;letter-spacing:.05em;}
+#so{background:var(--cr);}
+.obh{background:linear-gradient(180deg,var(--ms) 0%,#2A4A2A 100%);padding:2rem 1.5rem 1.5rem;text-align:center;}
+.obtit{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--cr);line-height:1.15;margin-bottom:.4rem;}
+.obtit em{font-style:italic;color:var(--lm);}
+.obsub{font-size:12px;color:#8AAA8A;line-height:1.6;}
+.cg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:1.5rem;}
+.cc{background:white;border:1.5px solid var(--bd);border-radius:14px;padding:14px 8px;text-align:center;cursor:pointer;transition:all .18s;position:relative;}
+.cc:hover{border-color:var(--lf);transform:translateY(-1px);}
+.cc.on{border-color:var(--lf);background:#F2FAE8;}
+.cc.on::after{content:'';position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--lf);}
+.cc-ic{width:32px;height:32px;border-radius:50%;margin:0 auto 7px;display:flex;align-items:center;justify-content:center;}
+.cc-n{font-size:11px;font-weight:500;color:var(--tx);}
+.cc-s{font-size:9px;color:var(--mu);margin-top:1px;}
+.obact{display:flex;gap:10px;justify-content:center;}
+.btn-g{background:transparent;border:1.5px solid var(--lf);color:var(--lf);padding:11px 24px;border-radius:40px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;}
+.btn-g:hover{background:#F2FAE8;}
+#sg{background:var(--cr);}
+.gh{background:linear-gradient(180deg,var(--ms) 0%,#2D5A2D 70%,var(--cr) 100%);padding:1.5rem 1.5rem 0;text-align:center;position:relative;}
+.gg{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:300;color:var(--cr);margin-bottom:3px;}
+.gg em{font-style:italic;color:var(--lm);}
+.gtag{font-size:11px;color:#7A9A7A;margin-bottom:1.2rem;}
+.srl{display:flex;gap:0;background:rgba(0,0,0,.25);border-radius:10px;overflow:hidden;margin-bottom:1.2rem;}
+.srb{flex:1;padding:7px 2px;text-align:center;font-size:9px;font-weight:500;color:rgba(255,255,255,.45);cursor:pointer;border:none;background:transparent;transition:all .15s;line-height:1.3;font-family:'DM Sans',sans-serif;}
+.srb.on{background:rgba(255,255,255,.14);color:var(--lm);}
+.sri{font-size:13px;display:block;margin-bottom:1px;}
+.isp{display:flex;gap:8px;padding:0 1.2rem 1rem;overflow-x:auto;}
+.ich{background:white;border:1px solid var(--bd);border-radius:10px;padding:8px 12px;flex-shrink:0;text-align:center;min-width:88px;}
+.icv{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--ms);}
+.icl{font-size:9px;color:var(--mu);margin-top:1px;line-height:1.3;}
+.pcard{background:white;border-radius:18px;overflow:hidden;border:1px solid var(--bd);cursor:pointer;transition:all .18s;margin-bottom:12px;}
+.pcard:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,30,.1);}
+.pcv{height:140px;position:relative;overflow:hidden;}
+.pcmap{position:absolute;bottom:0;right:0;width:100px;height:72px;border-top-left-radius:12px;overflow:hidden;border-top:1px solid rgba(255,255,255,.3);border-left:1px solid rgba(255,255,255,.3);}
+.pcsb{position:absolute;top:9px;left:9px;border-radius:16px;padding:3px 9px;font-size:9px;font-weight:500;letter-spacing:.05em;}
+.pcmt{position:absolute;top:9px;right:9px;background:rgba(0,0,0,.45);border-radius:16px;padding:3px 8px;font-size:9px;color:white;}
+.pcb{padding:12px 14px;}
+.pccat{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--lf);margin-bottom:3px;}
+.pctit{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--ms);line-height:1.2;margin-bottom:2px;}
+.pcloc{font-size:10px;color:var(--mu);margin-bottom:8px;}
+.pbg{background:#EDE5D4;border-radius:3px;height:4px;overflow:hidden;margin-bottom:3px;}
+.pbf{height:100%;border-radius:3px;}
+.pbl{display:flex;justify-content:space-between;font-size:9px;color:var(--mu);}
+.pcft{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+.eps{display:flex;gap:4px;}
+.ep{font-size:9px;padding:2px 7px;border-radius:8px;background:#EEF7E4;color:#2A5A1A;border:1px solid #C8E8A4;font-weight:500;}
+.ivb{background:var(--ms);color:var(--cr);border:none;border-radius:16px;padding:6px 14px;font-size:11px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;}
+.ivb:hover{background:var(--fn);}
+#sm{background:var(--cr);}
+.mfb{background:white;border-bottom:1px solid var(--bd);padding:10px 14px;display:flex;gap:7px;overflow-x:auto;align-items:center;flex-wrap:nowrap;}
+.mfl{font-size:10px;font-weight:500;color:var(--mu);white-space:nowrap;letter-spacing:.08em;text-transform:uppercase;}
+.mfi{border:1.5px solid var(--bd);border-radius:18px;padding:4px 11px;font-size:10px;color:var(--mu);cursor:pointer;white-space:nowrap;background:white;font-family:'DM Sans',sans-serif;transition:all .15s;}
+.mfi.on{border-color:var(--lf);background:#F2FAE8;color:var(--lf);}
+.msd{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:3px;vertical-align:middle;}
+.msrt{display:flex;gap:6px;padding:9px 14px 6px;align-items:center;}
+.msrl{font-size:10px;color:var(--mu);font-weight:500;text-transform:uppercase;letter-spacing:.08em;}
+.msrb{font-size:10px;padding:3px 10px;border-radius:9px;border:1px solid var(--bd);background:white;cursor:pointer;color:var(--mu);font-family:'DM Sans',sans-serif;transition:all .15s;}
+.msrb.on{background:var(--ms);color:var(--cr);border-color:var(--ms);}
+.mrr{font-size:11px;color:var(--mu);padding:0 14px 7px;}
+.mcrd{background:white;border-radius:18px;overflow:hidden;border:1px solid var(--bd);cursor:pointer;transition:all .18s;margin-bottom:12px;}
+.mcrd:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,30,.1);}
+.mct{display:flex;height:148px;}
+.mcsc{flex:1;position:relative;overflow:hidden;}
+.mcmw{width:128px;flex-shrink:0;position:relative;border-left:1px solid rgba(255,255,255,.2);}
+.mcsb{position:absolute;top:8px;left:8px;border-radius:13px;padding:3px 9px;font-size:9px;font-weight:500;z-index:2;}
+.mcb{padding:11px 13px;}
+.mccat{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--lf);margin-bottom:3px;}
+.mctit{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--ms);line-height:1.2;margin-bottom:2px;}
+.mcloc{font-size:10px;color:var(--mu);margin-bottom:7px;}
+.mcst{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-bottom:7px;}
+.mcs{background:#F7F3EC;border-radius:7px;padding:5px 7px;text-align:center;}
+.mcsv{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ms);}
+.mcsl{font-size:9px;color:var(--mu);}
+.mcft{display:flex;align-items:center;justify-content:space-between;}
+.mce{font-size:9px;color:var(--lf);}
+#sd{background:var(--cr);}
+.dbk{background:var(--ms);padding:11px 16px;display:flex;align-items:center;gap:8px;cursor:pointer;}
+.dbka{color:var(--lm);font-size:16px;}
+.dbkl{font-size:12px;color:var(--cr);}
+.dh2{height:190px;position:relative;overflow:hidden;}
+.dho{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:14px 16px;}
+.dsb{display:inline-block;border-radius:13px;padding:3px 10px;font-size:9px;font-weight:500;margin-bottom:4px;letter-spacing:.05em;}
+.dtit{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:white;line-height:1.2;}
+.dloc{font-size:11px;color:rgba(255,255,255,.65);}
+.dpb{height:4px;background:rgba(255,255,255,.2);}
+.dpf{height:100%;}
+.dmf{border-radius:13px;overflow:hidden;height:136px;border:1px solid var(--bd);margin-bottom:1.3rem;}
+.erl{display:flex;flex-direction:column;gap:6px;}
+.er{display:flex;justify-content:space-between;align-items:center;background:white;border-radius:10px;padding:9px 12px;border:1px solid var(--bd);}
+.erl2{font-size:11px;color:var(--tx);}
+.ert{font-size:9px;color:var(--mu);margin-top:1px;}
+.err{font-size:12px;font-weight:500;color:var(--lf);}
+.cmin{background:var(--ms);border-radius:14px;overflow:hidden;margin-bottom:1.2rem;}
+.cmit{background:linear-gradient(135deg,#0A2A0A 0%,#1E4A1E 60%,#2A6A2A 100%);padding:13px 14px 11px;}
+.cmiey{font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:#5A9A5A;margin-bottom:6px;}
+.cmip{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--cr);margin-bottom:2px;}
+.cmil{font-size:9px;color:#7A9A7A;}
+.cmir{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+.cmiid{font-size:8px;color:#5A8A5A;font-family:monospace;}
+.cmiv{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--lm);}
+.cmig{display:grid;grid-template-columns:repeat(3,1fr);background:rgba(0,0,0,.2);}
+.cmis{text-align:center;padding:9px 5px;border-right:1px solid rgba(255,255,255,.07);}
+.cmis:last-child{border-right:none;}
+.cmisv{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cr);}
+.cmisl{font-size:9px;color:#6A8A6A;margin-top:1px;}
+.cmili{display:flex;align-items:center;gap:5px;padding:8px 12px;background:rgba(0,0,0,.15);}
+.ld{width:6px;height:6px;border-radius:50%;background:var(--lm);animation:pulse 2s infinite;}
+.ipnl{background:var(--ms);border-radius:17px;padding:1.3rem;}
+.iptit{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--cr);margin-bottom:.9rem;}
+.ipsr{display:flex;justify-content:space-between;margin-bottom:5px;}
+.ipl{font-size:11px;color:#8AAA8A;}
+.ipv{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--cr);}
+.iprr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:9px 0;}
+.ipr{background:rgba(255,255,255,.08);border-radius:9px;padding:9px 7px;text-align:center;}
+.iprl{font-size:9px;color:#7A9A7A;margin-bottom:2px;}
+.iprv{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--lm);}
+#sinv{background:var(--cr);}
+.spb{background:var(--sd);padding:11px 16px;}
+.spt{display:flex;align-items:center;}
+.spi{display:flex;flex-direction:column;align-items:center;flex:1;}
+.spc{width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;z-index:2;}
+.spc.dn{background:var(--lm);color:var(--dk);}
+.spc.ac{background:var(--ms);color:white;border:2px solid var(--lm);}
+.spc.td{background:white;color:var(--mu);border:1.5px solid var(--bd);}
+.spl{font-size:9px;color:var(--mu);margin-top:3px;text-align:center;}
+.spl.ac{color:var(--ms);font-weight:500;}
+.sln{flex:1;height:2px;background:var(--bd);margin-top:-12px;}
+.sln.dn{background:var(--lm);}
+.adv{text-align:center;padding:1.4rem 0 1rem;}
+.av{font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:300;color:var(--ms);line-height:1;}
+.ac2{font-size:11px;color:var(--mu);margin-top:5px;}
+.qa{background:white;border:1.5px solid var(--bd);border-radius:18px;padding:5px 11px;font-size:11px;cursor:pointer;color:var(--tx);font-family:'DM Sans',sans-serif;transition:all .15s;}
+.qa.on,.qa:hover{background:#F2FAE8;border-color:var(--lf);color:var(--lf);}
+.rcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:1rem 0;}
+.rc{background:var(--ms);border-radius:11px;padding:11px 7px;text-align:center;}
+.rcl{font-size:9px;color:#8AAA8A;margin-bottom:3px;}
+.rcv{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--lm);}
+.rcn{font-size:9px;color:#5A8A5A;margin-top:1px;}
+.ec{background:white;border:1.5px solid var(--bd);border-radius:13px;padding:11px 13px;cursor:pointer;transition:all .18s;position:relative;margin-bottom:8px;}
+.ec:hover{border-color:var(--lf);}
+.ec.on{border-color:var(--lf);background:#F2FAE8;}
+.ec.on::after{content:'\2713';position:absolute;top:9px;right:11px;width:18px;height:18px;border-radius:50%;background:var(--lf);color:white;font-size:10px;display:flex;align-items:center;justify-content:center;font-family:sans-serif;}
+.et{font-size:12px;font-weight:500;color:var(--tx);margin-bottom:2px;}
+.ed{font-size:10px;color:var(--mu);line-height:1.4;}
+.eret{font-size:11px;font-weight:500;color:var(--lf);margin-top:4px;}
+.rb{background:white;border-radius:13px;border:1px solid var(--bd);overflow:hidden;margin-bottom:10px;}
+.rrow{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;border-bottom:1px solid var(--bd);font-size:12px;}
+.rrow:last-child{border-bottom:none;}
+.rrl{color:var(--mu);}
+.rrv{font-weight:500;}
+.rrv.gn{color:var(--lf);}
+.pm{flex:1;background:white;border:1.5px solid var(--bd);border-radius:11px;padding:9px 7px;text-align:center;cursor:pointer;transition:all .15s;}
+.pm.on{border-color:var(--lf);background:#F2FAE8;}
+.pml{font-size:9px;color:var(--mu);margin-top:3px;}
+.pm.on .pml{color:var(--lf);}
+.fi{width:100%;background:white;border:1.5px solid var(--bd);border-radius:9px;padding:10px 11px;font-size:12px;color:var(--tx);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .15s;margin-bottom:10px;}
+.fi:focus{border-color:var(--lf);}
+.fl{font-size:10px;font-weight:500;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+.pw{text-align:center;padding:2.5rem 1.5rem;}
+.prr{width:64px;height:64px;border-radius:50%;border:3px solid var(--sd);border-top:3px solid var(--lm);margin:0 auto 1.2rem;animation:spin 1s linear infinite;}
+.psi{display:flex;align-items:center;gap:9px;padding:9px 11px;background:white;border-radius:9px;border:1px solid var(--bd);margin-bottom:6px;}
+.psd{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.psd.dn{background:var(--lm);}
+.psd.ac{background:var(--lm);animation:pulse 1.5s infinite;}
+.psd.td{background:var(--bd);}
+.chero{background:var(--ms);padding:2rem 1.5rem;text-align:center;position:relative;overflow:hidden;}
+.cico{width:54px;height:54px;border-radius:50%;background:var(--lm);margin:0 auto .9rem;display:flex;align-items:center;justify-content:center;}
+.ctit{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--cr);line-height:1.15;margin-bottom:5px;}
+.ctit em{font-style:italic;color:var(--lm);}
+.csub{font-size:11px;color:#8AAA8A;line-height:1.6;}
+.certc{background:var(--ms);border-radius:18px;overflow:hidden;margin:1.2rem 0;}
+.certt{background:linear-gradient(135deg,#0A2A0A 0%,#1E4A1E 60%,#2A6A2A 100%);padding:16px 14px 13px;}
+.certey{font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:#5A9A5A;margin-bottom:7px;}
+.certp{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--cr);line-height:1.2;margin-bottom:2px;}
+.certl{font-size:9px;color:#7A9A7A;}
+.certid{font-size:8px;color:#5A8A5A;font-family:monospace;margin-top:8px;}
+.certvf{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--lm);}
+.certst{display:grid;grid-template-columns:repeat(3,1fr);background:rgba(0,0,0,.2);}
+.certsi{text-align:center;padding:9px 5px;border-right:1px solid rgba(255,255,255,.07);}
+.certsi:last-child{border-right:none;}
+.certsiv{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--cr);}
+.certsil{font-size:9px;color:#6A8A6A;margin-top:1px;}
+.certli{display:flex;align-items:center;gap:5px;padding:9px 13px;background:rgba(0,0,0,.15);}
+.certbt{padding:11px 14px;background:rgba(0,0,0,.25);}
+.certrr{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px;}
+.certr{background:rgba(255,255,255,.07);border-radius:7px;padding:7px;text-align:center;}
+.certrl{font-size:9px;color:#6A8A6A;margin-bottom:2px;}
+.certrv{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--lm);}
+.sharebts{display:flex;gap:7px;margin-bottom:1rem;}
+.sharebt{flex:1;background:white;border:1.5px solid var(--bd);border-radius:18px;padding:9px;font-size:10px;color:var(--tx);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;}
+.sharebt:hover{background:#F2FAE8;border-color:var(--lf);}
+#sdash{background:var(--cr);}
+.dsh{background:linear-gradient(180deg,var(--ms) 0%,#2A4A2A 100%);padding:1.3rem 1.2rem .9rem;}
+.dsg{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:300;color:var(--cr);margin-bottom:2px;}
+.dsg em{font-style:italic;color:var(--lm);}
+.dss{font-size:11px;color:#7A9A7A;}
+.pst{display:flex;gap:7px;margin-top:.9rem;overflow-x:auto;}
+.psc{background:rgba(255,255,255,.1);border-radius:9px;padding:9px 12px;flex-shrink:0;text-align:center;min-width:82px;}
+.psv{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--cr);}
+.psl{font-size:9px;color:#7A9A7A;margin-top:1px;}
+.mycc{background:white;border-radius:14px;border:1px solid var(--bd);overflow:hidden;margin-bottom:10px;cursor:pointer;transition:all .15s;}
+.mycc:hover{transform:translateY(-1px);}
+.mycct{display:flex;}
+.myscn{width:82px;flex-shrink:0;}
+.myci{flex:1;padding:10px 12px;}
+.mycs{font-size:9px;color:var(--lf);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;}
+.myctit{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ms);line-height:1.2;margin-bottom:1px;}
+.mycl{font-size:9px;color:var(--mu);}
+.mycf{display:flex;justify-content:space-between;margin-top:6px;align-items:baseline;}
+.myca{font-size:10px;color:var(--mu);}
+.mycr{font-size:12px;font-weight:500;color:var(--lf);}
+.mycim{background:#F2FAE8;padding:8px 12px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--bd);}
+.mycimv{text-align:center;}
+.mycimvv{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ms);}
+.mycimvl{font-size:8px;color:var(--mu);}
+.nfi{display:flex;gap:8px;align-items:flex-start;margin-bottom:9px;}
+.nfd{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.nfc{flex:1;background:white;border-radius:11px;padding:9px 11px;border:1px solid var(--bd);}
+.nftit{font-size:11px;font-weight:500;color:var(--tx);}
+.nfsub{font-size:10px;color:var(--mu);margin-top:2px;line-height:1.4;}
+.nftm{font-size:9px;color:var(--mu);margin-top:3px;}
+/* invest flow */
+.ist{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--mu);flex:1;justify-content:center;}
+.ist.on{color:var(--lm);font-weight:600;}
+.ist.done{color:#5A9A5A;}
+.isc{width:20px;height:20px;border-radius:50%;background:var(--bd);color:var(--mu);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+.ist.on .isc{background:var(--lm);color:var(--dk);}
+.ist.done .isc{background:#5A9A5A;color:white;}
+.isl{flex:1;height:1px;background:var(--bd);max-width:20px;}
+.iamb{background:white;border-radius:14px;border:1px solid var(--bd);padding:1rem;margin:1rem 0;}
+.iamr{display:flex;justify-content:space-between;font-size:9px;color:var(--mu);margin-top:3px;}
+.iamv{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--ms);text-align:center;margin:0.7rem 0;}
+.iamhint{font-size:10px;color:var(--mu);margin-bottom:5px;}
+.irtbl{background:white;border-radius:12px;border:1px solid var(--bd);overflow:hidden;margin-bottom:1rem;}
+.irr{display:flex;justify-content:space-between;padding:10px 13px;border-bottom:1px solid var(--bd);font-size:11px;}
+.irr:last-child{border-bottom:none;}
+.irrl{color:var(--mu);}
+.irrv{font-weight:600;color:var(--lf);}
+.exop{display:flex;align-items:center;background:white;border:1.5px solid var(--bd);border-radius:13px;padding:11px 13px;margin-bottom:8px;cursor:pointer;transition:all .15s;gap:10px;}
+.exop:hover{border-color:var(--lf);}
+.exop.on{border-color:var(--lf);background:#F2FAE8;}
+.exot{flex:1;}
+.exotit{font-size:12px;font-weight:500;color:var(--tx);margin-bottom:2px;}
+.exod{font-size:10px;color:var(--mu);line-height:1.4;}
+.exov{font-size:11px;font-weight:600;color:var(--lf);flex-shrink:0;}
+.tcb{display:flex;align-items:flex-start;gap:8px;padding:10px 0;margin-bottom:6px;}
+.rvtbl{background:white;border-radius:12px;border:1px solid var(--bd);overflow:hidden;margin-bottom:1rem;}
+.rvr{display:flex;justify-content:space-between;padding:10px 13px;border-bottom:1px solid var(--bd);font-size:11px;}
+.rvr:last-child{border-bottom:none;}
+.rvrl{color:var(--mu);}
+.rvrv{font-weight:500;}
+</style>
+</head>
+<body>
+<!-- WELCOME -->
+<div id="sw" class="sc on">
+  <div class="wlvs" id="wlvs"></div>
+  <div class="wey">Lucreativity</div>
+  <div class="wtit">Where your money<br>takes <em>root.</em></div>
+  <div class="wsub">Invest in hospitals, clean energy, clean water, and schools in communities that need them most &mdash; from $100, exit whenever you want.</div>
+  <button class="wbtn" onclick="go('so')">Begin your garden &rsaquo;</button>
+  <div class="wstats">
+    <div class="wstat"><div class="wstat-v">$800B+</div><div class="wstat-l">addressable market</div></div>
+    <div class="wstat"><div class="wstat-v">12</div><div class="wstat-l">live projects</div></div>
+    <div class="wstat"><div class="wstat-v">4</div><div class="wstat-l">exit windows</div></div>
+  </div>
+</div>
+<!-- ONBOARD -->
+<div id="so" class="sc">
+  <div class="obh">
+    <div style="font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--lm);margin-bottom:.8rem;">Step 1 of 1</div>
+    <div class="obtit">What do you<br><em>care about?</em></div>
+    <div class="obsub">Select everything that matters. We'll grow a garden matched to your values.</div>
+  </div>
+  <div class="bp">
+    <div class="st">Your interests</div>
+    <div class="cg" id="cgrid"></div>
+    <div class="obact">
+      <button class="btn-g" onclick="selAll()">Select all</button>
+      <button class="bf lm" style="width:auto;padding:11px 28px;" onclick="goGarden()">Grow my garden &rsaquo;</button>
+    </div>
+  </div>
+</div>
+<!-- GARDEN -->
+<div id="sg" class="sc">
+  <div class="tb">
+    <div class="tl">Lucre<b>ativity</b></div>
+    <div class="tnav">
+      <button class="tnb on" id="tn-g" onclick="showGarden()">Garden</button>
+      <button class="tnb" id="tn-m" onclick="showMkt()">Marketplace</button>
+    </div>
+  </div>
+  <div class="gh">
+    <div class="gg">Your <em>garden</em> is growing.</div>
+    <div class="gtag" id="g-tag">Projects matched to your values</div>
+    <div class="srl" id="g-srl"></div>
+  </div>
+  <div class="isp" id="g-isp"></div>
+  <div class="bp">
+    <div class="st" id="g-hed">Matched projects</div>
+    <div style="font-size:11px;color:var(--mu);margin-bottom:12px;" id="g-sub"></div>
+    <div id="g-cards"></div>
+  </div>
+</div>
+<!-- MARKETPLACE -->
+<div id="sm" class="sc">
+  <div class="tb">
+    <div class="tl">Lucre<b>ativity</b></div>
+    <div class="tnav">
+      <button class="tnb" id="tn-g2" onclick="showGarden()">Garden</button>
+      <button class="tnb on" id="tn-m2" onclick="showMkt()">Marketplace</button>
+    </div>
+  </div>
+  <div class="mfb" id="m-filters"></div>
+  <div class="msrt" id="m-sort"></div>
+  <div class="mrr" id="m-results"></div>
+  <div class="bp" style="padding-top:0;"><div id="m-cards"></div></div>
+</div>
+<!-- DETAIL -->
+<div id="sd" class="sc">
+  <div class="dbk" id="d-back"><span class="dbka">&lsaquo;</span><span class="dbkl" id="d-back-lbl">Back</span></div>
+  <div id="d-hero"></div>
+  <div class="bp" id="d-body"></div>
+</div>
+<!-- INVEST FLOW -->
+<div id="sinv" class="sc">
+  <div class="tb"><div class="tl">Lucre<b>ativity</b></div><button class="tbk" onclick="go(fromScr)">&#10005; Cancel</button></div>
+  <div id="inv-hero"></div>
+  <div class="spb"><div class="spt" id="inv-steps"></div></div>
+  <div id="inv-body"></div>
+</div>
+<!-- DASHBOARD -->
+<div id="sdash" class="sc">
+  <div class="tb"><div class="tl">Lucre<b>ativity</b></div><button class="tbk" onclick="showGarden()">+ Invest more</button></div>
+  <div class="dsh"><div class="dsg">Your <em>garden</em></div><div class="dss">Living impact &middot; real time</div><div class="pst" id="d-strip"></div></div>
+  <div class="bp"><div class="st">Your certificates</div><div id="d-certs"></div><div class="st" style="margin-top:1rem;">Updates</div><div id="d-notifs"></div></div>
+</div>
+<script>
+const CATS=[
+  {id:'health',n:'Healthcare',s:'Hospitals & clinics',fill:'#E8F5E8',stroke:'#4A8A3A'},
+  {id:'water',n:'Clean water',s:'Wells & sanitation',fill:'#E0F0F8',stroke:'#2A6A9A'},
+  {id:'energy',n:'Clean energy',s:'Solar & wind',fill:'#FFF8E0',stroke:'#A07010'},
+  {id:'education',n:'Education',s:'Schools & training',fill:'#F0E8F8',stroke:'#6A3A9A'},
+  {id:'food',n:'Food security',s:'Farms & nutrition',fill:'#F0F8E4',stroke:'#4A7A1A'},
+  {id:'environment',n:'Environment',s:'Reforestation & land',fill:'#E4F4EC',stroke:'#1A6A4A'},
+  {id:'housing',n:'Housing',s:'Affordable homes',fill:'#FDF0E0',stroke:'#8A5010'},
+  {id:'maternal',n:'Maternal health',s:'Births & child care',fill:'#FDE8F0',stroke:'#9A2A5A'},
+  {id:'tech',n:'Connectivity',s:'Internet & infrastructure',fill:'#E8EEF8',stroke:'#2A3A7A'},
+];
+const STAGES=[
+  {id:'all',ic:'\u2726',n:'All'},
+  {id:'fertile',ic:'\u25c9',n:'Fertile soil',bg:'#EDE0B8',col:'#5A4A1A',fill:'#C8A840'},
+  {id:'sprout',ic:'\u25c9',n:'Sprout',bg:'#DFF0D8',col:'#1A4A18',fill:'#5AAA38'},
+  {id:'leafling',ic:'\u25c9',n:'Leafling',bg:'#D4EDE4',col:'#0A3A28',fill:'#2AAA7A'},
+  {id:'flower',ic:'\u25c9',n:'Flower',bg:'#F4D8E8',col:'#5A0A38',fill:'#B84070'},
+  {id:'fruit',ic:'\u25c9',n:'Bearing fruit',bg:'#FAE8C8',col:'#5A2A08',fill:'#D4880A'},
+];
+const SS=id=>STAGES.find(s=>s.id===id)||STAGES[1];
+const EXITS=[
+  {id:'e1',t:'Foundation milestone (~6 months)',d:'Exit when foundation is poured and verified. Lower return, faster.',p:1.05},
+  {id:'e2',t:'Structure complete (~14 months)',d:'Steel frame done. Good balance of speed and return.',p:1.08},
+  {id:'e3',t:'Hold to completion (~36 months)',d:'Maximum return at the bank buyout event.',p:1.175},
+  {id:'e4',t:'Secondary market \u2014 anytime',d:'List your certificate for sale to another investor at any time.',p:null},
+];
+const PROJECTS=[
+  {id:1,t:'Valle del Sula Community Hospital',l:'San Pedro Sula, Honduras',cats:['health','maternal'],stage:'leafling',pct:59,raised:'$1.24M',goal:'$2.1M',scene:'hospital',map:'honduras',cert:[{v:'24,847',l:'Patients treated'},{v:'1,203',l:'Surgeries'},{v:'847',l:'Births'}],impact:'24,847 patients',min:100,desc:'A 120-bed community hospital serving 240,000 people. The nearest hospital is currently 90 minutes away. Surgical suites, maternal ward, and oncology unit staffed by 312 local healthcare workers.'},
+  {id:2,t:'Sahel Solar Grid Initiative',l:'Ouagadougou, Burkina Faso',cats:['energy','environment'],stage:'sprout',pct:31,raised:'$620K',goal:'$2.0M',scene:'solar',map:'burkina',cert:[{v:'8,200',l:'Homes powered'},{v:'4.1T kg',l:'CO\u2082 avoided'},{v:'340',l:'Jobs created'}],impact:'8,200 homes',min:100,desc:'Solar micro-grid providing clean electricity to 8,200 rural households currently without reliable power. 340 local jobs created during construction and operation.'},
+  {id:3,t:'Amazon Watershed Reforestation',l:'Par\u00e1 State, Brazil',cats:['environment','food'],stage:'fertile',pct:12,raised:'$240K',goal:'$2.0M',scene:'forest',map:'brazil',cert:[{v:'120K',l:'Trees planted'},{v:'680',l:'Species protected'},{v:'92',l:'Communities'}],impact:'120,000 trees',min:100,desc:'Reforestation of 4,800 hectares of degraded Amazon watershed, protecting 680 species and supporting 92 indigenous and rural communities whose livelihoods depend on the forest.'},
+  {id:4,t:'Kisumu Maternal Health Centre',l:'Kisumu, Kenya',cats:['maternal','health'],stage:'flower',pct:78,raised:'$1.56M',goal:'$2.0M',scene:'hospital',map:'kenya',cert:[{v:'3,104',l:'Safe births'},{v:'98.2%',l:'Survival rate'},{v:'212',l:'Staff employed'}],impact:'3,104 births',min:100,desc:'Specialist maternal health centre reducing maternal mortality in western Kenya. 98.2% mother and child survival rate, 212 local healthcare workers employed.'},
+  {id:5,t:'Mississippi Delta Clean Water',l:'Delta Region, Mississippi, USA',cats:['water','health'],stage:'sprout',pct:27,raised:'$540K',goal:'$2.0M',scene:'water',map:'mississippi',cert:[{v:'12,400',l:'People served'},{v:'98%',l:'Safe water'},{v:'180',l:'Jobs created'}],impact:'12,400 people',min:100,desc:'Bringing safe drinking water to 12,400 rural Mississippi residents currently relying on contaminated private wells. First new water infrastructure in this region in 40 years.'},
+  {id:6,t:'Lagos Girls Tech Academy',l:'Lagos, Nigeria',cats:['education','tech'],stage:'leafling',pct:52,raised:'$1.04M',goal:'$2.0M',scene:'school',map:'lagos',cert:[{v:'2,800',l:'Students enrolled'},{v:'94%',l:'Employment rate'},{v:'48',l:'Teachers hired'}],impact:'2,800 students',min:100,desc:'STEM academy exclusively for girls in underserved Lagos communities. 94% graduate employment rate. 48 local teachers hired. First institution of its kind in the region.'},
+  {id:7,t:'Medell\u00edn Affordable Housing Block',l:'Medell\u00edn, Colombia',cats:['housing'],stage:'fertile',pct:8,raised:'$160K',goal:'$2.0M',scene:'housing',map:'colombia',cert:[{v:'480',l:'Families housed'},{v:'$240',l:'Monthly saving'},{v:'145',l:'Jobs created'}],impact:'480 families',min:100,desc:'480 affordable housing units for families currently spending over 60% of income on rent. Average monthly saving of $240 per family. 145 construction jobs created.'},
+  {id:8,t:'Rajasthan Rural Solar Micro-Grid',l:'Rajasthan, India',cats:['energy','tech'],stage:'sprout',pct:38,raised:'$760K',goal:'$2.0M',scene:'solar',map:'india',cert:[{v:'6,800',l:'Households'},{v:'2.8T kg',l:'CO\u2082 avoided'},{v:'220',l:'Jobs sustained'}],impact:'6,800 households',min:100,desc:'Decentralized solar micro-grid connecting 6,800 rural households previously dependent on diesel generators. 2.8 tonnes of CO\u2082 avoided annually.'},
+  {id:9,t:'Bangladesh Floating Farm Network',l:'Barisal District, Bangladesh',cats:['food','environment'],stage:'leafling',pct:61,raised:'$1.22M',goal:'$2.0M',scene:'farm',map:'bangladesh',cert:[{v:'3,200',l:'Families fed'},{v:'840T kg',l:'Food produced'},{v:'1,100',l:'Farmers trained'}],impact:'3,200 families',min:100,desc:'Traditional floating garden technology scaled to feed 3,200 families in flood-affected coastal Bangladesh. 1,100 farmers trained in climate-resilient growing techniques.'},
+  {id:10,t:'Addis Ababa Pediatric Wing',l:'Addis Ababa, Ethiopia',cats:['health','maternal'],stage:'fruit',pct:91,raised:'$1.82M',goal:'$2.0M',scene:'hospital',map:'ethiopia',cert:[{v:'8,940',l:'Children treated'},{v:'2,100',l:'Surgeries'},{v:'99.1%',l:'Recovery rate'}],impact:'8,940 children',min:100,desc:'Dedicated pediatric surgical wing serving the Horn of Africa. 99.1% recovery rate. Only specialist pediatric facility within 600km for 4 million children.'},
+  {id:11,t:'Visayas Island Water Network',l:'Cebu & Leyte, Philippines',cats:['water','health'],stage:'sprout',pct:22,raised:'$440K',goal:'$2.0M',scene:'water',map:'philippines',cert:[{v:'18,600',l:'Islanders served'},{v:'94%',l:'Safe water'},{v:'210',l:'Jobs created'}],impact:'18,600 islanders',min:100,desc:'Island water distribution network serving 18,600 people across six islands who currently collect water by boat twice weekly.'},
+  {id:12,t:'Appalachian Rural Health Network',l:'Eastern Kentucky, USA',cats:['health','maternal'],stage:'leafling',pct:47,raised:'$940K',goal:'$2.0M',scene:'hospital',map:'usa',cert:[{v:'11,200',l:'Patients treated'},{v:'680',l:'Surgeries'},{v:'290',l:'Jobs sustained'}],impact:'11,200 patients',min:100,desc:'Rural health network serving Eastern Kentucky coalfield communities with the highest rates of cancer, diabetes, and heart disease in the United States.'},
+];
+let sel=new Set(),gStage='all',mStages=new Set(['all']),mSort='match',fromScr='sg';
+let invStep=0,invAmt=500,invExit='e3',invPay='card',invTerms=false,invProj=null,portfolio=[];
+function go(id){document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo(0,0);}
+function showGarden(){go('sg');renderGarden();document.getElementById('tn-g').classList.add('on');document.getElementById('tn-m').classList.remove('on');if(document.getElementById('tn-g2'))document.getElementById('tn-g2').classList.add('on');if(document.getElementById('tn-m2'))document.getElementById('tn-m2').classList.remove('on');}
+function showMkt(){go('sm');renderMkt();document.getElementById('tn-m').classList.add('on');document.getElementById('tn-g').classList.remove('on');if(document.getElementById('tn-m2'))document.getElementById('tn-m2').classList.add('on');if(document.getElementById('tn-g2'))document.getElementById('tn-g2').classList.remove('on');}
+
+function mapSVG(r){
+  const maps={
+    honduras:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#B8D8F0;"><ellipse cx="65" cy="45" rx="55" ry="35" fill="#A8C870" stroke="#6A9040" stroke-width=".8"/><path d="M30 35 Q55 28 80 32 Q95 35 100 45 Q95 58 75 62 Q55 68 35 60 Q18 52 20 42 Z" fill="#90B858"/><circle cx="68" cy="42" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="68" cy="42" r="2" fill="white"/><text x="68" y="60" text-anchor="middle" font-size="6" fill="#2A4A18" font-family="sans-serif">Honduras</text></svg>`,
+    burkina:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#E8D8A0;"><ellipse cx="65" cy="45" rx="52" ry="32" fill="#D4B870" stroke="#A08030" stroke-width=".8"/><path d="M28 38 Q55 30 88 36 Q102 42 100 52 Q88 62 62 65 Q38 66 24 55 Q15 47 18 40 Z" fill="#C4A858"/><circle cx="65" cy="44" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="65" cy="44" r="2" fill="white"/><text x="65" y="62" text-anchor="middle" font-size="6" fill="#4A3010" font-family="sans-serif">Burkina Faso</text></svg>`,
+    brazil:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#B8D0E8;"><path d="M20 15 Q65 8 105 20 Q118 35 112 60 Q100 78 75 82 Q45 85 25 72 Q10 58 12 35 Z" fill="#5A9A40" stroke="#3A7A20" stroke-width=".8"/><circle cx="55" cy="35" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="55" cy="35" r="2" fill="white"/><text x="65" y="58" text-anchor="middle" font-size="6" fill="#1A3A08" font-family="sans-serif">Brazil</text></svg>`,
+    kenya:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#C8E0F0;"><path d="M40 12 Q70 8 92 18 Q105 28 104 48 Q100 68 80 76 Q60 82 42 74 Q24 62 22 44 Q18 25 30 16 Z" fill="#8AB870" stroke="#5A8840" stroke-width=".8"/><circle cx="52" cy="50" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="52" cy="50" r="2" fill="white"/><text x="65" y="68" text-anchor="middle" font-size="6" fill="#1A3A08" font-family="sans-serif">Kenya</text></svg>`,
+    mississippi:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#B8CCE0;"><path d="M35 10 Q75 6 100 18 Q114 28 112 52 Q106 72 82 80 Q55 85 32 74 Q14 60 14 38 Q12 20 25 12 Z" fill="#A8B890"/><path d="M60 20 Q62 35 60 55 Q59 65 58 72" stroke="#6888C0" stroke-width="3" fill="none"/><circle cx="58" cy="52" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="58" cy="52" r="2" fill="white"/><text x="65" y="82" text-anchor="middle" font-size="6" fill="#1A2A38" font-family="sans-serif">Mississippi</text></svg>`,
+    lagos:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#B8CCE0;"><path d="M18 18 Q60 10 100 20 Q116 30 114 55 Q108 74 78 80 Q48 84 25 70 Q8 58 10 36 Z" fill="#98B870"/><ellipse cx="30" cy="65" rx="12" ry="6" fill="#4888B8" opacity=".7"/><circle cx="32" cy="60" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="32" cy="60" r="2" fill="white"/><text x="65" y="82" text-anchor="middle" font-size="6" fill="#1A3A08" font-family="sans-serif">Lagos, Nigeria</text></svg>`,
+    colombia:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#A8C8E0;"><path d="M30 12 Q68 6 95 20 Q110 32 108 55 Q100 75 74 80 Q46 84 26 68 Q10 54 12 32 Z" fill="#70A848"/><circle cx="60" cy="40" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="60" cy="40" r="2" fill="white"/><text x="65" y="74" text-anchor="middle" font-size="6" fill="#183808" font-family="sans-serif">Colombia</text></svg>`,
+    india:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#A8C0D8;"><path d="M38 8 Q75 4 96 16 Q110 26 108 46 Q104 66 82 78 Q62 86 44 80 Q24 70 18 50 Q12 30 22 16 Z" fill="#C8B07A"/><circle cx="65" cy="40" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="65" cy="40" r="2" fill="white"/><text x="65" y="60" text-anchor="middle" font-size="6" fill="#2A1A08" font-family="sans-serif">Rajasthan</text></svg>`,
+    bangladesh:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#A8C8E0;"><path d="M28 14 Q68 8 98 20 Q112 32 110 54 Q104 72 78 78 Q50 82 28 68 Q12 55 14 34 Z" fill="#80B860"/><circle cx="65" cy="42" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="65" cy="42" r="2" fill="white"/><text x="65" y="78" text-anchor="middle" font-size="6" fill="#183808" font-family="sans-serif">Bangladesh</text></svg>`,
+    ethiopia:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#C0C8B0;"><path d="M22 16 Q65 8 102 22 Q116 34 112 58 Q104 76 76 82 Q46 86 24 70 Q8 56 10 34 Z" fill="#A8A058"/><circle cx="72" cy="44" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="72" cy="44" r="2" fill="white"/><text x="65" y="76" text-anchor="middle" font-size="6" fill="#2A2808" font-family="sans-serif">Ethiopia</text></svg>`,
+    philippines:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#88B8D8;"><ellipse cx="45" cy="35" rx="14" ry="22" fill="#70A850" stroke="#408820" stroke-width=".8" transform="rotate(-10 45 35)"/><ellipse cx="72" cy="28" rx="12" ry="16" fill="#68A048" stroke="#388018" stroke-width=".8" transform="rotate(8 72 28)"/><ellipse cx="62" cy="60" rx="18" ry="12" fill="#70A850" stroke="#408820" stroke-width=".8"/><circle cx="62" cy="55" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="62" cy="55" r="2" fill="white"/><text x="65" y="82" text-anchor="middle" font-size="6" fill="#183808" font-family="sans-serif">Philippines</text></svg>`,
+    usa:`<svg viewBox="0 0 130 90" style="width:100%;height:100%;background:#B8CCE0;"><path d="M15 20 Q65 14 108 22 Q120 32 118 55 Q112 74 82 80 Q50 84 22 70 Q6 56 8 36 Z" fill="#A8B890"/><circle cx="68" cy="55" r="5" fill="#E05050" stroke="white" stroke-width="1.2"/><circle cx="68" cy="55" r="2" fill="white"/><text x="65" y="82" text-anchor="middle" font-size="6" fill="#1A2A38" font-family="sans-serif">Kentucky, USA</text></svg>`,
+  };
+  return maps[r]||maps.honduras;
+}
+function scene(type,h){
+  const cols={hospital:'linear-gradient(180deg,#5BA3D9,#8DC8F0 60%,#B8E0F8)',solar:'linear-gradient(180deg,#E8A820,#F0C840 40%,#D4A820)',forest:'linear-gradient(180deg,#0A2A1A,#1A4A20 55%,#2A6A28)',water:'linear-gradient(180deg,#1A6A9A,#2A8AC0 55%,#3AAAD8)',school:'linear-gradient(180deg,#60B8E0,#90D0F0 60%,#B0E4F8)',housing:'linear-gradient(180deg,#D88040,#E0A060 40%,#C06030)',grid:'linear-gradient(180deg,#1A3888,#2A50A8 50%,#3A68C0)',farm:'linear-gradient(180deg,#70B8E0,#A0D8F0 50%,#C8EEF8)'};
+  const sceneIcons={hospital:'🏥',solar:'☀️',forest:'🌲',water:'💧',school:'🏫',housing:'🏘️',grid:'⚡',farm:'🌾'};
+  const bg=cols[type]||cols.hospital;
+  const icon=sceneIcons[type]||'🌍';
+  return `<div style="width:100%;height:${h}px;background:${bg};position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;"><span style="font-size:${Math.round(h*0.35)}px;opacity:.35;">${icon}</span></div>`;
+}
+
+function buildOnboard(){document.getElementById('cgrid').innerHTML=CATS.map(c=>`<div class="cc" id="cc${c.id}" onclick="toggleC('${c.id}')"><div class="cc-ic" style="background:${c.fill};border:1px solid ${c.stroke};"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4" fill="${c.stroke}"/></svg></div><div class="cc-n">${c.n}</div><div class="cc-s">${c.s}</div></div>`).join('');}
+function toggleC(id){sel.has(id)?sel.delete(id):sel.add(id);document.getElementById('cc'+id).classList.toggle('on',sel.has(id));}
+function selAll(){CATS.forEach(c=>{sel.add(c.id);document.getElementById('cc'+c.id).classList.add('on');});}
+function goGarden(){if(!sel.size)CATS.forEach(c=>sel.add(c.id));showGarden();}
+function matched(){return sel.size?PROJECTS.filter(p=>p.cats.some(c=>sel.has(c))):PROJECTS;}
+function filtStage(ps){return gStage==='all'?ps:ps.filter(p=>p.stage===gStage);}
+function renderGarden(){
+  const mp=matched(),fp=filtStage(mp);
+  document.getElementById('g-tag').textContent=mp.length+' projects matched to your values';
+  document.getElementById('g-srl').innerHTML=STAGES.map(s=>`<button class="srb ${gStage===s.id?'on':''}" onclick="setGS('${s.id}')"><span class="sri">${s.ic}</span>${s.n}</button>`).join('');
+  document.getElementById('g-isp').innerHTML=mp.slice(0,6).map(p=>`<div class="ich"><div class="icv">${p.impact.split(' ')[0]}</div><div class="icl">${p.impact.split(' ').slice(1).join(' ')}</div></div>`).join('');
+  const so=STAGES.find(s=>s.id===gStage);
+  document.getElementById('g-hed').textContent=gStage==='all'?'Your matched garden':so.ic+' '+so.n;
+  document.getElementById('g-sub').textContent=fp.length+' project'+(fp.length!==1?'s':'')+' \u00b7 tap to explore';
+  document.getElementById('g-cards').innerHTML=fp.length?fp.map(p=>pCard(p,'sg')).join(''):'<div style="text-align:center;padding:2rem;color:var(--mu);font-size:12px;">No projects in this stage yet.</div>';
+}
+function setGS(id){gStage=id;renderGarden();}
+function pCard(p,from){
+  const ss=SS(p.stage);
+  const mc=p.cats.filter(c=>sel.has(c)).map(c=>CATS.find(x=>x.id===c)?.n).filter(Boolean);
+  return `<div class="pcard" onclick="openProj(${p.id},'${from}')"><div class="pcv">${scene(p.scene,140)}<div class="pcmap">${mapSVG(p.map)}</div><div class="pcsb" style="background:${ss.bg};color:${ss.col};">${ss.n}</div>${mc.length?`<div class="pcmt">${mc[0]}${mc.length>1?' +'+(mc.length-1):''}</div>`:''}</div><div class="pcb"><div class="pccat">${p.cats.map(c=>CATS.find(x=>x.id===c)?.n).filter(Boolean).join(' \u00b7 ')}</div><div class="pctit">${p.t}</div><div class="pcloc">${p.l}</div><div class="pbg"><div class="pbf" style="width:${p.pct}%;background:${ss.fill};"></div></div><div class="pbl"><span>${p.raised} raised</span><span>${p.pct}%</span></div><div class="pcft"><div class="eps"><span class="ep">Exit anytime</span><span class="ep">${p.id<=4?4:3} windows</span></div><button class="ivb" onclick="event.stopPropagation();startInvest(${p.id},'${from}')">Invest</button></div></div></div>`;
+}
+function renderMkt(){
+  document.getElementById('m-filters').innerHTML=`<span class="mfl">Stage</span>`+STAGES.map(s=>{const ss=SS(s.id);const on=mStages.has(s.id);const dot=s.id!=='all'?`<span class="msd" style="background:${ss.fill};"></span>`:'';return`<button class="mfi ${on?'on':''}" onclick="toggleMS('${s.id}')">${dot}${s.n}</button>`;}).join('')+`<span class="mfl" style="margin-left:8px;">Category</span>`+CATS.map(c=>`<button class="mfi ${sel.has(c.id)?'on':''}" onclick="toggleMC('${c.id}')">${c.n}</button>`).join('');
+  document.getElementById('m-sort').innerHTML=`<span class="msrl">Sort</span>`+[['match','Best match'],['pct','% funded'],['recent','Newest'],['closing','Closing soon']].map(([id,lbl])=>`<button class="msrb ${mSort===id?'on':''}" onclick="setSort('${id}')">${lbl}</button>`).join('');
+  let ps=[...PROJECTS];
+  if(!mStages.has('all'))ps=ps.filter(p=>mStages.has(p.stage));
+  if(sel.size)ps=ps.filter(p=>p.cats.some(c=>sel.has(c)));
+  if(mSort==='pct')ps.sort((a,b)=>b.pct-a.pct);
+  else if(mSort==='closing')ps.sort((a,b)=>b.pct-a.pct);
+  else if(mSort==='recent')ps.sort((a,b)=>a.pct-b.pct);
+  document.getElementById('m-results').textContent=ps.length+' project'+(ps.length!==1?'s':'');
+  document.getElementById('m-cards').innerHTML=ps.map(p=>{const ss=SS(p.stage);return`<div class="mcrd" onclick="openProj(${p.id},'sm')"><div class="mct"><div class="mcsc">${scene(p.scene,148)}<div class="mcsb" style="background:${ss.bg};color:${ss.col};">${ss.n}</div></div><div class="mcmw">${mapSVG(p.map)}</div></div><div class="mcb"><div class="mccat">${p.cats.map(c=>CATS.find(x=>x.id===c)?.n).filter(Boolean).join(' \u00b7 ')}</div><div class="mctit">${p.t}</div><div class="mcloc">${p.l}</div><div class="pbg" style="margin-bottom:6px;"><div class="pbf" style="width:${p.pct}%;background:${ss.fill};"></div></div><div class="pbl" style="margin-bottom:7px;"><span>${p.raised} of ${p.goal}</span><span>${p.pct}%</span></div><div class="mcst">${p.cert.map(c=>`<div class="mcs"><div class="mcsv">${c.v}</div><div class="mcsl">${c.l}</div></div>`).join('')}</div><div class="mcft"><span class="mce">Exit anytime \u00b7 from $${p.min}</span><button class="ivb" onclick="event.stopPropagation();startInvest(${p.id},'sm')">Invest</button></div></div></div>`;}).join('');
+}
+function toggleMS(id){if(id==='all'){mStages.clear();mStages.add('all');}else{mStages.delete('all');mStages.has(id)?mStages.delete(id):mStages.add(id);if(!mStages.size)mStages.add('all');}renderMkt();}
+function toggleMC(id){sel.has(id)?sel.delete(id):sel.add(id);renderMkt();}
+function setSort(id){mSort=id;renderMkt();}
+function openProj(id,from){
+  const p=PROJECTS.find(x=>x.id===id);if(!p)return;
+  fromScr=from;
+  document.getElementById('d-back-lbl').textContent=from==='sm'?'Back to marketplace':'Back to garden';
+  document.getElementById('d-back').onclick=()=>from==='sm'?showMkt():showGarden();
+  const ss=SS(p.stage);
+  document.getElementById('d-hero').innerHTML=`<div class="dh2">${scene(p.scene,190)}<div class="dho"><span class="dsb" style="background:${ss.bg};color:${ss.col};">${ss.n}</span><div class="dtit">${p.t}</div><div class="dloc">${p.l}</div></div></div><div class="dpb"><div class="dpf" style="width:${p.pct}%;background:${ss.fill};"></div></div>`;
+  document.getElementById('d-body').innerHTML=`<div class="st">Project location</div><div class="dmf">${mapSVG(p.map)}</div><div class="st">About this project</div><div style="background:white;border-radius:13px;border:1px solid var(--bd);padding:13px;font-size:11px;color:var(--mu);line-height:1.6;margin-bottom:1.3rem;">${p.desc}</div><div class="st">Exit ladder</div><div class="erl" style="margin-bottom:1.3rem;">${EXITS.map(e=>`<div class="er"><div><div class="erl2">${e.t}</div><div class="ert">${e.p?'Milestone exit':'Peer-to-peer anytime'}</div></div><div class="err">${e.p?'~$'+Math.round(500*e.p).toLocaleString():'Market'}</div></div>`).join('')}</div><div class="st">Your impact certificate</div><div class="cmin"><div class="cmit"><div class="cmiey">Lucreativity \u00b7 Impact Certificate</div><div class="cmip">${p.t}</div><div class="cmil">${p.l}</div><div class="cmir"><span class="cmiid">#LCR-PREVIEW</span><div class="cmiv">&#x2714; On-chain verified</div></div></div><div class="cmig">${p.cert.map(c=>`<div class="cmis"><div class="cmisv">${c.v}</div><div class="cmisl">${c.l}</div></div>`).join('')}</div><div class="cmili"><div class="ld"></div><span style="font-size:9px;color:#7ABB7A;">Updates perpetually</span></div></div><div class="ipnl"><div class="iptit">Plant your seed</div><div class="ipsr"><span class="ipl">Amount</span><span class="ipv" id="ipv">$500</span></div><input type="range" min="100" max="5000" step="100" value="500" style="width:100%;accent-color:var(--lm);" oninput="updDV(this.value)"/><div style="display:flex;justify-content:space-between;margin-top:3px;"><span style="font-size:9px;color:#8AAA8A;">$100 min</span><span style="font-size:9px;color:#8AAA8A;">$5,000</span></div><div class="iprr"><div class="ipr"><div class="iprl">Full return</div><div class="iprv" id="ipfr">$588</div></div><div class="ipr"><div class="iprl">Early exit</div><div class="iprv" id="iper">$525</div></div><div class="ipr"><div class="iprl">Timeline</div><div class="iprv">~36mo</div></div></div><button class="bf lm" onclick="startInvest(${p.id},'${from}')">Start investing &rsaquo;</button></div>`;
+  go('sd');
+}
+function updDV(v){const n=parseInt(v);const ipv=document.getElementById('ipv');const ipfr=document.getElementById('ipfr');const iper=document.getElementById('iper');if(ipv)ipv.textContent='$'+n.toLocaleString();if(ipfr)ipfr.textContent='$'+Math.round(n*1.175).toLocaleString();if(iper)iper.textContent='$'+Math.round(n*1.05).toLocaleString();}
+
+function startInvest(id,from){
+  const p=PROJECTS.find(x=>x.id===id);if(!p)return;
+  invProj=p;invStep=0;invAmt=500;invExit='';invPay='';invTerms=false;
+  fromScr=from;renderInv();go('sinv');
+}
+const ISTEPS=['Amount','Exit','Payment','Review'];
+function renderInv(){
+  const p=invProj;
+  document.getElementById('inv-proj').textContent=p.t;
+  document.getElementById('inv-steps').innerHTML=ISTEPS.map((s,i)=>`<div class="ist ${i===invStep?'on':i<invStep?'done':''}"><span class="isc">${i<invStep?'&#x2713;':i+1}</span><span>${s}</span></div>`).join('<div class="isl"></div>');
+  const body=document.getElementById('inv-body');
+  if(invStep===0)istep0(body);
+  else if(invStep===1)istep1(body);
+  else if(invStep===2)istep2(body);
+  else if(invStep===3)istep3(body);
+}
+function istep0(b){
+  b.innerHTML=`<div class="st">How much would you like to plant?</div>
+  <div class="iamb">
+    <input type="range" min="100" max="10000" step="100" value="${invAmt}" id="isl" style="width:100%;accent-color:var(--lm);" oninput="iua(this.value)"/>
+    <div class="iamr"><span>$100</span><span>$10,000</span></div>
+    <div class="iamv" id="iamv">$${invAmt.toLocaleString()}</div>
+    <div class="iamhint">Enter a custom amount:</div>
+    <input type="number" min="100" max="100000" step="100" value="${invAmt}" id="iamc" style="width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--bd);background:var(--s1);color:var(--tx);font-size:14px;text-align:center;" oninput="isa(this.value)"/>
+  </div>
+  <div class="irtbl">
+    <div class="irr"><div class="irrl">Projected return (full term)</div><div class="irrv" id="irfr">$${Math.round(invAmt*1.175).toLocaleString()}</div></div>
+    <div class="irr"><div class="irrl">Early exit value</div><div class="irrv" id="irer">$${Math.round(invAmt*1.05).toLocaleString()}</div></div>
+    <div class="irr"><div class="irrl">Impact certificate</div><div class="irrv">Included &#x2714;</div></div>
+  </div>
+  <button class="bf lm" onclick="inx()">Continue &rsaquo;</button>`;
+}
+function istep1(b){
+  b.innerHTML=`<div class="st">Choose your exit preference</div>
+  ${EXITS.map(e=>`<div class="exop ${invExit===e.id?'on':''}" onclick="ise('${e.id}')">
+    <div class="exot"><div class="exotit">${e.t}</div><div class="exod">${e.d}</div></div>
+    <div class="exov">${e.p?'~$'+Math.round(invAmt*e.p).toLocaleString():'Market price'}</div>
+  </div>`).join('')}
+  <button class="bf lm" onclick="inx()" ${!invExit?'disabled':''} style="${!invExit?'opacity:0.4;cursor:not-allowed;':''}">Continue &rsaquo;</button>`;
+}
+function istep2(b){
+  const methods=[{id:'bank',ic:'🏦',n:'Bank transfer',d:'ACH / Wire — 1-3 days'},{id:'card',ic:'💳',n:'Card',d:'Instant — 1.5% fee'},{id:'crypto',ic:'🪙',n:'Crypto',d:'USDC/USDT — instant'}];
+  b.innerHTML=`<div class="st">Payment method</div>
+  ${methods.map(m=>`<div class="exop ${invPay===m.id?'on':''}" onclick="isp('${m.id}')">
+    <span style="font-size:22px;margin-right:10px;">${m.ic}</span>
+    <div class="exot"><div class="exotit">${m.n}</div><div class="exod">${m.d}</div></div>
+  </div>`).join('')}
+  <div class="tcb"><input type="checkbox" id="tck" ${invTerms?'checked':''} onchange="itt(this.checked)"/> <label for="tck" style="font-size:10px;color:var(--mu);line-height:1.5;">I have read and agree to the Lucreativity investment terms, risk disclosures, and community standards.</label></div>
+  <button class="bf lm" onclick="inx()" ${(!invPay||!invTerms)?'disabled':''} style="${(!invPay||!invTerms)?'opacity:0.4;cursor:not-allowed;':''}">Review &rsaquo;</button>`;
+}
+function istep3(b){
+  const ex=EXITS.find(e=>e.id===invExit)||EXITS[0];
+  const pm=['bank','card','crypto'];const pn=['Bank transfer','Card','Crypto'];const pix=['🏦','💳','🪙'];
+  const pi=pm.indexOf(invPay);
+  b.innerHTML=`<div class="st">Review your investment</div>
+  <div class="rvtbl">
+    <div class="rvr"><div class="rvrl">Project</div><div class="rvrv">${invProj.t}</div></div>
+    <div class="rvr"><div class="rvrl">Amount</div><div class="rvrv">$${invAmt.toLocaleString()}</div></div>
+    <div class="rvr"><div class="rvrl">Exit preference</div><div class="rvrv">${ex.t}</div></div>
+    <div class="rvr"><div class="rvrl">Payment</div><div class="rvrv">${pi>=0?pix[pi]+' '+pn[pi]:'—'}</div></div>
+    <div class="rvr"><div class="rvrl">Projected return</div><div class="rvrv">$${Math.round(invAmt*1.175).toLocaleString()}</div></div>
+    <div class="rvr"><div class="rvrl">Impact cert.</div><div class="rvrv">Issued on-chain &#x2714;</div></div>
+  </div>
+  <button class="bf lm" onclick="istepProc()">Confirm &amp; Plant &#x1F33F;</button>
+  <button class="bf" style="background:var(--s1);color:var(--tx);margin-top:8px;" onclick="invStep=0;renderInv()">Edit</button>`;
+}
+function istepProc(){
+  const b=document.getElementById('inv-body');
+  b.innerHTML=`<div style="text-align:center;padding:2rem 0;">
+    <div style="font-size:40px;margin-bottom:1rem;">&#x1F33F;</div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Processing…</div>
+    <div style="font-size:11px;color:var(--mu);">Securing your seed on-chain</div>
+  </div>`;
+  setTimeout(iproc,1800);
+}
+function iproc(){
+  const eid='LCR-'+Math.random().toString(36).slice(2,8).toUpperCase();
+  portfolio.push({id:invProj.id,amt:invAmt,exit:invExit,pay:invPay,eid:eid,proj:invProj});
+  iconf(eid);
+}
+function iconf(eid){
+  const b=document.getElementById('inv-body');
+  b.innerHTML=`<div style="text-align:center;padding:1rem 0 0.5rem;">
+    <div style="font-size:44px;margin-bottom:0.7rem;">&#x1F33F;</div>
+    <div style="font-size:16px;font-weight:800;margin-bottom:6px;color:var(--lm);">Your seed is planted!</div>
+    <div style="font-size:11px;color:var(--mu);margin-bottom:1.2rem;">Investment confirmed &amp; impact certificate issued</div>
+    <div style="background:var(--s1);border-radius:12px;border:1.5px solid var(--bd);padding:14px;text-align:left;margin-bottom:1rem;">
+      <div style="font-size:9px;color:var(--mu);margin-bottom:4px;">INVESTMENT ID</div>
+      <div style="font-size:13px;font-weight:700;font-family:monospace;color:var(--lm);">${eid}</div>
+      <div style="font-size:10px;color:var(--mu);margin-top:6px;">${invProj.t} &nbsp;&middot;&nbsp; $${invAmt.toLocaleString()}</div>
+    </div>
+    <button class="bf lm" onclick="goDash()">View portfolio &#x2192;</button>
+    <button class="bf" style="background:var(--s1);color:var(--tx);margin-top:8px;" onclick="fromScr==='sm'?showMkt():showGarden()">Back to ${fromScr==='sm'?'marketplace':'garden'}</button>
+  </div>`;
+}
+function goDash(){
+  const total=portfolio.reduce((s,p)=>s+p.amt,0);
+  const val=portfolio.reduce((s,p)=>s+Math.round(p.amt*1.04),0);
+  const strip=document.getElementById('d-strip');
+  if(strip){
+    strip.innerHTML=`<div class="psc"><div class="psv">$${total.toLocaleString()}</div><div class="psl">Invested</div></div><div class="psc"><div class="psv">$${val.toLocaleString()}</div><div class="psl">Est. value</div></div><div class="psc"><div class="psv">${portfolio.length}</div><div class="psl">Project${portfolio.length!==1?'s':''}</div></div>`;
+  }
+  const certs=document.getElementById('d-certs');
+  if(certs){
+    if(!portfolio.length){certs.innerHTML='<div style="text-align:center;padding:2rem;color:var(--mu);font-size:12px;">No investments yet. Explore the garden!</div>';}
+    else{certs.innerHTML=portfolio.map(p=>{const ss=SS(p.proj.stage);return`<div class="mycc"><div class="mycct"><div class="myscn">${scene(p.proj.scene,82)}</div><div class="myci"><div class="mycs">${ss.n}</div><div class="myctit">${p.proj.t}</div><div class="mycl">${p.proj.l}</div><div class="mycf"><div class="myca">$${p.amt.toLocaleString()} planted</div><div class="mycr">+4%</div></div></div></div><div class="mycim">${p.proj.cert.map(c=>`<div class="mycimv"><div class="mycimvv">${c.v}</div><div class="mycimvl">${c.l}</div></div>`).join('')}</div></div>`;}).join('');}
+  }
+  const notifs=document.getElementById('d-notifs');
+  if(notifs&&!notifs.children.length){notifs.innerHTML=portfolio.map(p=>`<div class="nfi"><div class="nfd" style="background:var(--lm);"></div><div class="nfc"><div class="nftit">Certificate issued for ${p.proj.t}</div><div class="nfsub">Your $${p.amt.toLocaleString()} investment is now on-chain verified. Impact updates will appear here.</div><div class="nftm">Just now</div></div></div>`).join('');}
+  go('sdash');
+}
+function iua(v){invAmt=parseInt(v);const iv=document.getElementById('iamv');const ifr=document.getElementById('irfr');const ier=document.getElementById('irer');const ic=document.getElementById('iamc');if(iv)iv.textContent='$'+invAmt.toLocaleString();if(ifr)ifr.textContent='$'+Math.round(invAmt*1.175).toLocaleString();if(ier)ier.textContent='$'+Math.round(invAmt*1.05).toLocaleString();if(ic)ic.value=invAmt;}
+function isa(v){const n=parseInt(v)||100;invAmt=Math.max(100,n);const sl=document.getElementById('isl');const iv=document.getElementById('iamv');const ifr=document.getElementById('irfr');const ier=document.getElementById('irer');if(sl)sl.value=Math.min(invAmt,10000);if(iv)iv.textContent='$'+invAmt.toLocaleString();if(ifr)ifr.textContent='$'+Math.round(invAmt*1.175).toLocaleString();if(ier)ier.textContent='$'+Math.round(invAmt*1.05).toLocaleString();}
+function ise(id){invExit=id;istep1(document.getElementById('inv-body'));}
+function isp(id){invPay=id;istep2(document.getElementById('inv-body'));}
+function itt(v){invTerms=v;}
+function fc(id){return document.getElementById(id);}
+function inx(){if(invStep<3){invStep++;renderInv();}}
+function ipv2(v){updDV(v);}
+function buildLeaves(){
+  const lc=document.getElementById('leaf-cluster');
+  if(!lc)return;
+  const emojis=['&#x1F33F;','&#x1F341;','&#x1F343;','&#x1F33C;','&#x1F33B;'];
+  let h='';
+  for(let i=0;i<18;i++){
+    const e=emojis[i%emojis.length];
+    const x=Math.random()*120-20;const y=Math.random()*80+10;
+    const s=0.6+Math.random()*0.9;const r=Math.random()*40-20;const o=0.35+Math.random()*0.55;
+    h+=`<span style="position:absolute;left:${x}%;top:${y}%;font-size:${s*1.4}rem;transform:rotate(${r}deg);opacity:${o};pointer-events:none;">${e}</span>`;
+  }
+  lc.innerHTML=h;
+}
+buildLeaves();
+buildOnboard();
+</script>
+</body>
+</html>

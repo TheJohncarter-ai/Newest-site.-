@@ -1084,7 +1084,7 @@
               <div class="proceda-teaser-sub" data-i18n="arcana.proceda.sub">Procedural Intelligence Platform</div>
             </div>
 
-            <p class="proceda-teaser-hook" data-i18n="arcana.proceda.hook">Every precision procedure generates 80–200 data fields the moment it executes. That data has never been captured. Until now.</p>
+            <p class="proceda-teaser-hook" data-i18n="arcana.proceda.hook">Every surgical procedure is a clinical event that vanishes the moment it ends. The device fires. The data disappears. No pattern. No intelligence. No record.<br><br>PROCEDA captures the 80–200 real-world data fields generated at the point of execution — and turns them into a living dataset that compounds with every case. Faster adverse-event detection. Richer trial evidence. Device approvals cut by years.<br><br>The OR has always been the most data-rich room in medicine. It just never had a memory. Until now.</p>
 
             <div class="proceda-teaser-stats">
               <div class="proceda-teaser-stat">
@@ -1808,6 +1808,7 @@
         <button class="ldoc-tab" data-section="ldoc-revenue" onclick="scrollToLucSection('ldoc-revenue',this)"><span class="ldoc-tab-dot"></span>Revenue Model</button>
         <button class="ldoc-tab" data-section="ldoc-financials" onclick="scrollToLucSection('ldoc-financials',this)"><span class="ldoc-tab-dot"></span>Financials</button>
         <button class="ldoc-tab" data-section="ldoc-acquisition" onclick="scrollToLucSection('ldoc-acquisition',this)"><span class="ldoc-tab-dot"></span>Exit Thesis</button>
+        <button class="ldoc-tab ldoc-tab--demo" data-section="ldoc-demo" onclick="scrollToLucSection('ldoc-demo',this)"><span class="ldoc-tab-dot"></span>Live Demo</button>
       </nav>
 
       <!-- Content area -->
@@ -2079,6 +2080,18 @@
           </div>
         </div>
 
+        <div class="ldoc-panel pdoc-panel--demo" id="ldoc-demo">
+          <div class="pdoc-section-title">Live Demo</div>
+          <div class="pdoc-section-sub">Lucreativity Platform &mdash; Interactive Prototype</div>
+          <div class="pdoc-demo-frame-wrap">
+            <div class="pdoc-demo-topbar">
+              <span class="pdoc-demo-live-dot"></span>
+              <span class="pdoc-demo-live-label">LUCREATIVITY &mdash; LIVE DEMO</span>
+            </div>
+            <iframe id="lucreativityInlineIframe" class="pdoc-demo-iframe" src="" title="Lucreativity — Community Infrastructure Finance Platform" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+
       </div><!-- /#lucreativityDocsContent -->
     </div><!-- /.proceda-docs-body -->
   </div><!-- /#lucreativityDocsModal -->
@@ -2260,10 +2273,16 @@
     })();
 
     // ── LUCREATIVITY DOCS MODAL ──
+    var _lucreativityIframeLoaded = false;
     window.openLucreativityDocs = function() {
       var modal = document.getElementById('lucreativityDocsModal');
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
+      // Lazy-load the inline demo iframe
+      if (!_lucreativityIframeLoaded) {
+        document.getElementById('lucreativityInlineIframe').src = 'lucreativity-demo.html';
+        _lucreativityIframeLoaded = true;
+      }
       var gate = document.getElementById('lucreativityGate');
       if (sessionStorage.getItem('lucreativity_gate_passed')) {
         gate.style.display = 'none';

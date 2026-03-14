@@ -125,6 +125,31 @@ body{font-family:'IBM Plex Sans',system-ui,sans-serif;color:#c8d8e8}
 .tl-fill{height:100%;border-radius:99px}
 .tl-val{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#2a5a7a;min-width:44px;text-align:right;white-space:nowrap}
 .mono-stats{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#00a880;line-height:2}
+
+@media(max-width:768px){
+  .sidebar{display:none}
+  .topbar{padding:0 14px}
+  .status-cluster .status-txt:not(:first-child){display:none}
+  .metrics{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .pyr-grid{grid-template-columns:1fr 1fr}
+  .v-switcher{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .acq-label{width:120px}
+  .tl-label{width:80px}
+  .ns-grid{grid-template-columns:1fr 1fr}
+  .vhead{flex-direction:column;gap:8px}
+  .vh-badges{flex-wrap:wrap}
+}
+@media(max-width:480px){
+  .metrics{grid-template-columns:1fr 1fr}
+  .pyr-grid{grid-template-columns:1fr}
+  .v-switcher{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ns-grid{grid-template-columns:1fr}
+  .mc-val{font-size:18px}
+  .acq-label{width:90px;font-size:9px}
+  .tl-label{width:64px;font-size:9px}
+  .view{padding:14px}
+}
 </style>
 </head>
 <body>
