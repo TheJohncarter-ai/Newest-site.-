@@ -1,0 +1,581 @@
+/* ============================================
+   ARCANA — THE HIDDEN PORTAL
+   Full-screen overlay experience
+   ============================================ */
+
+/* ============================================
+   ARCANA BUTTON (in .social-links)
+   ============================================ */
+.social-link.arcana {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  border-color: rgba(201, 168, 76, 0.35);
+  background: rgba(201, 168, 76, 0.04);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Shimmer sweep animation */
+.social-link.arcana::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(201, 168, 76, 0.18) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: arcanaShimmer 4s ease-in-out infinite;
+}
+
+@keyframes arcanaShimmer {
+  0%, 60%, 100% { transform: translateX(-120%); }
+  80% { transform: translateX(120%); }
+}
+
+.social-link.arcana:hover {
+  color: #e2c46a;
+  border-color: rgba(201, 168, 76, 0.65);
+  background: rgba(201, 168, 76, 0.08);
+  box-shadow:
+    0 0 18px rgba(201, 168, 76, 0.22),
+    0 0 40px rgba(201, 168, 76, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Rune-like symbol before text */
+.social-link.arcana .arcana-glyph {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-right: 2px;
+}
+
+/* ============================================
+   ARCANA PORTAL — FULL SCREEN OVERLAY
+   ============================================ */
+.arcana-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+}
+
+.arcana-portal.is-open {
+  display: block;
+}
+
+/* ---- PHASE 1: THE VOID (fade to black) ---- */
+.arcana-void {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.arcana-void.fade-in {
+  opacity: 1;
+}
+
+/* ---- PHASE 2: THE CRACK SVG ---- */
+.arcana-crack-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.arcana-crack-layer.visible {
+  opacity: 1;
+}
+
+/* All crack paths share base style */
+.crack {
+  fill: none;
+  stroke: #bae6fd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pathLength: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* Main cracks — thicker, brighter */
+.crack-main {
+  stroke-width: 0.4;
+  stroke: #e0f2fe;
+}
+
+/* Branch cracks — thinner */
+.crack-branch {
+  stroke-width: 0.18;
+  stroke: #bae6fd;
+}
+
+/* Impact origin flash */
+.crack-origin {
+  fill: #ffffff;
+  opacity: 0;
+  r: 0;
+  transition: r 0.1s ease, opacity 0.1s ease;
+}
+
+.arcana-crack-layer.visible .crack-origin {
+  animation: originFlash 0.3s 0s ease-out forwards;
+}
+
+@keyframes originFlash {
+  0%   { r: 0; opacity: 1; }
+  40%  { r: 2.5; opacity: 1; }
+  100% { r: 1.2; opacity: 0.6; }
+}
+
+/* ---- CRACK DRAW ANIMATIONS ---- */
+/* Main cracks — draw in sequence from origin */
+.arcana-crack-layer.cracking .crack-1 {
+  animation: drawCrack 0.22s 0s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-2 {
+  animation: drawCrack 0.20s 0.06s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-3 {
+  animation: drawCrack 0.22s 0.10s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-4 {
+  animation: drawCrack 0.21s 0.14s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-5 {
+  animation: drawCrack 0.19s 0.18s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-6 {
+  animation: drawCrack 0.20s 0.22s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-7 {
+  animation: drawCrack 0.16s 0.12s cubic-bezier(0.2, 0, 0.4, 1) forwards;
+}
+
+/* Branches — follow after main cracks */
+.arcana-crack-layer.cracking .crack-b1 {
+  animation: drawCrack 0.14s 0.26s cubic-bezier(0.2, 0, 0.5, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-b2 {
+  animation: drawCrack 0.12s 0.30s cubic-bezier(0.2, 0, 0.5, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-b3 {
+  animation: drawCrack 0.13s 0.33s cubic-bezier(0.2, 0, 0.5, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-b4 {
+  animation: drawCrack 0.12s 0.28s cubic-bezier(0.2, 0, 0.5, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-b5 {
+  animation: drawCrack 0.13s 0.34s cubic-bezier(0.2, 0, 0.5, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-b6 {
+  animation: drawCrack 0.11s 0.38s cubic-bezier(0.2, 0, 0.5, 1) forwards;
+}
+.arcana-crack-layer.cracking .crack-b7 {
+  animation: drawCrack 0.14s 0.42s cubic-bezier(0.2, 0, 0.5, 1) forwards;
+}
+
+@keyframes drawCrack {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---- PHASE 3: VOID EXPLOSION ---- */
+.arcana-void.exploding {
+  animation: voidExplode 0.55s ease-in forwards;
+}
+
+.arcana-crack-layer.exploding {
+  animation: crackExplode 0.55s ease-in forwards;
+}
+
+@keyframes voidExplode {
+  0%   { opacity: 1; filter: brightness(1); }
+  35%  { opacity: 1; filter: brightness(4) blur(0px); }
+  65%  { opacity: 0.6; filter: brightness(8) blur(2px); }
+  100% { opacity: 0; filter: brightness(1) blur(0px); }
+}
+
+@keyframes crackExplode {
+  0%   { opacity: 1; filter: brightness(1); }
+  35%  { opacity: 1; filter: brightness(6); }
+  100% { opacity: 0; filter: brightness(1); }
+}
+
+/* ============================================
+   ARCANA PANEL — THE OTHER WORLD
+   "Medical wing of a spaceship" aesthetic
+   ============================================ */
+.arcana-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Clinical, cold-white background with tech grid */
+  background-color: #eef3fb;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: #0f172a;
+}
+
+.arcana-panel.revealed {
+  opacity: 1;
+}
+
+/* Subtle top accent line — like a status bar */
+.arcana-panel::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8, #7dd3fc, #0ea5e9);
+  background-size: 200% 100%;
+  animation: scanLine 3s linear infinite;
+  z-index: 10;
+}
+
+@keyframes scanLine {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ---- ARCANA PANEL LAYOUT ---- */
+.arcana-panel-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 40px 80px;
+  min-height: 100vh;
+}
+
+/* ---- CLOSE BUTTON ---- */
+.arcana-close {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(15, 23, 42, 0.07);
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 4px;
+  color: #334155;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arcana-close:hover {
+  background: rgba(15, 23, 42, 0.12);
+  border-color: rgba(15, 23, 42, 0.35);
+  color: #0f172a;
+}
+
+.arcana-close svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* ---- ARCANA HEADER ---- */
+.arcana-header {
+  text-align: center;
+  margin-bottom: 72px;
+  padding-top: 24px;
+}
+
+.arcana-classification {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #0ea5e9;
+  margin-bottom: 24px;
+  padding: 5px 14px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: 2px;
+  background: rgba(14, 165, 233, 0.06);
+}
+
+.arcana-classification::before,
+.arcana-classification::after {
+  content: '//';
+  opacity: 0.5;
+}
+
+.arcana-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 20px;
+  text-indent: 0.3em; /* optical compensation for letter-spacing */
+
+  /* Subtle embossed look */
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 -1px 0 rgba(0,0,0,0.08);
+}
+
+.arcana-subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* Divider line with corner marks */
+.arcana-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0;
+}
+
+.arcana-divider::before,
+.arcana-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.25), transparent);
+}
+
+.arcana-divider-glyph {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: rgba(14, 165, 233, 0.5);
+  text-transform: uppercase;
+}
+
+/* ---- PROJECT CARDS GRID ---- */
+.arcana-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.arcana-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  padding: 28px 28px 24px;
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* Status-colored top border */
+.arcana-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--arcana-card-accent, #0ea5e9);
+}
+
+.arcana-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 30px rgba(14, 165, 233, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: #cbd5e1;
+}
+
+/* Card status badge */
+.arcana-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arcana-card-accent, #0ea5e9);
+  margin-bottom: 4px;
+}
+
+.arcana-card-status::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--arcana-card-accent, #0ea5e9);
+  flex-shrink: 0;
+  animation: statusPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Card title */
+.arcana-card-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+/* Card description */
+.arcana-card-desc {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* Card footer */
+.arcana-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.arcana-card-tag {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 3px 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 2px;
+}
+
+.arcana-card-link {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arcana-card-accent, #0ea5e9);
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.arcana-card-link:hover {
+  opacity: 0.7;
+}
+
+/* "Coming Soon" placeholder card */
+.arcana-card.arcana-card--placeholder {
+  background: #f8fafc;
+  border-style: dashed;
+  border-color: #cbd5e1;
+}
+
+.arcana-card.arcana-card--placeholder::before {
+  display: none;
+}
+
+.arcana-card.arcana-card--placeholder .arcana-card-title {
+  color: #94a3b8;
+}
+
+.arcana-card.arcana-card--placeholder .arcana-card-desc {
+  color: #cbd5e1;
+}
+
+/* ---- STATUS COLOR VARIANTS ---- */
+.arcana-card[data-status="development"]  { --arcana-card-accent: #0ea5e9; }
+.arcana-card[data-status="concept"]      { --arcana-card-accent: #f59e0b; }
+.arcana-card[data-status="progress"]     { --arcana-card-accent: #10b981; }
+.arcana-card[data-status="research"]     { --arcana-card-accent: #8b5cf6; }
+.arcana-card[data-status="drafting"]     { --arcana-card-accent: #f43f5e; }
+.arcana-card[data-status="placeholder"]  { --arcana-card-accent: #cbd5e1; }
+
+/* ---- ARCANA FOOTER ---- */
+.arcana-panel-footer {
+  text-align: center;
+  margin-top: 72px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(14, 165, 233, 0.15);
+}
+
+.arcana-panel-footer p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .arcana-panel-inner {
+    padding: 70px 20px 60px;
+  }
+
+  .arcana-projects {
+    grid-template-columns: 1fr;
+  }
+
+  .arcana-title {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+    letter-spacing: 0.2em;
+  }
+
+  .arcana-close {
+    top: 16px;
+    right: 16px;
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .arcana-projects {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
