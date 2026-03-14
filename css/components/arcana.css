@@ -560,10 +560,10 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #7a90a8;
   padding: 3px 8px;
-  background: #dfe9f5;
-  border: 1px solid #e2e8f0;
+  background: transparent;
+  border: 1px solid #a8bcd8;
   border-radius: 2px;
 }
 
@@ -673,7 +673,7 @@
   line-height: 1.65;
   margin-bottom: 20px;
   padding-bottom: 18px;
-  border-bottom: 1px solid #dde8f4;
+  border-bottom: 1px solid #a8bcd8;
   font-style: italic;
 }
 
