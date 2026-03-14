@@ -1124,6 +1124,285 @@
   white-space: nowrap;
 }
 
+/* ---- TABLES ---- */
+.pdoc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 22px;
+  font-size: 11px;
+}
+
+.pdoc-table th {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1e4a68;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 2px solid #0e1f2e;
+  background: #060d15;
+  white-space: nowrap;
+}
+
+.pdoc-table td {
+  padding: 8px 12px;
+  color: #4a7a9a;
+  border-bottom: 1px solid #0a1820;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.pdoc-table tr:last-child td { border-bottom: none; }
+
+.pdoc-table td.cell-label {
+  color: #9abcd8;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.pdoc-table td.cell-mono {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+}
+
+.pdoc-table td.cell-green {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  color: #00d4aa;
+  font-size: 10px;
+}
+
+.pdoc-table td.cell-amber {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  color: #c09010;
+  font-size: 10px;
+}
+
+.pdoc-table td.cell-dim {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  color: #2a5a7a;
+  font-size: 10px;
+}
+
+/* ---- UTILITY ---- */
+.pdoc-divider {
+  height: 1px;
+  background: #0e1f2e;
+  margin: 22px 0;
+}
+
+.pdoc-label-tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+.pdoc-label-tag--green { color: #00a880; background: #091408; border: 1px solid #0a2818; }
+.pdoc-label-tag--amber { color: #a08010; background: #1a110a; border: 1px solid #3a2810; }
+.pdoc-label-tag--blue  { color: #4090c4; background: #091828; border: 1px solid #0a2848; }
+.pdoc-label-tag--dim   { color: #3a6a8a; background: #060d15; border: 1px solid #0e1f2e; }
+
+.pdoc-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.pdoc-bullet-list li {
+  display: flex;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid #0a1820;
+  font-size: 11px;
+  color: #4a7a9a;
+  line-height: 1.7;
+}
+
+.pdoc-bullet-list li:last-child { border-bottom: none; }
+
+.pdoc-bullet-list li::before {
+  content: '//';
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9px;
+  color: #00d4aa;
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+.pdoc-bullet-list li strong { color: #00a880; font-weight: 500; }
+
+/* Featured callout */
+.pdoc-callout {
+  background: #030810;
+  border: 1px solid #1a2a3a;
+  border-radius: 4px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+}
+
+.pdoc-callout-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #00d4aa;
+  margin-bottom: 12px;
+}
+
+.pdoc-callout-text {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #c8d8e8;
+  line-height: 1.8;
+}
+
+/* Two-col layout within doc panel */
+.pdoc-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .pdoc-two { grid-template-columns: 1fr; }
+  .pdoc-vert-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   PROCEDA EMAIL GATE
+   ============================================ */
+.proceda-gate {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: #eef3fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.proceda-gate__inner {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.proceda-gate__badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #a00020;
+  background: rgba(160, 0, 32, 0.08);
+  border: 1px solid rgba(160, 0, 32, 0.2);
+  border-radius: 3px;
+  padding: 4px 12px;
+  text-transform: uppercase;
+}
+
+.proceda-gate__title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #0a1628;
+  line-height: 1;
+}
+
+.proceda-gate__sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #4a6a8a;
+  text-transform: uppercase;
+}
+
+.proceda-gate__text {
+  font-size: 0.88rem;
+  color: #4a5568;
+  line-height: 1.7;
+  max-width: 400px;
+  border-top: 1px solid rgba(10, 22, 40, 0.1);
+  border-bottom: 1px solid rgba(10, 22, 40, 0.1);
+  padding: 16px 0;
+  margin: 4px 0;
+}
+
+.proceda-gate__form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  flex-wrap: wrap;
+}
+
+.proceda-gate__input {
+  flex: 1;
+  min-width: 200px;
+  padding: 11px 16px;
+  background: #fff;
+  border: 1px solid rgba(10, 22, 40, 0.2);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #0a1628;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.proceda-gate__input:focus {
+  border-color: #00a880;
+}
+
+.proceda-gate__input::placeholder {
+  color: #a0aec0;
+}
+
+.proceda-gate__btn {
+  padding: 11px 22px;
+  background: #0a1628;
+  color: #00d4aa;
+  border: none;
+  border-radius: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.proceda-gate__btn:hover {
+  background: #162240;
+}
+
+.proceda-gate__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.proceda-gate__status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: #a00020;
+  min-height: 1.2em;
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */
