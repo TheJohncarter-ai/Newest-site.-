@@ -156,7 +156,7 @@ const translations = {
     'arcana.classified': 'Classified ⬡',
     'arcana.proceda.status': 'Live Prototype',
     'arcana.proceda.sub': 'Procedural Intelligence Platform',
-    'arcana.proceda.hook': 'Every precision procedure generates 80–200 data fields the moment it executes. That data has never been captured. Until now.',
+    'arcana.proceda.hook': 'Every surgical procedure is a clinical event that vanishes the moment it ends. The device fires. The data disappears. No pattern. No intelligence. No record.\n\nPROCEDA captures the 80–200 real-world data fields generated at the point of execution — and turns them into a living dataset that compounds with every case. Faster adverse-event detection. Richer trial evidence. Device approvals cut by years.\n\nThe OR has always been the most data-rich room in medicine. It just never had a memory. Until now.',
     'arcana.proceda.s1.label': 'Addressable Market',
     'arcana.proceda.s1.desc': 'procedural device real-world evidence',
     'arcana.proceda.s2.label': 'Revenue Streams',
