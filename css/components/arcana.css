@@ -1,0 +1,1455 @@
+/* ============================================
+   ARCANA — THE HIDDEN PORTAL
+   Full-screen overlay experience
+   ============================================ */
+
+/* ============================================
+   ARCANA BUTTON (in .social-links)
+   ============================================ */
+.social-link.arcana {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  border-color: rgba(201, 168, 76, 0.35);
+  background: rgba(201, 168, 76, 0.04);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Shimmer sweep animation */
+.social-link.arcana::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(201, 168, 76, 0.18) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: arcanaShimmer 4s ease-in-out infinite;
+}
+
+@keyframes arcanaShimmer {
+  0%, 60%, 100% { transform: translateX(-120%); }
+  80% { transform: translateX(120%); }
+}
+
+.social-link.arcana:hover {
+  color: #e2c46a;
+  border-color: rgba(201, 168, 76, 0.65);
+  background: rgba(201, 168, 76, 0.08);
+  box-shadow:
+    0 0 18px rgba(201, 168, 76, 0.22),
+    0 0 40px rgba(201, 168, 76, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Rune-like symbol before text */
+.social-link.arcana .arcana-glyph {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-right: 2px;
+}
+
+/* ============================================
+   ARCANA PORTAL — FULL SCREEN OVERLAY
+   ============================================ */
+.arcana-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+}
+
+.arcana-portal.is-open {
+  display: block;
+}
+
+/* ---- PHASE 1: THE VOID (fade to black) ---- */
+.arcana-void {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.arcana-void.fade-in {
+  opacity: 1;
+}
+
+/* ---- PHASE 2: THE CRACK SVG ---- */
+.arcana-crack-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.arcana-crack-layer.visible {
+  opacity: 1;
+}
+
+/* All crack paths share base style */
+.crack {
+  fill: none;
+  stroke: #bae6fd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* Main cracks — thinner than before = more glass-like precision */
+.crack-main {
+  stroke-width: 0.28;
+  stroke: #f0f9ff;
+}
+
+/* Branch cracks */
+.crack-branch {
+  stroke-width: 0.13;
+  stroke: #bae6fd;
+}
+
+/* Ring / spider-web connections — finest lines */
+.crack-ring {
+  stroke-width: 0.09;
+  stroke: #7dd3fc;
+}
+
+/* Impact origin flash */
+.crack-origin {
+  fill: #ffffff;
+  opacity: 0;
+  r: 0;
+  transition: r 0.1s ease, opacity 0.1s ease;
+}
+
+.arcana-crack-layer.visible .crack-origin {
+  animation: originFlash 0.3s 0s ease-out forwards;
+}
+
+@keyframes originFlash {
+  0%   { r: 0; opacity: 1; }
+  40%  { r: 2.5; opacity: 1; }
+  100% { r: 1.2; opacity: 0.6; }
+}
+
+/* ---- CRACK DRAW ANIMATIONS ---- */
+/* Main cracks — radiate out from impact point with staggered delay */
+.arcana-crack-layer.cracking .crack-1 { animation: drawCrack 0.26s 0s    cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-2 { animation: drawCrack 0.22s 0.07s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-3 { animation: drawCrack 0.28s 0.13s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-4 { animation: drawCrack 0.27s 0.17s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-5 { animation: drawCrack 0.22s 0.21s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-6 { animation: drawCrack 0.26s 0.25s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-7 { animation: drawCrack 0.20s 0.10s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+
+/* Primary branches — shoot off the main cracks as they pass bend points */
+.arcana-crack-layer.cracking .crack-b1a { animation: drawCrack 0.14s 0.28s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b1b { animation: drawCrack 0.10s 0.34s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b2a { animation: drawCrack 0.14s 0.31s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b2b { animation: drawCrack 0.12s 0.38s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b3a { animation: drawCrack 0.15s 0.35s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b3b { animation: drawCrack 0.10s 0.46s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b4a { animation: drawCrack 0.15s 0.37s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b4b { animation: drawCrack 0.10s 0.48s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b5a { animation: drawCrack 0.14s 0.36s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b5b { animation: drawCrack 0.11s 0.43s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b6a { animation: drawCrack 0.12s 0.40s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b6b { animation: drawCrack 0.10s 0.46s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b7a { animation: drawCrack 0.12s 0.38s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b7b { animation: drawCrack 0.11s 0.34s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+
+/* Ring / spider-web arcs — appear slightly after surrounding cracks form */
+.arcana-crack-layer.cracking .crack-r1 { animation: drawCrack 0.09s 0.32s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
+.arcana-crack-layer.cracking .crack-r2 { animation: drawCrack 0.09s 0.42s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
+.arcana-crack-layer.cracking .crack-r3 { animation: drawCrack 0.09s 0.38s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
+.arcana-crack-layer.cracking .crack-r4 { animation: drawCrack 0.09s 0.44s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
+
+@keyframes drawCrack {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ---- PHASE 3: VOID EXPLOSION ---- */
+.arcana-void.exploding {
+  animation: voidExplode 0.55s ease-in forwards;
+}
+
+.arcana-crack-layer.exploding {
+  animation: crackExplode 0.55s ease-in forwards;
+}
+
+@keyframes voidExplode {
+  0%   { opacity: 1; filter: brightness(1); }
+  35%  { opacity: 1; filter: brightness(4) blur(0px); }
+  65%  { opacity: 0.6; filter: brightness(8) blur(2px); }
+  100% { opacity: 0; filter: brightness(1) blur(0px); }
+}
+
+@keyframes crackExplode {
+  0%   { opacity: 1; filter: brightness(1); }
+  35%  { opacity: 1; filter: brightness(6); }
+  100% { opacity: 0; filter: brightness(1); }
+}
+
+/* ============================================
+   ARCANA PANEL — THE OTHER WORLD
+   "Medical wing of a spaceship" aesthetic
+   ============================================ */
+.arcana-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Clinical, cold-white background with tech grid */
+  background-color: #eef3fb;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: #0f172a;
+}
+
+.arcana-panel.revealed {
+  opacity: 1;
+}
+
+/* Subtle top accent line — like a status bar */
+.arcana-panel::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8, #7dd3fc, #0ea5e9);
+  background-size: 200% 100%;
+  animation: scanLine 3s linear infinite;
+  z-index: 10;
+}
+
+@keyframes scanLine {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ---- ARCANA PANEL LAYOUT ---- */
+.arcana-panel-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 40px 80px;
+  min-height: 100vh;
+}
+
+/* ---- CLOSE BUTTON ---- */
+.arcana-close {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(15, 23, 42, 0.07);
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 4px;
+  color: #334155;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arcana-close:hover {
+  background: rgba(15, 23, 42, 0.12);
+  border-color: rgba(15, 23, 42, 0.35);
+  color: #0f172a;
+}
+
+.arcana-close svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+/* ---- ARCANA HEADER ---- */
+.arcana-header {
+  text-align: center;
+  margin-bottom: 72px;
+  padding-top: 24px;
+}
+
+.arcana-classification {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #0ea5e9;
+  margin-bottom: 24px;
+  padding: 5px 14px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  border-radius: 2px;
+  background: rgba(14, 165, 233, 0.06);
+}
+
+.arcana-classification::before,
+.arcana-classification::after {
+  content: '//';
+  opacity: 0.5;
+}
+
+.arcana-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 20px;
+  text-indent: 0.3em; /* optical compensation for letter-spacing */
+
+  /* Subtle embossed look */
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.9),
+    0 -1px 0 rgba(0,0,0,0.08);
+}
+
+.arcana-subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* Divider line with corner marks */
+.arcana-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0;
+}
+
+.arcana-divider::before,
+.arcana-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.25), transparent);
+}
+
+.arcana-divider-glyph {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: rgba(14, 165, 233, 0.5);
+  text-transform: uppercase;
+}
+
+/* ---- PROJECT CARDS GRID ---- */
+.arcana-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.arcana-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  padding: 28px 28px 24px;
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+
+/* Status-colored top border */
+.arcana-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--arcana-card-accent, #0ea5e9);
+}
+
+.arcana-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 30px rgba(14, 165, 233, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+  border-color: #cbd5e1;
+}
+
+/* Card status badge */
+.arcana-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arcana-card-accent, #0ea5e9);
+  margin-bottom: 4px;
+}
+
+.arcana-card-status::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--arcana-card-accent, #0ea5e9);
+  flex-shrink: 0;
+  animation: statusPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Card title */
+.arcana-card-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+/* Card description */
+.arcana-card-desc {
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* Card footer */
+.arcana-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.arcana-card-tag {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 3px 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 2px;
+}
+
+.arcana-card-link {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--arcana-card-accent, #0ea5e9);
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.arcana-card-link:hover {
+  opacity: 0.7;
+}
+
+/* "Coming Soon" placeholder card */
+.arcana-card.arcana-card--placeholder {
+  background: #f8fafc;
+  border-style: dashed;
+  border-color: #cbd5e1;
+}
+
+.arcana-card.arcana-card--placeholder::before {
+  display: none;
+}
+
+.arcana-card.arcana-card--placeholder .arcana-card-title {
+  color: #94a3b8;
+}
+
+.arcana-card.arcana-card--placeholder .arcana-card-desc {
+  color: #cbd5e1;
+}
+
+/* ---- STATUS COLOR VARIANTS ---- */
+.arcana-card[data-status="development"]  { --arcana-card-accent: #0ea5e9; }
+.arcana-card[data-status="concept"]      { --arcana-card-accent: #f59e0b; }
+.arcana-card[data-status="progress"]     { --arcana-card-accent: #10b981; }
+.arcana-card[data-status="research"]     { --arcana-card-accent: #8b5cf6; }
+.arcana-card[data-status="drafting"]     { --arcana-card-accent: #f43f5e; }
+.arcana-card[data-status="placeholder"]  { --arcana-card-accent: #cbd5e1; }
+
+/* ---- ARCANA FOOTER ---- */
+.arcana-panel-footer {
+  text-align: center;
+  margin-top: 72px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(14, 165, 233, 0.15);
+}
+
+.arcana-panel-footer p {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+/* ============================================
+   PROCEDA FEATURED CARD
+   ============================================ */
+.arcana-card--featured {
+  grid-column: span 2;
+  background: #f8fbff;
+  border-color: #c8d8f0;
+}
+
+.arcana-card-subtitle {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-top: -6px;
+  margin-bottom: 4px;
+}
+
+/* Mini PROCEDA stats panel — dark window into the platform */
+.proceda-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #1a2a3a;
+  border: 1px solid #1a2a3a;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 14px 0 16px;
+}
+
+.proceda-stat {
+  background: #080f18;
+  padding: 12px 10px;
+  text-align: center;
+}
+
+.proceda-stat-val {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #00d4aa;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.proceda-stat-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #2a5a7a;
+}
+
+/* Action buttons */
+.arcana-card-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.arcana-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  position: relative;
+}
+
+.arcana-action-btn svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  stroke-width: 2;
+}
+
+/* Primary — dark PROCEDA style */
+.arcana-action-btn--primary {
+  background: #0a0f1a;
+  color: #00d4aa;
+  border: 1px solid #0a3040;
+}
+
+.arcana-action-btn--primary:hover {
+  background: #0d1826;
+  border-color: #00d4aa;
+  box-shadow: 0 0 16px rgba(0, 212, 170, 0.2);
+}
+
+/* Pulsing dot inside primary button */
+.proceda-btn-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00d4aa;
+  flex-shrink: 0;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Secondary — light Arcana style */
+.arcana-action-btn--secondary {
+  background: transparent;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.arcana-action-btn--secondary:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+/* ============================================
+   PROCEDA DEMO MODAL — full-screen iframe
+   ============================================ */
+.proceda-demo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10100;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+.proceda-demo-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.proceda-demo-topbar {
+  height: 48px;
+  background: #080f18;
+  border-bottom: 1px solid #0e1f2e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.proceda-demo-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proceda-demo-wordmark {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e8f4ff;
+  letter-spacing: 3px;
+}
+
+.proceda-demo-divider {
+  width: 1px;
+  height: 16px;
+  background: #1a2a3a;
+}
+
+.proceda-demo-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00d4aa;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.proceda-demo-badge {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #2a7a50;
+  padding: 2px 7px;
+  background: #091408;
+  border: 1px solid #0a2818;
+  border-radius: 2px;
+}
+
+.proceda-demo-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2a5a7a;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #0e1f2e;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.proceda-demo-close:hover {
+  color: #6ab4d4;
+  border-color: #1a3a55;
+  background: rgba(255,255,255,0.06);
+}
+
+.proceda-demo-iframe {
+  flex: 1;
+  border: none;
+  width: 100%;
+  display: block;
+  background: #030a10;
+}
+
+/* ============================================
+   PROCEDA INTELLIGENCE BRIEFING MODAL
+   ============================================ */
+.proceda-docs-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10100;
+  background: #060c16;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+.proceda-docs-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.proceda-docs-topbar {
+  height: 52px;
+  background: #080f18;
+  border-bottom: 1px solid #0e1f2e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  flex-shrink: 0;
+}
+
+.proceda-docs-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.proceda-docs-title-txt {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: #c8d8e8;
+}
+
+.proceda-docs-sep {
+  width: 1px;
+  height: 16px;
+  background: #1a2a3a;
+}
+
+.proceda-docs-classification {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #00d4aa;
+  padding: 2px 8px;
+  background: #091828;
+  border: 1px solid #0a3040;
+  border-radius: 2px;
+}
+
+.proceda-docs-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2a5a7a;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #0e1f2e;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.proceda-docs-close:hover {
+  color: #6ab4d4;
+  border-color: #1a3a55;
+}
+
+.proceda-docs-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Left nav rail */
+.proceda-docs-nav {
+  width: 190px;
+  flex-shrink: 0;
+  background: #060d15;
+  border-right: 1px solid #0e1f2e;
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+.proceda-docs-nav-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #1a3a55;
+  padding: 10px 18px 5px;
+}
+
+.pdoc-tab {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 18px;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: #3a6a8a;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+
+.pdoc-tab:hover {
+  background: #0a1825;
+  color: #6a9abc;
+}
+
+.pdoc-tab.active {
+  background: #0b1f30;
+  border-left-color: #00d4aa;
+  color: #c8e8f8;
+}
+
+.pdoc-tab-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #1a3a5a;
+  flex-shrink: 0;
+}
+
+.pdoc-tab.active .pdoc-tab-dot {
+  background: #00d4aa;
+}
+
+/* Content area */
+.proceda-docs-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 36px;
+  background: #060c16;
+}
+
+.pdoc-panel { display: none; }
+.pdoc-panel.active { display: block; }
+
+.pdoc-section-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #c8d8e8;
+  margin-bottom: 5px;
+}
+
+.pdoc-section-sub {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1e4a68;
+  margin-bottom: 26px;
+}
+
+.pdoc-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pdoc-card {
+  background: #080f18;
+  border: 1px solid #0e1f2e;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.pdoc-card-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1e4a68;
+  margin-bottom: 8px;
+}
+
+.pdoc-card-val {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #00d4aa;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.pdoc-card-desc {
+  font-size: 11px;
+  color: #3a6a8a;
+  line-height: 1.7;
+}
+
+.pdoc-vert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pdoc-vert-card {
+  background: #080f18;
+  border: 1px solid #0e1f2e;
+  border-radius: 4px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pdoc-vert-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: #00d4aa;
+}
+
+.pdoc-vert-card.v-ready::before { background: #c09010; }
+
+.pdoc-vert-name {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9abcd8;
+  margin-bottom: 3px;
+}
+
+.pdoc-vert-sub {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #1a3a55;
+  margin-bottom: 12px;
+}
+
+.pdoc-vert-stats { display: flex; gap: 14px; }
+
+.pdoc-vert-stat { display: flex; flex-direction: column; gap: 3px; }
+
+.pdoc-vert-stat-val {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: #00d4aa;
+  line-height: 1;
+}
+
+.pdoc-vert-card.v-ready .pdoc-vert-stat-val { color: #c09010; }
+
+.pdoc-vert-stat-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 7px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1a3a55;
+}
+
+.pdoc-highlight {
+  background: #091828;
+  border: 1px solid #0a2a3a;
+  border-left: 2px solid #00d4aa;
+  border-radius: 0 4px 4px 0;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.pdoc-highlight p {
+  font-size: 12px;
+  color: #5aa4c4;
+  line-height: 1.85;
+  font-style: italic;
+}
+
+.pdoc-highlight cite {
+  display: block;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9px;
+  color: #1e4a68;
+  margin-top: 9px;
+  font-style: normal;
+  letter-spacing: 0.3px;
+}
+
+.pdoc-text {
+  font-size: 12px;
+  color: #4a7a9a;
+  line-height: 1.95;
+  margin-bottom: 16px;
+}
+
+.pdoc-text strong { color: #00a880; font-weight: 500; }
+
+.pdoc-timeline { margin-bottom: 20px; }
+
+.pdoc-timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #0a1820;
+}
+
+.pdoc-timeline-row:last-child { border-bottom: none; }
+
+.pdoc-timeline-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+  color: #3a6a8a;
+  width: 150px;
+  flex-shrink: 0;
+}
+
+.pdoc-timeline-bar {
+  flex: 1;
+  height: 3px;
+  background: #0e1f2e;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.pdoc-timeline-fill { height: 100%; border-radius: 99px; background: #00d4aa; }
+.pdoc-timeline-fill.amber { background: #c09010; }
+.pdoc-timeline-fill.blue  { background: #4a90c4; }
+.pdoc-timeline-fill.dim   { background: #2a5a7a; }
+
+.pdoc-timeline-val {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9px;
+  color: #2a5a7a;
+  width: 55px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---- TABLES ---- */
+.pdoc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 22px;
+  font-size: 11px;
+}
+
+.pdoc-table th {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #1e4a68;
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 2px solid #0e1f2e;
+  background: #060d15;
+  white-space: nowrap;
+}
+
+.pdoc-table td {
+  padding: 8px 12px;
+  color: #4a7a9a;
+  border-bottom: 1px solid #0a1820;
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.pdoc-table tr:last-child td { border-bottom: none; }
+
+.pdoc-table td.cell-label {
+  color: #9abcd8;
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.pdoc-table td.cell-mono {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+}
+
+.pdoc-table td.cell-green {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  color: #00d4aa;
+  font-size: 10px;
+}
+
+.pdoc-table td.cell-amber {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  color: #c09010;
+  font-size: 10px;
+}
+
+.pdoc-table td.cell-dim {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  color: #2a5a7a;
+  font-size: 10px;
+}
+
+/* ---- UTILITY ---- */
+.pdoc-divider {
+  height: 1px;
+  background: #0e1f2e;
+  margin: 22px 0;
+}
+
+.pdoc-label-tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+.pdoc-label-tag--green { color: #00a880; background: #091408; border: 1px solid #0a2818; }
+.pdoc-label-tag--amber { color: #a08010; background: #1a110a; border: 1px solid #3a2810; }
+.pdoc-label-tag--blue  { color: #4090c4; background: #091828; border: 1px solid #0a2848; }
+.pdoc-label-tag--dim   { color: #3a6a8a; background: #060d15; border: 1px solid #0e1f2e; }
+
+.pdoc-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 18px;
+}
+
+.pdoc-bullet-list li {
+  display: flex;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px solid #0a1820;
+  font-size: 11px;
+  color: #4a7a9a;
+  line-height: 1.7;
+}
+
+.pdoc-bullet-list li:last-child { border-bottom: none; }
+
+.pdoc-bullet-list li::before {
+  content: '//';
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 9px;
+  color: #00d4aa;
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+.pdoc-bullet-list li strong { color: #00a880; font-weight: 500; }
+
+/* Featured callout */
+.pdoc-callout {
+  background: #030810;
+  border: 1px solid #1a2a3a;
+  border-radius: 4px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+}
+
+.pdoc-callout-label {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #00d4aa;
+  margin-bottom: 12px;
+}
+
+.pdoc-callout-text {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #c8d8e8;
+  line-height: 1.8;
+}
+
+/* Two-col layout within doc panel */
+.pdoc-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .pdoc-two { grid-template-columns: 1fr; }
+  .pdoc-vert-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   PROCEDA EMAIL GATE
+   ============================================ */
+.proceda-gate {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: #eef3fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.proceda-gate__inner {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.proceda-gate__badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #a00020;
+  background: rgba(160, 0, 32, 0.08);
+  border: 1px solid rgba(160, 0, 32, 0.2);
+  border-radius: 3px;
+  padding: 4px 12px;
+  text-transform: uppercase;
+}
+
+.proceda-gate__title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #0a1628;
+  line-height: 1;
+}
+
+.proceda-gate__sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #4a6a8a;
+  text-transform: uppercase;
+}
+
+.proceda-gate__text {
+  font-size: 0.88rem;
+  color: #4a5568;
+  line-height: 1.7;
+  max-width: 400px;
+  border-top: 1px solid rgba(10, 22, 40, 0.1);
+  border-bottom: 1px solid rgba(10, 22, 40, 0.1);
+  padding: 16px 0;
+  margin: 4px 0;
+}
+
+.proceda-gate__form {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  flex-wrap: wrap;
+}
+
+.proceda-gate__input {
+  flex: 1;
+  min-width: 200px;
+  padding: 11px 16px;
+  background: #fff;
+  border: 1px solid rgba(10, 22, 40, 0.2);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #0a1628;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.proceda-gate__input:focus {
+  border-color: #00a880;
+}
+
+.proceda-gate__input::placeholder {
+  color: #a0aec0;
+}
+
+.proceda-gate__btn {
+  padding: 11px 22px;
+  background: #0a1628;
+  color: #00d4aa;
+  border: none;
+  border-radius: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.proceda-gate__btn:hover {
+  background: #162240;
+}
+
+.proceda-gate__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.proceda-gate__status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: #a00020;
+  min-height: 1.2em;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .arcana-panel-inner {
+    padding: 70px 20px 60px;
+  }
+
+  .arcana-projects {
+    grid-template-columns: 1fr;
+  }
+
+  .arcana-card--featured {
+    grid-column: span 1;
+  }
+
+  .proceda-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pdoc-vert-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proceda-docs-nav {
+    width: 150px;
+  }
+
+  .proceda-docs-content {
+    padding: 20px;
+  }
+
+  .arcana-title {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+    letter-spacing: 0.2em;
+  }
+
+  .arcana-close {
+    top: 16px;
+    right: 16px;
+    padding: 7px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .arcana-projects {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

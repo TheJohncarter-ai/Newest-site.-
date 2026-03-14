@@ -45,7 +45,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
@@ -61,6 +61,7 @@
   <link rel="stylesheet" href="css/components/slideshow.css">
   <link rel="stylesheet" href="css/components/animations.css">
   <link rel="stylesheet" href="css/components/mobile.css">
+  <link rel="stylesheet" href="css/components/arcana.css">
 
   <!-- Calendly CSS - loaded async -->
   <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -494,6 +495,12 @@
                 </svg>
                 <span>Email</span>
               </a>
+              <button class="social-link arcana"
+                      aria-label="Open Arcana"
+                      onclick="openArcana()">
+                <span class="arcana-glyph">⬡</span>
+                <span>Arcana</span>
+              </button>
             </div>
           </div>
         </div>
@@ -896,6 +903,997 @@
       <p class="wa-modal__caption">Scan with your WhatsApp camera</p>
     </div>
   </div>
+
+  <!-- ============================================
+       ARCANA PORTAL
+       ============================================ -->
+  <div id="arcanaPortal" class="arcana-portal" role="dialog" aria-modal="true" aria-label="Arcana — Passion Projects">
+
+    <!-- Phase 1 & 2: The Void + Crack Layer -->
+    <div class="arcana-void" id="arcanaVoid"></div>
+
+    <svg class="arcana-crack-layer" id="arcanaCracks"
+         viewBox="0 0 100 100"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Glow filter for cracks — light bleeding from the other side -->
+        <filter id="crackGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="blur"/>
+          <feColorMatrix in="blur" type="matrix"
+            values="0.5 1 1.5 0 0
+                    0.5 1 1.5 0 0
+                    0.5 1 2   0 0
+                    0   0 0   1 0"
+            result="tinted"/>
+          <feMerge>
+            <feMergeNode in="tinted"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="crackGlowBright" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur"/>
+          <feColorMatrix in="blur" type="matrix"
+            values="0.3 0.8 1.5 0 0.2
+                    0.3 0.8 1.5 0 0.3
+                    0.3 0.8 2   0 0.5
+                    0   0   0   1 0"
+            result="tinted"/>
+          <feMerge>
+            <feMergeNode in="tinted"/>
+            <feMergeNode in="tinted"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Impact origin flash -->
+      <circle class="crack-origin" cx="50" cy="45" r="0"/>
+
+      <!-- ── MAIN CRACKS — many jagged segments, glass-fracture style ── -->
+      <!-- Crack 1: upper-right — sharp zigs toward top-right corner -->
+      <path class="crack crack-main crack-1"
+            pathLength="1"
+            d="M 50 45 L 53 42 L 57 37 L 55 31 L 60 25 L 58 19 L 64 13 L 68 8 L 74 4 L 80 1 L 88 0 L 100 0"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 2: right — horizontal zigzag toward right edge -->
+      <path class="crack crack-main crack-2"
+            pathLength="1"
+            d="M 50 45 L 56 43 L 61 41 L 65 44 L 71 41 L 77 38 L 83 41 L 89 38 L 95 41 L 100 39"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 3: lower-right — jagged toward bottom-right corner -->
+      <path class="crack crack-main crack-3"
+            pathLength="1"
+            d="M 50 45 L 54 50 L 57 55 L 55 60 L 60 65 L 63 70 L 61 76 L 66 80 L 70 85 L 74 89 L 80 93 L 88 97 L 100 100"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 4: lower-left — jagged toward bottom-left corner -->
+      <path class="crack crack-main crack-4"
+            pathLength="1"
+            d="M 50 45 L 46 50 L 43 55 L 45 60 L 40 65 L 37 70 L 39 76 L 34 80 L 30 85 L 26 89 L 20 93 L 12 97 L 0 100"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 5: left — zigzags across to left edge -->
+      <path class="crack crack-main crack-5"
+            pathLength="1"
+            d="M 50 45 L 44 47 L 38 44 L 32 47 L 26 44 L 20 47 L 14 44 L 8 47 L 3 44 L 0 46"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 6: upper-left — jagged toward top-left corner -->
+      <path class="crack crack-main crack-6"
+            pathLength="1"
+            d="M 50 45 L 47 40 L 43 35 L 45 29 L 40 24 L 37 18 L 39 12 L 34 7 L 28 3 L 20 1 L 10 0 L 0 0"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 7: downward center spur -->
+      <path class="crack crack-main crack-7"
+            pathLength="1"
+            d="M 50 45 L 51 50 L 49 56 L 52 61 L 50 67 L 53 73 L 51 79"
+            filter="url(#crackGlow)"/>
+
+      <!-- ── PRIMARY BRANCH CRACKS ── -->
+      <!-- Branches off crack 1 (upper-right) -->
+      <path class="crack crack-branch crack-b1a" pathLength="1"
+            d="M 55 31 L 59 27 L 65 22 L 70 18" filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b1b" pathLength="1"
+            d="M 64 13 L 69 11 L 76 9" filter="url(#crackGlow)"/>
+      <!-- Branches off crack 2 (right) -->
+      <path class="crack crack-branch crack-b2a" pathLength="1"
+            d="M 65 44 L 67 49 L 71 54 L 74 59" filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b2b" pathLength="1"
+            d="M 83 41 L 86 47 L 90 53" filter="url(#crackGlow)"/>
+      <!-- Branches off crack 3 (lower-right) -->
+      <path class="crack crack-branch crack-b3a" pathLength="1"
+            d="M 57 55 L 63 56 L 69 57 L 75 59" filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b3b" pathLength="1"
+            d="M 66 80 L 72 78 L 78 78" filter="url(#crackGlow)"/>
+      <!-- Branches off crack 4 (lower-left) -->
+      <path class="crack crack-branch crack-b4a" pathLength="1"
+            d="M 43 55 L 37 56 L 31 57 L 25 59" filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b4b" pathLength="1"
+            d="M 34 80 L 28 78 L 22 78" filter="url(#crackGlow)"/>
+      <!-- Branches off crack 5 (left) -->
+      <path class="crack crack-branch crack-b5a" pathLength="1"
+            d="M 32 47 L 29 42 L 25 38 L 21 35" filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b5b" pathLength="1"
+            d="M 20 47 L 17 52 L 14 57" filter="url(#crackGlow)"/>
+      <!-- Branches off crack 6 (upper-left) -->
+      <path class="crack crack-branch crack-b6a" pathLength="1"
+            d="M 45 29 L 42 23 L 39 18" filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b6b" pathLength="1"
+            d="M 37 18 L 34 14 L 30 10" filter="url(#crackGlow)"/>
+      <!-- Branches off crack 7 (center spur) -->
+      <path class="crack crack-branch crack-b7a" pathLength="1"
+            d="M 52 61 L 57 63 L 63 66" filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b7b" pathLength="1"
+            d="M 49 56 L 44 58 L 39 62" filter="url(#crackGlow)"/>
+
+      <!-- ── RING CONNECTIONS — spider-web cross-arcs between adjacent cracks ── -->
+      <!-- Inner ring: connects crack 6 to crack 1 -->
+      <path class="crack crack-ring crack-r1" pathLength="1"
+            d="M 47 37 L 50 33 L 54 33" filter="url(#crackGlow)"/>
+      <!-- Mid ring: connects crack 1 zone to crack 2 zone -->
+      <path class="crack crack-ring crack-r2" pathLength="1"
+            d="M 63 28 L 66 35 L 67 41" filter="url(#crackGlow)"/>
+      <!-- Inner ring: connects crack 5 to crack 4 -->
+      <path class="crack crack-ring crack-r3" pathLength="1"
+            d="M 44 55 L 41 51 L 38 49" filter="url(#crackGlow)"/>
+      <!-- Mid ring: connects crack 3 to crack 4 area -->
+      <path class="crack crack-ring crack-r4" pathLength="1"
+            d="M 58 65 L 52 66 L 46 65" filter="url(#crackGlow)"/>
+    </svg>
+
+    <!-- Phase 3: The Arcana Panel -->
+    <div class="arcana-panel" id="arcanaPanel">
+      <!-- Moving status bar across the top handled by ::before in CSS -->
+
+      <!-- Close -->
+      <button class="arcana-close" onclick="closeArcana()" aria-label="Return to main site">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Return
+      </button>
+
+      <div class="arcana-panel-inner">
+
+        <!-- Header -->
+        <header class="arcana-header">
+          <div class="arcana-classification">Unfinished Transmissions · Works in Progress</div>
+          <h1 class="arcana-title">ARCANA</h1>
+          <p class="arcana-subtitle">Experiments. Concepts. Things not yet ready for the world.</p>
+        </header>
+
+        <!-- Divider -->
+        <div class="arcana-divider">
+          <span class="arcana-divider-glyph">⬡ &nbsp; Active Files &nbsp; ⬡</span>
+        </div>
+
+        <!-- Project Cards -->
+        <div class="arcana-projects">
+
+          <!-- Card 1 — PROCEDA FEATURED -->
+          <div class="arcana-card arcana-card--featured" data-status="progress">
+            <div class="arcana-card-status">Live Prototype</div>
+            <h3 class="arcana-card-title">PROCEDA</h3>
+            <p class="arcana-card-subtitle">Procedural Intelligence Platform</p>
+            <p class="arcana-card-desc">Automated capture of procedure-level delivery data across surgical and radiation oncology devices. Six verticals. 94% automation rate. The dataset that has never existed at scale.</p>
+            <div class="proceda-stats">
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">6</div>
+                <div class="proceda-stat-label">Verticals</div>
+              </div>
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">94%</div>
+                <div class="proceda-stat-label">Automated</div>
+              </div>
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">1,247</div>
+                <div class="proceda-stat-label">Cases</div>
+              </div>
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">24</div>
+                <div class="proceda-stat-label">Sites</div>
+              </div>
+            </div>
+            <div class="arcana-card-actions">
+              <button class="arcana-action-btn arcana-action-btn--primary" onclick="openProcedaDemo()">
+                <span class="proceda-btn-pulse"></span>
+                Launch Demo
+              </button>
+              <button class="arcana-action-btn arcana-action-btn--secondary" onclick="openProcedaDocs()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Intelligence Briefing
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="arcana-card" data-status="progress">
+            <div class="arcana-card-status">In Progress</div>
+            <h3 class="arcana-card-title">Family Office Network Map</h3>
+            <p class="arcana-card-desc">A visual intelligence layer for relationship mapping across six LATAM markets — charting the invisible architecture of private capital flows.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Intelligence</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="arcana-card" data-status="drafting">
+            <div class="arcana-card-status">Drafting</div>
+            <h3 class="arcana-card-title">The Bilingual Pitch Protocol</h3>
+            <p class="arcana-card-desc">A structured system for translating investment narratives across cultural registers — not just EN/ES, but the unspoken language of trust.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Methodology</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="arcana-card" data-status="concept">
+            <div class="arcana-card-status">Concept Stage</div>
+            <h3 class="arcana-card-title">Capital Access Protocol</h3>
+            <p class="arcana-card-desc">A field-tested framework for navigating warm introductions into closed-door networks. The architecture of the introduction that actually gets answered.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Protocol</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="arcana-card" data-status="concept">
+            <div class="arcana-card-status">Concept Stage</div>
+            <h3 class="arcana-card-title">The Annex</h3>
+            <p class="arcana-card-desc">A long-form conversation series at the intersection of capital, culture, and language — for the people doing the work that never makes it into the pitch deck.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Series</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="arcana-card" data-status="research">
+            <div class="arcana-card-status">Early Research</div>
+            <h3 class="arcana-card-title">Colombia Venture Atlas</h3>
+            <p class="arcana-card-desc">Mapping the emerging startup and investment ecosystem across Bogotá, Medellín, and Cali — tracking the founders and capital pools forming outside the noise.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Research</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 7 — Placeholder -->
+          <div class="arcana-card arcana-card--placeholder" data-status="placeholder">
+            <div class="arcana-card-status" style="color:#cbd5e1;">Forthcoming</div>
+            <h3 class="arcana-card-title">Transmission Pending</h3>
+            <p class="arcana-card-desc">Something is forming. Not ready to be named yet.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Unknown</span>
+            </div>
+          </div>
+
+          <!-- Card 8 — Placeholder -->
+          <div class="arcana-card arcana-card--placeholder" data-status="placeholder">
+            <div class="arcana-card-status" style="color:#cbd5e1;">Forthcoming</div>
+            <h3 class="arcana-card-title">Transmission Pending</h3>
+            <p class="arcana-card-desc">Something is forming. Not ready to be named yet.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Unknown</span>
+            </div>
+          </div>
+
+        </div><!-- /.arcana-projects -->
+
+        <!-- Footer -->
+        <footer class="arcana-panel-footer">
+          <p>// End of current transmissions // More to follow //</p>
+        </footer>
+
+      </div><!-- /.arcana-panel-inner -->
+    </div><!-- /#arcanaPanel -->
+
+  </div><!-- /#arcanaPortal -->
+
+  <!-- ============================================
+       PROCEDA DEMO MODAL — iframe overlay
+       ============================================ -->
+  <div id="procedaModal" class="proceda-demo-modal" role="dialog" aria-modal="true" aria-label="PROCEDA Demo">
+    <div class="proceda-demo-topbar">
+      <div class="proceda-demo-name">
+        <span class="proceda-demo-wordmark">PROCEDA</span>
+        <span class="proceda-demo-divider"></span>
+        <span class="proceda-demo-live-dot"></span>
+        <span class="proceda-demo-badge">LIVE DEMO</span>
+      </div>
+      <button class="proceda-demo-close" onclick="closeProcedaDemo()">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Return to Arcana
+      </button>
+    </div>
+    <iframe id="procedaIframe" class="proceda-demo-iframe" src="" title="PROCEDA — Procedural Intelligence Platform"></iframe>
+  </div>
+
+  <!-- ============================================
+       PROCEDA INTELLIGENCE BRIEFING MODAL
+       ============================================ -->
+  <div id="procedaDocsModal" class="proceda-docs-modal" role="dialog" aria-modal="true" aria-label="PROCEDA Intelligence Briefing">
+    <div class="proceda-docs-topbar">
+      <div class="proceda-docs-wordmark">
+        <span class="proceda-docs-title-txt">PROCEDA</span>
+        <span class="proceda-docs-sep"></span>
+        <span class="proceda-docs-classification">Intelligence Briefing</span>
+      </div>
+      <button class="proceda-docs-close" onclick="closeProcedaDocs()">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Return
+      </button>
+    </div>
+    <!-- ── EMAIL GATE ── -->
+    <div class="proceda-gate" id="procedaGate">
+      <div class="proceda-gate__inner">
+        <div class="proceda-gate__badge">CONFIDENTIAL BRIEFING</div>
+        <div class="proceda-gate__title">PROCEDA</div>
+        <div class="proceda-gate__sub">Procedural Intelligence Platform · Standalone Business Model</div>
+        <p class="proceda-gate__text">This document contains proprietary business intelligence. Enter your email address to access the full briefing. Your access will be logged and the PROCEDA team will be notified.</p>
+        <form class="proceda-gate__form" id="procedaGateForm" onsubmit="submitProcedaGate(event)">
+          <input type="email" class="proceda-gate__input" id="procedaGateEmail" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit" class="proceda-gate__btn" id="procedaGateBtn">Access Briefing &rarr;</button>
+        </form>
+        <div class="proceda-gate__status" id="procedaGateStatus"></div>
+      </div>
+    </div>
+
+    <div class="proceda-docs-body">
+
+      <!-- Sidebar nav -->
+      <nav class="proceda-docs-nav">
+        <div class="proceda-docs-nav-label">Sections</div>
+        <button class="pdoc-tab active" data-tab="overview" onclick="switchDocTab('overview',this)"><span class="pdoc-tab-dot"></span>The Insight</button>
+        <button class="pdoc-tab" data-tab="platform" onclick="switchDocTab('platform',this)"><span class="pdoc-tab-dot"></span>The Platform</button>
+        <button class="pdoc-tab" data-tab="verticals" onclick="switchDocTab('verticals',this)"><span class="pdoc-tab-dot"></span>Verticals</button>
+        <button class="pdoc-tab" data-tab="dataset" onclick="switchDocTab('dataset',this)"><span class="pdoc-tab-dot"></span>Revenue Model</button>
+        <button class="pdoc-tab" data-tab="financials" onclick="switchDocTab('financials',this)"><span class="pdoc-tab-dot"></span>Financials</button>
+        <button class="pdoc-tab" data-tab="exit" onclick="switchDocTab('exit',this)"><span class="pdoc-tab-dot"></span>Exit Thesis</button>
+      </nav>
+
+      <!-- Content area -->
+      <div class="proceda-docs-content">
+
+        <!-- ── OVERVIEW / THE INSIGHT ── -->
+        <div class="pdoc-panel active" id="pdoc-overview">
+          <div class="pdoc-section-title">The Founding Insight</div>
+          <div class="pdoc-section-sub">The data already exists. No one has captured it.</div>
+
+          <div class="pdoc-callout">
+            <div class="pdoc-callout-label">Core Thesis</div>
+            <div class="pdoc-callout-text">Every precision-oncology and image-guided procedure generates 80–200 structured data fields at the moment it executes — device logs, DICOM RT objects, RS-232 streams, MRI thermometry. Those fields are never extracted, never linked to outcomes, never made available for research or drug development. PROCEDA captures them automatically, links them to patient outcomes via standard HL7, and aggregates them into the only procedure-physics registry ever built at multi-site scale.</div>
+          </div>
+
+          <div class="pdoc-cards">
+            <div class="pdoc-card"><div class="pdoc-card-label">Registry Cases</div><div class="pdoc-card-val">1,247</div><div class="pdoc-card-desc">Across 6 verticals · 24 sites · 8 countries</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Automation Rate</div><div class="pdoc-card-val">94%</div><div class="pdoc-card-desc">Avg 121 automated fields · only ~8 require human input</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Capture Latency</div><div class="pdoc-card-val">&lt;2s</div><div class="pdoc-card-desc">Device event → structured PROCEDA record</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Platform Reuse</div><div class="pdoc-card-val">~70%</div><div class="pdoc-card-desc">Core infrastructure shared across all verticals</div></div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+
+          <div class="pdoc-text"><strong>The gap that makes PROCEDA possible:</strong> EHRs capture what was ordered. Procedure notes capture what the physician wrote down. PROCEDA captures what the device actually delivered — and links it directly to what happened to the patient afterward. That gap between ordered and delivered is where pharmaceutical-grade insight lives.</div>
+
+          <div class="pdoc-text"><strong>Why it hasn't been done before:</strong> Building procedure-level capture across 6 different modalities requires physics-layer expertise in each. Radiation oncology, robotic surgery, and thermal ablation have no shared data standards. No EHR vendor has the clinical depth to build it. No device company has the incentive to share across competitors. PROCEDA sits at the only intersection where this is possible: independent, multi-device, federated by design.</div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Why IORT First</div>
+          <ul class="pdoc-bullet-list">
+            <li><strong>Fastest physics-to-outcome signal:</strong> Single-fraction intraoperative treatment with 6–24 month outcome window. No fractionation complexity. Signal clarity is highest per case.</li>
+            <li><strong>No existing registry:</strong> Zero multi-site IORT procedure-physics registries exist globally. PROCEDA is the only source of this data.</li>
+            <li><strong>Device homogeneity:</strong> Zeiss Intrabeam and Sensus SRT both output RS-232 streams with identical field maps. Parser written once, deployed everywhere.</li>
+            <li><strong>Proof-of-concept velocity:</strong> 84 automated fields, 97% completeness, operational in 5 countries. Validates the infrastructure thesis before expanding to higher-complexity verticals.</li>
+            <li><strong>Regulatory pathway clarity:</strong> IORT data does not trigger IDE or PMA requirements. Registry data collection is IRB-approved observational research at all sites.</li>
+          </ul>
+
+          <div class="pdoc-highlight">
+            <p>"The procedure-level delivery data linked to outcomes is something we cannot get from any EHR source. At 500 cases with 12-month follow-up, this would be relevant for our program."</p>
+            <cite>— Senior Director, Oncology Clinical Science · Major pharma · [name withheld]</cite>
+          </div>
+        </div>
+
+        <!-- ── THE PLATFORM ── -->
+        <div class="pdoc-panel" id="pdoc-platform">
+          <div class="pdoc-section-title">The Platform</div>
+          <div class="pdoc-section-sub">Four-tier automated capture · federated storage · zero manual transcription</div>
+
+          <table class="pdoc-table">
+            <thead><tr><th>Tier</th><th>Source</th><th>Trigger</th><th>Cost / Device</th><th>Hospital IT Required</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="cell-label">Tier 1 — Device API / DICOM RT</td>
+                <td>Linac, CyberKnife, da Vinci, HDR afterloader</td>
+                <td>Procedure close or plan approval event</td>
+                <td class="cell-mono cell-green">$0</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">None</span></td>
+              </tr>
+              <tr>
+                <td class="cell-label">Tier 2 — Edge Hardware</td>
+                <td>RFA / MWA generators, OR environmental sensors</td>
+                <td>RS-232 at 1 Hz · buffers offline</td>
+                <td class="cell-mono cell-amber">$110</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">None</span></td>
+              </tr>
+              <tr>
+                <td class="cell-label">Tier 3 — HL7 ADT / ORU</td>
+                <td>EHR outcome feeds (OR time, EBL, LOS, 30-day readmit)</td>
+                <td>Standard HL7 interface — existing hospital feed</td>
+                <td class="cell-mono cell-green">$0</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--amber">Minimal</span></td>
+              </tr>
+              <tr>
+                <td class="cell-label">Tier 4 — Human Input</td>
+                <td>Clinical judgment only (histology, margin, conversion)</td>
+                <td>Post-procedure clinician entry — avg 8 fields</td>
+                <td class="cell-mono cell-dim">—</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--dim">N/A</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-divider"></div>
+
+          <div class="pdoc-two">
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">Federated Architecture</div>
+                <div class="pdoc-callout-text">Raw device data never leaves the institution's network. Only structured extracted fields are transmitted to the central PROCEDA registry. HIPAA-compliant by architectural design — not a compliance overlay bolted on afterward.</div>
+              </div>
+            </div>
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">~70% Platform Reuse Per Vertical</div>
+                <div class="pdoc-callout-text">The ingestion pipeline, federated storage layer, schema validation, and outcomes linkage logic are shared across all verticals. Adding a new vertical requires only a device-specific parser and schema extension — typically 6–8 weeks of engineering time, not a platform rebuild.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Defensibility Layers</div>
+          <ul class="pdoc-bullet-list">
+            <li><strong>Device-physics expertise:</strong> Each parser requires deep understanding of the modality's physics, coordinate systems, and failure modes. This is not a software problem — it is a clinical-physics problem that takes years to build correctly.</li>
+            <li><strong>Multi-vertical schema network effect:</strong> A registry covering 6 procedure types across oncology and surgery can answer cross-modality questions that no single-vertical database can. The combination is the moat, not any individual parser.</li>
+            <li><strong>Site switching cost:</strong> Once a hospital's workflow is integrated with PROCEDA's Tier 2 edge hardware and HL7 feed, replacing the system requires a full re-integration. Churn is structurally low.</li>
+            <li><strong>Regulatory lead:</strong> IRB-approved observational research protocols at 24 sites represent 18–24 months of procurement and ethics review time for any competitor entering the same institutions.</li>
+          </ul>
+        </div>
+
+        <!-- ── VERTICALS ── -->
+        <div class="pdoc-panel" id="pdoc-verticals">
+          <div class="pdoc-section-title">Verticals</div>
+          <div class="pdoc-section-sub">Six procedure types · four live · two enrolling</div>
+          <div class="pdoc-vert-grid">
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">IORT</div>
+              <div class="pdoc-vert-sub">Intraoperative Radiation</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">84</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">8</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">97%</div><div class="pdoc-vert-stat-label">Complete</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">SRS / SBRT</div>
+              <div class="pdoc-vert-sub">Stereotactic Radiosurgery</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">142</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">6</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">99%</div><div class="pdoc-vert-stat-label">Complete</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">HDR Brachy</div>
+              <div class="pdoc-vert-sub">High-Dose-Rate Brachytherapy</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">96</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">7</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">98%</div><div class="pdoc-vert-stat-label">Complete</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">Robotic Surgery</div>
+              <div class="pdoc-vert-sub">da Vinci · Hugo · Versius</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">210</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">9</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">2M+</div><div class="pdoc-vert-stat-label">Procs/yr</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card v-ready">
+              <div class="pdoc-vert-name">Thermal Ablation</div>
+              <div class="pdoc-vert-sub">RFA · MWA · Cryoablation</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">78</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">10</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">$110</div><div class="pdoc-vert-stat-label">HW cost</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card v-ready">
+              <div class="pdoc-vert-name">FUS / MRgFUS</div>
+              <div class="pdoc-vert-sub">Focused Ultrasound · Insightec</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">118</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">7</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">SDR</div><div class="pdoc-vert-stat-label">Key signal</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Expansion Timeline · 6 Verticals in 36 Months</div>
+          <table class="pdoc-table">
+            <thead><tr><th>Vertical</th><th>Status</th><th>Sites</th><th>Auto Fields</th><th>Procedure Volume</th><th>Revenue Contribution</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="cell-label">IORT</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">Live · M0</span></td>
+                <td class="cell-mono">6</td>
+                <td class="cell-mono">84</td>
+                <td class="cell-dim">~50K procedures/yr globally</td>
+                <td class="cell-mono cell-green">Anchor stream</td>
+              </tr>
+              <tr>
+                <td class="cell-label">SRS / SBRT</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">Live · M3</span></td>
+                <td class="cell-mono">8</td>
+                <td class="cell-mono">142</td>
+                <td class="cell-dim">~600K procedures/yr</td>
+                <td class="cell-mono cell-green">Largest pharma dataset</td>
+              </tr>
+              <tr>
+                <td class="cell-label">HDR Brachytherapy</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">Live · M6</span></td>
+                <td class="cell-mono">5</td>
+                <td class="cell-mono">96</td>
+                <td class="cell-dim">~200K procedures/yr</td>
+                <td class="cell-mono cell-green">Late-toxicity dataset</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Robotic Surgery</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">Live · M9</span></td>
+                <td class="cell-mono">5</td>
+                <td class="cell-mono">210</td>
+                <td class="cell-dim">2M+ procedures/yr (da Vinci alone)</td>
+                <td class="cell-mono cell-amber">Largest volume vertical</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Thermal Ablation</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--amber">Ready · M18</span></td>
+                <td class="cell-mono">—</td>
+                <td class="cell-mono">78</td>
+                <td class="cell-dim">~400K procedures/yr (RFA+MWA)</td>
+                <td class="cell-mono cell-amber">Edge hardware revenue</td>
+              </tr>
+              <tr>
+                <td class="cell-label">FUS / MRgFUS</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--amber">Ready · M24</span></td>
+                <td class="cell-mono">—</td>
+                <td class="cell-mono">118</td>
+                <td class="cell-dim">~80K procedures/yr · growing 30% CAGR</td>
+                <td class="cell-mono cell-amber">SDR grant fundable</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pdoc-text"><strong>Live verticals</strong> (IORT, SRS, HDR, Robotic) are actively enrolling cases across 24 sites in 8 countries. <strong>Ready verticals</strong> (Ablation, FUS) have completed schema design and hardware validation — parser written, IRB template prepared, awaiting first site contracts.</div>
+        </div>
+
+        <!-- ── REVENUE MODEL ── -->
+        <div class="pdoc-panel" id="pdoc-dataset">
+          <div class="pdoc-section-title">Revenue Model</div>
+          <div class="pdoc-section-sub">Four independent streams · each defensible alone · compounding together</div>
+
+          <table class="pdoc-table">
+            <thead><tr><th>Stream</th><th>Buyer</th><th>Unit Price</th><th>Unit</th><th>Y1 Target</th><th>Y3 Target</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="cell-label">Site Licensing (SaaS)</td>
+                <td>Hospital / Research Centre</td>
+                <td class="cell-mono cell-green">$45K – $120K</td>
+                <td class="cell-dim">Annual per site · tiered by case volume</td>
+                <td class="cell-mono">24 sites</td>
+                <td class="cell-mono cell-green">90 sites</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Pharma Data Licensing</td>
+                <td>Pharma / Biotech RWE teams</td>
+                <td class="cell-mono cell-green">$180K – $750K</td>
+                <td class="cell-dim">Per dataset access · vertical + outcome scope</td>
+                <td class="cell-mono">3 contracts</td>
+                <td class="cell-mono cell-green">14 contracts</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Device Partner Revenue Share</td>
+                <td>Device OEMs (Zeiss, Siemens, Intuitive)</td>
+                <td class="cell-mono cell-amber">10 – 20%</td>
+                <td class="cell-dim">Revenue share on outcomes data from their installed base</td>
+                <td class="cell-mono">2 OEMs</td>
+                <td class="cell-mono cell-amber">6 OEMs</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Research Grants (Non-dilutive)</td>
+                <td>NIH · PCORI · DoD · EU Horizon</td>
+                <td class="cell-mono cell-blue">$250K – $1.2M</td>
+                <td class="cell-dim">Per grant · SDR/FUS and HDR late-toxicity datasets</td>
+                <td class="cell-mono">2 grants</td>
+                <td class="cell-mono cell-blue">6 grants</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Why Each Stream Is Defensible</div>
+
+          <div class="pdoc-two">
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">Site SaaS — Low Churn by Design</div>
+                <div class="pdoc-callout-text">Switching requires removal of edge hardware, re-integration of HL7 feeds, and a new IRB amendment. Structural churn rate &lt;5% annually. Revenue becomes annuity income once the site is live.</div>
+              </div>
+            </div>
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">Pharma — 3 Active LOIs</div>
+                <div class="pdoc-callout-text">Three major pharma programs have signed LOIs at the $180K–$750K range. The trigger condition is reaching 500 cases with 12-month follow-up in the relevant vertical. IORT hits this threshold at Month 18.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pdoc-two">
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">Device OEM — Aligned Incentives</div>
+                <div class="pdoc-callout-text">Device manufacturers benefit from outcomes data showing their devices perform well. PROCEDA can offer revenue share deals where the OEM co-markets PROCEDA enrollment to their installed base, dramatically reducing PROCEDA's site acquisition cost.</div>
+              </div>
+            </div>
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">Grants — Non-dilutive Runway</div>
+                <div class="pdoc-callout-text">The SDR (sonodynamic response) signal in FUS data and the late-toxicity dataset in HDR are individually fundable as standalone research programs. These grants fund engineering time without dilution and produce publications that validate the registry's data quality.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FINANCIALS ── -->
+        <div class="pdoc-panel" id="pdoc-financials">
+          <div class="pdoc-section-title">Financial Model</div>
+          <div class="pdoc-section-sub">$3.2M → $49M ARR · Year 1 to Year 4 · path to $400–700M acquisition</div>
+
+          <table class="pdoc-table">
+            <thead><tr><th>Year</th><th>Sites</th><th>Site SaaS</th><th>Pharma Data</th><th>Device Rev Share</th><th>Grants</th><th>Total ARR</th><th>EBITDA %</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="cell-label">Year 1</td>
+                <td class="cell-mono">24</td>
+                <td class="cell-mono">$1.1M</td>
+                <td class="cell-mono">$1.4M</td>
+                <td class="cell-mono">$0.4M</td>
+                <td class="cell-mono">$0.3M</td>
+                <td class="cell-mono cell-green"><strong>$3.2M</strong></td>
+                <td class="cell-mono cell-amber">−18%</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Year 2</td>
+                <td class="cell-mono">52</td>
+                <td class="cell-mono">$2.8M</td>
+                <td class="cell-mono">$4.6M</td>
+                <td class="cell-mono">$1.6M</td>
+                <td class="cell-mono">$0.8M</td>
+                <td class="cell-mono cell-green"><strong>$9.8M</strong></td>
+                <td class="cell-mono cell-amber">+6%</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Year 3</td>
+                <td class="cell-mono">90</td>
+                <td class="cell-mono">$5.4M</td>
+                <td class="cell-mono">$11.2M</td>
+                <td class="cell-mono">$4.2M</td>
+                <td class="cell-mono">$1.9M</td>
+                <td class="cell-mono cell-green"><strong>$22.7M</strong></td>
+                <td class="cell-mono cell-green">+31%</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Year 4 (exit)</td>
+                <td class="cell-mono">148</td>
+                <td class="cell-mono">$9.1M</td>
+                <td class="cell-mono">$26.4M</td>
+                <td class="cell-mono">$9.8M</td>
+                <td class="cell-mono">$3.7M</td>
+                <td class="cell-mono cell-amber"><strong>$49M</strong></td>
+                <td class="cell-mono cell-green">+42%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Cost Structure</div>
+
+          <div class="pdoc-two">
+            <div>
+              <ul class="pdoc-bullet-list">
+                <li><strong>Engineering (Year 1 $1.2M → Y3 $2.8M):</strong> 4–8 FTE. Physics-domain engineers, not generalist SaaS devs. Salary range $180K–$240K. Core team stays lean; no bloated engineering org.</li>
+                <li><strong>Clinical Operations ($0.4M → $1.1M):</strong> Site onboarding, IRB coordination, hardware deployment. 2–4 FTE. Cost per new site drops from $28K (Y1) to $14K (Y3) as playbook matures.</li>
+                <li><strong>Sales &amp; BD ($0.3M → $1.4M):</strong> Pharma data sales is high-ACV, low-volume. 2 senior reps sufficient to close $10M+ in Y3. Device OEM deals are partnership-level, handled by founder/CEO.</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="pdoc-bullet-list">
+                <li><strong>Infrastructure &amp; Hosting ($0.2M → $0.6M):</strong> Federated model keeps central compute costs low. Sites bear local storage costs. Central registry is append-only structured records — not raw imaging data.</li>
+                <li><strong>G&amp;A + Legal ($0.2M → $0.5M):</strong> IRB protocol management, data licensing agreements (complex but templatable after first 3), standard SaaS G&amp;A at scale.</li>
+                <li><strong>Gross Margin trajectory:</strong> Y1 72% → Y3 81%. Pharma data and device revenue share have near-zero marginal cost once the infrastructure is built.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Funding Path</div>
+
+          <table class="pdoc-table">
+            <thead><tr><th>Round</th><th>Raise</th><th>Use of Funds</th><th>Milestone Unlocked</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="cell-label">Seed (current)</td>
+                <td class="cell-mono cell-green">$2.5M</td>
+                <td class="cell-dim">Expand to 30 sites · close first pharma contract · hire 2 physics engineers</td>
+                <td class="cell-mono">500 IORT cases · pharma LOI convert</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Series A · M12</td>
+                <td class="cell-mono cell-green">$8M</td>
+                <td class="cell-dim">Robotic surgery rollout · ablation hardware build · 2 additional pharma contracts</td>
+                <td class="cell-mono">4 verticals live · $9.8M ARR run-rate</td>
+              </tr>
+              <tr>
+                <td class="cell-label">Exit or Series B · M36</td>
+                <td class="cell-mono cell-amber">$400–700M</td>
+                <td class="cell-dim">Acquisition by strategic acquirer (see Exit Thesis)</td>
+                <td class="cell-mono">$49M ARR · 6 verticals · 148 sites</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── EXIT THESIS ── -->
+        <div class="pdoc-panel" id="pdoc-exit">
+          <div class="pdoc-section-title">Exit Thesis</div>
+          <div class="pdoc-section-sub">$400–700M acquisition · Month 36–48 · 8–14× ARR · four credible acquirer profiles</div>
+
+          <table class="pdoc-table">
+            <thead><tr><th>Acquirer</th><th>Strategic Rationale</th><th>Comparable Transaction</th><th>Est. Multiple</th><th>Probability</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="cell-label">Owkin</td>
+                <td class="cell-dim">Federated oncology ML infrastructure. PROCEDA's procedure-physics data fills their imaging-only gap. Active conversations per founders.</td>
+                <td class="cell-dim">Owkin raised $180M (2021) specifically to build federated clinical data infrastructure</td>
+                <td class="cell-mono cell-green">10–14×</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">High</span></td>
+              </tr>
+              <tr>
+                <td class="cell-label">Roche / Flatiron Health</td>
+                <td class="cell-dim">Flatiron playbook applied to procedure-level data. Roche paid $1.9B for structured oncology EMR data. PROCEDA's device-delivery data is the next layer down.</td>
+                <td class="cell-dim">Flatiron ($1.9B, ~12× ARR). Foundation Medicine ($2.4B). Both Roche purchases of structured oncology data assets.</td>
+                <td class="cell-mono cell-green">12–14×</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--green">High</span></td>
+              </tr>
+              <tr>
+                <td class="cell-label">Varian / Siemens Healthineers</td>
+                <td class="cell-dim">PROCEDA data is sourced entirely from Varian/Siemens devices (linacs, HDR afterloaders). Acquiring the registry gives them an outcomes layer over their installed base — turns them into a data company, not just a device company.</td>
+                <td class="cell-dim">Siemens acquired Varian for $16.4B (2021). Outcomes data layer dramatically increases the value of that installed base.</td>
+                <td class="cell-mono cell-amber">8–10×</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--amber">Medium</span></td>
+              </tr>
+              <tr>
+                <td class="cell-label">Intuitive Surgical</td>
+                <td class="cell-dim">Robotic surgery vertical gives PROCEDA access to da Vinci log data. Intuitive has the most to gain from an outcomes registry that proves their system's superiority — and the most to lose from one they don't control.</td>
+                <td class="cell-dim">Intuitive acquired Orpheus Medical (OR analytics) in 2019. Pattern of acquiring OR data companies to strengthen installed-base stickiness.</td>
+                <td class="cell-mono cell-amber">8–12×</td>
+                <td><span class="pdoc-label-tag pdoc-label-tag--amber">Medium</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-divider"></div>
+
+          <div class="pdoc-two">
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">Exit Trigger Conditions (M36)</div>
+                <div class="pdoc-callout-text">$49M ARR · 6 verticals live · 148 sites · 4 active pharma data contracts · 6 OEM revenue-share agreements. Any one of the four acquirer profiles can be approached the moment $20M ARR is reached at M18 — earlier if strategic interest is confirmed.</div>
+              </div>
+            </div>
+            <div>
+              <div class="pdoc-callout">
+                <div class="pdoc-callout-label">Benchmark: Flatiron Health</div>
+                <div class="pdoc-callout-text">Roche acquired Flatiron for $1.9B at approximately 12× ARR. Flatiron's moat was structured oncology data from 280 community practices. PROCEDA's moat is deeper: device-physics data that no EHR can ever capture, across modalities that Flatiron never touched.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Exit Readiness Milestones</div>
+
+          <div class="pdoc-timeline">
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Multi-vertical proof (4 live)</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill" style="width:100%"></div></div><div class="pdoc-timeline-val">Complete</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Federated HIPAA architecture</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill" style="width:100%"></div></div><div class="pdoc-timeline-val">Complete</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Pharma LOIs converted (3 of 4)</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill amber" style="width:75%"></div></div><div class="pdoc-timeline-val">75%</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">$20M ARR (Series A close)</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill blue" style="width:55%"></div></div><div class="pdoc-timeline-val">M18</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">$49M ARR · exit window opens</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill dim" style="width:30%"></div></div><div class="pdoc-timeline-val">M36–48</div></div>
+          </div>
+        </div>
+
+      </div><!-- /.proceda-docs-content -->
+    </div><!-- /.proceda-docs-body -->
+  </div><!-- /#procedaDocsModal -->
+
+  <!-- Arcana Script -->
+  <script>
+    (function() {
+      var portal    = document.getElementById('arcanaPortal');
+      var void_     = document.getElementById('arcanaVoid');
+      var cracks    = document.getElementById('arcanaCracks');
+      var panel     = document.getElementById('arcanaPanel');
+      var _arcanaOpen = false;
+
+      window.openArcana = function() {
+        if (_arcanaOpen) return;
+        _arcanaOpen = true;
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+
+        // Show portal container
+        portal.classList.add('is-open');
+
+        // Phase 1: Fade to black (20ms delay to allow display:block to render)
+        setTimeout(function() {
+          void_.classList.add('fade-in');
+        }, 20);
+
+        // Phase 2: Show & animate cracks (after black fade ~900ms)
+        setTimeout(function() {
+          cracks.classList.add('visible');
+          setTimeout(function() {
+            cracks.classList.add('cracking');
+          }, 40);
+        }, 920);
+
+        // Phase 3: Explosion flash — void & cracks dissolve (after cracks drawn ~1650ms)
+        setTimeout(function() {
+          void_.classList.add('exploding');
+          cracks.classList.add('exploding');
+        }, 1700);
+
+        // Phase 4: Reveal Arcana panel (after flash peak ~2200ms)
+        setTimeout(function() {
+          void_.style.display = 'none';
+          cracks.style.display = 'none';
+          panel.classList.add('revealed');
+        }, 2200);
+      };
+
+      window.closeArcana = function() {
+        if (!_arcanaOpen) return;
+
+        // Fade panel out
+        panel.classList.remove('revealed');
+
+        setTimeout(function() {
+          // Reset everything
+          portal.classList.remove('is-open');
+          void_.classList.remove('fade-in', 'exploding');
+          void_.style.display = '';
+          cracks.classList.remove('visible', 'cracking', 'exploding');
+          cracks.style.display = '';
+          panel.classList.remove('revealed');
+          document.body.style.overflow = '';
+          _arcanaOpen = false;
+        }, 950);
+      };
+
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          if (document.getElementById('procedaModal').classList.contains('open')) { closeProcedaDemo(); return; }
+          if (document.getElementById('procedaDocsModal').classList.contains('open')) { closeProcedaDocs(); return; }
+          if (_arcanaOpen) closeArcana();
+        }
+      });
+    })();
+
+    // ── PROCEDA DEMO MODAL ──
+    var _procedaDemoLoaded = false;
+    window.openProcedaDemo = function() {
+      var modal = document.getElementById('procedaModal');
+      var iframe = document.getElementById('procedaIframe');
+      if (!_procedaDemoLoaded) {
+        iframe.src = 'proceda-demo.html';
+        _procedaDemoLoaded = true;
+      }
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeProcedaDemo = function() {
+      document.getElementById('procedaModal').classList.remove('open');
+      document.body.style.overflow = 'hidden'; // arcana panel still open
+    };
+
+    // ── PROCEDA DOCS MODAL ──
+    window.openProcedaDocs = function() {
+      var modal = document.getElementById('procedaDocsModal');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      // Check if gate already passed this session
+      var gate = document.getElementById('procedaGate');
+      if (sessionStorage.getItem('proceda_gate_passed')) {
+        gate.style.display = 'none';
+      } else {
+        gate.style.display = 'flex';
+      }
+    };
+    window.closeProcedaDocs = function() {
+      document.getElementById('procedaDocsModal').classList.remove('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    // ── EMAIL GATE ──
+    // SETUP: Go to formspree.io → "New Form" → set recipient to powerlljohn9521@gmail.com
+    //        Copy the form ID (looks like "xabcdefg") and replace FORM_ID below.
+    var PROCEDA_FORM_ID = 'mgonzllw';
+
+    window.submitProcedaGate = function(e) {
+      e.preventDefault();
+      var email  = document.getElementById('procedaGateEmail').value.trim();
+      var btn    = document.getElementById('procedaGateBtn');
+      var status = document.getElementById('procedaGateStatus');
+      if (!email) return;
+
+      var unlock = function() {
+        sessionStorage.setItem('proceda_gate_passed', '1');
+        document.getElementById('procedaGate').style.display = 'none';
+      };
+
+      // If form not yet configured, still let user through
+      if (PROCEDA_FORM_ID === 'FORM_ID') { unlock(); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+      status.textContent = '';
+
+      fetch('https://formspree.io/f/' + PROCEDA_FORM_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          subject: 'PROCEDA Intelligence Briefing \u2014 Access Request',
+          message: 'PROCEDA Briefing access requested by: ' + email
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          unlock();
+        } else {
+          status.textContent = 'Could not verify. Please try again.';
+          btn.disabled = false;
+          btn.textContent = 'Access Briefing \u2192';
+        }
+      })
+      .catch(function() {
+        // Soft gate: network failure still grants access
+        unlock();
+      });
+    };
+
+    // ── DOCS TAB SWITCHER ──
+    window.switchDocTab = function(id, btn) {
+      document.querySelectorAll('.pdoc-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.pdoc-panel').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('pdoc-' + id).classList.add('active');
+    };
+  </script>
 
   <!-- Scripts - defer for non-blocking loading -->
   <script src="js/i18n.js" defer></script>
