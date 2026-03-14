@@ -454,7 +454,7 @@
   font-family: 'Cinzel', Georgia, serif;
   font-size: 0.7rem;
   letter-spacing: 0.3em;
-  color: rgba(14, 165, 233, 0.5);
+  color: rgba(14, 165, 233, 0.85);
   text-transform: uppercase;
 }
 
@@ -629,9 +629,8 @@
    PROCEDA FEATURED CARD
    ============================================ */
 .arcana-card--featured {
-  grid-column: span 2;
-  background: #d8e6f6;
-  border-color: #c8d8f0;
+  background: #e8f0f9;
+  border-color: #ccd8ec;
 }
 
 .arcana-card-subtitle {
@@ -651,7 +650,7 @@
 
 .proceda-teaser-wordmark {
   font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: #0a1628;
@@ -668,11 +667,11 @@
 }
 
 .proceda-teaser-hook {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: #4a5568;
   line-height: 1.65;
-  margin-bottom: 20px;
-  padding-bottom: 18px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
   border-bottom: 1px solid #a8bcd8;
   font-style: italic;
 }
@@ -682,27 +681,27 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
-  background: #c8d8f0;
-  border: 1px solid #c8d8f0;
+  background: #ccd8ec;
+  border: 1px solid #ccd8ec;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .proceda-teaser-stat {
-  background: #d6e4f5;
-  padding: 18px 20px;
+  background: #dde7f4;
+  padding: 12px 14px;
   position: relative;
   transition: background 0.15s;
 }
 
 .proceda-teaser-stat:hover {
-  background: #c8d8ee;
+  background: #d0dff0;
 }
 
 .proceda-teaser-val {
   font-family: 'IBM Plex Mono', 'Courier New', monospace;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #0a1628;
   line-height: 1;
@@ -714,7 +713,7 @@
 }
 
 .proceda-teaser-sup {
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 500;
   margin-top: 2px;
   color: #00a880;
@@ -1643,10 +1642,6 @@
 
   .arcana-projects {
     grid-template-columns: 1fr;
-  }
-
-  .arcana-card--featured {
-    grid-column: span 1;
   }
 
   .proceda-teaser-stats {
