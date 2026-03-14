@@ -430,7 +430,7 @@
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.78rem;
   letter-spacing: 0.12em;
-  color: #64748b;
+  color: #3d5068;
   text-transform: uppercase;
 }
 
@@ -539,7 +539,7 @@
 /* Card description */
 .arcana-card-desc {
   font-size: 0.82rem;
-  color: #475569;
+  color: #334155;
   line-height: 1.75;
   flex: 1;
 }
@@ -550,7 +550,7 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 16px;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid #b8cce0;
   margin-top: auto;
 }
 
@@ -594,11 +594,11 @@
 }
 
 .arcana-card.arcana-card--placeholder .arcana-card-title {
-  color: #94a3b8;
+  color: #6a82a0;
 }
 
 .arcana-card.arcana-card--placeholder .arcana-card-desc {
-  color: #cbd5e1;
+  color: #7a90a8;
 }
 
 /* ---- STATUS COLOR VARIANTS ---- */
@@ -663,7 +663,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #7a9abb;
+  color: #4a6a8a;
   margin-top: 4px;
 }
 
@@ -732,7 +732,7 @@
 
 .proceda-teaser-desc {
   font-size: 0.72rem;
-  color: #6a8aaa;
+  color: #3a5a78;
   letter-spacing: 0.01em;
   line-height: 1.4;
 }
