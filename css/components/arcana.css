@@ -949,7 +949,7 @@
 
 .pdoc-demo-iframe {
   width: 100%;
-  height: 780px;
+  height: min(780px, 80vh);
   border: none;
   display: block;
   background: #030a10;
@@ -1687,6 +1687,76 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
+
+  /* ── Intelligence report modals: stack nav above content ── */
+  .proceda-docs-body {
+    flex-direction: column;
+  }
+
+  .proceda-docs-nav {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #0e1f2e;
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-shrink: 0;
+    gap: 2px;
+    max-height: 46px;
+  }
+
+  .proceda-docs-nav-label {
+    display: none;
+  }
+
+  .pdoc-tab,
+  .ldoc-tab {
+    width: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .pdoc-tab.active {
+    border-left-color: transparent;
+    border-bottom-color: #00d4aa;
+    background: rgba(0, 212, 170, 0.06);
+  }
+
+  .ldoc-tab.active {
+    border-bottom: 2px solid #7dd3fc;
+    background: rgba(125, 211, 252, 0.06);
+  }
+
+  .proceda-docs-content {
+    padding: 16px 14px;
+  }
+
+  .pdoc-vert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdoc-two {
+    grid-template-columns: 1fr;
+  }
+
+  .pdoc-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pdoc-table {
+    font-size: 10px;
+  }
+
+  .pdoc-table th,
+  .pdoc-table td {
+    padding: 6px 8px;
+  }
 }
 
 /* ── LUCREATIVITY — ldoc-* aliases (same styles as pdoc-* counterparts) ── */
@@ -1718,6 +1788,21 @@
   flex-shrink: 0;
 }
 .ldoc-tab.active .ldoc-tab-dot { opacity: 1; }
+.ldoc-tab--demo {
+  margin-top: 10px;
+  border-top: 1px solid #0e1f2e;
+  padding-top: 14px;
+}
+.ldoc-tab--demo.active {
+  border-left-color: #7dd3fc;
+  color: #7dd3fc;
+}
+.ldoc-tab--demo .ldoc-tab-dot {
+  background: #0a1e2e;
+}
+.ldoc-tab--demo.active .ldoc-tab-dot {
+  background: #7dd3fc;
+}
 .ldoc-panel {
   display: block;
   padding-bottom: 40px;
