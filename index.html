@@ -45,7 +45,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
@@ -1068,14 +1068,39 @@
         <!-- Project Cards -->
         <div class="arcana-projects">
 
-          <!-- Card 1 -->
-          <div class="arcana-card" data-status="development">
-            <div class="arcana-card-status">In Development</div>
-            <h3 class="arcana-card-title">LATAM Velocity Index</h3>
-            <p class="arcana-card-desc">A proprietary scoring framework for tracking business development momentum across emerging markets — turning relationship density into measurable signal.</p>
-            <div class="arcana-card-footer">
-              <span class="arcana-card-tag">Framework</span>
-              <span class="arcana-card-link">Classified ⬡</span>
+          <!-- Card 1 — PROCEDA FEATURED -->
+          <div class="arcana-card arcana-card--featured" data-status="progress">
+            <div class="arcana-card-status">Live Prototype</div>
+            <h3 class="arcana-card-title">PROCEDA</h3>
+            <p class="arcana-card-subtitle">Procedural Intelligence Platform</p>
+            <p class="arcana-card-desc">Automated capture of procedure-level delivery data across surgical and radiation oncology devices. Six verticals. 94% automation rate. The dataset that has never existed at scale.</p>
+            <div class="proceda-stats">
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">6</div>
+                <div class="proceda-stat-label">Verticals</div>
+              </div>
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">94%</div>
+                <div class="proceda-stat-label">Automated</div>
+              </div>
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">1,247</div>
+                <div class="proceda-stat-label">Cases</div>
+              </div>
+              <div class="proceda-stat">
+                <div class="proceda-stat-val">24</div>
+                <div class="proceda-stat-label">Sites</div>
+              </div>
+            </div>
+            <div class="arcana-card-actions">
+              <button class="arcana-action-btn arcana-action-btn--primary" onclick="openProcedaDemo()">
+                <span class="proceda-btn-pulse"></span>
+                Launch Demo
+              </button>
+              <button class="arcana-action-btn arcana-action-btn--secondary" onclick="openProcedaDocs()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Intelligence Briefing
+              </button>
             </div>
           </div>
 
@@ -1166,6 +1191,209 @@
 
   </div><!-- /#arcanaPortal -->
 
+  <!-- ============================================
+       PROCEDA DEMO MODAL — iframe overlay
+       ============================================ -->
+  <div id="procedaModal" class="proceda-demo-modal" role="dialog" aria-modal="true" aria-label="PROCEDA Demo">
+    <div class="proceda-demo-topbar">
+      <div class="proceda-demo-name">
+        <span class="proceda-demo-wordmark">PROCEDA</span>
+        <span class="proceda-demo-divider"></span>
+        <span class="proceda-demo-live-dot"></span>
+        <span class="proceda-demo-badge">LIVE DEMO</span>
+      </div>
+      <button class="proceda-demo-close" onclick="closeProcedaDemo()">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Return to Arcana
+      </button>
+    </div>
+    <iframe id="procedaIframe" class="proceda-demo-iframe" src="" title="PROCEDA — Procedural Intelligence Platform"></iframe>
+  </div>
+
+  <!-- ============================================
+       PROCEDA INTELLIGENCE BRIEFING MODAL
+       ============================================ -->
+  <div id="procedaDocsModal" class="proceda-docs-modal" role="dialog" aria-modal="true" aria-label="PROCEDA Intelligence Briefing">
+    <div class="proceda-docs-topbar">
+      <div class="proceda-docs-wordmark">
+        <span class="proceda-docs-title-txt">PROCEDA</span>
+        <span class="proceda-docs-sep"></span>
+        <span class="proceda-docs-classification">Intelligence Briefing</span>
+      </div>
+      <button class="proceda-docs-close" onclick="closeProcedaDocs()">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Return
+      </button>
+    </div>
+    <div class="proceda-docs-body">
+
+      <!-- Sidebar nav -->
+      <nav class="proceda-docs-nav">
+        <div class="proceda-docs-nav-label">Sections</div>
+        <button class="pdoc-tab active" data-tab="overview" onclick="switchDocTab('overview',this)"><span class="pdoc-tab-dot"></span>Overview</button>
+        <button class="pdoc-tab" data-tab="platform" onclick="switchDocTab('platform',this)"><span class="pdoc-tab-dot"></span>The Platform</button>
+        <button class="pdoc-tab" data-tab="verticals" onclick="switchDocTab('verticals',this)"><span class="pdoc-tab-dot"></span>Verticals</button>
+        <button class="pdoc-tab" data-tab="dataset" onclick="switchDocTab('dataset',this)"><span class="pdoc-tab-dot"></span>The Dataset</button>
+        <button class="pdoc-tab" data-tab="financials" onclick="switchDocTab('financials',this)"><span class="pdoc-tab-dot"></span>Financials</button>
+        <button class="pdoc-tab" data-tab="exit" onclick="switchDocTab('exit',this)"><span class="pdoc-tab-dot"></span>Exit Thesis</button>
+      </nav>
+
+      <!-- Content area -->
+      <div class="proceda-docs-content">
+
+        <!-- ── OVERVIEW ── -->
+        <div class="pdoc-panel active" id="pdoc-overview">
+          <div class="pdoc-section-title">Overview</div>
+          <div class="pdoc-section-sub">Procedure-level delivery data. Automated. At scale.</div>
+          <div class="pdoc-cards">
+            <div class="pdoc-card"><div class="pdoc-card-label">Total Cases</div><div class="pdoc-card-val">1,247</div><div class="pdoc-card-desc">Across all 6 verticals, 24 sites, 8 countries</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Automation Rate</div><div class="pdoc-card-val">94%</div><div class="pdoc-card-desc">Avg 121 automated fields · 8 human fields per procedure</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Active Verticals</div><div class="pdoc-card-val">6</div><div class="pdoc-card-desc">IORT · SRS/SBRT · HDR · Robotic · Ablation · FUS</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Capture Latency</div><div class="pdoc-card-val">&lt;2s</div><div class="pdoc-card-desc">From device event to structured record in PROCEDA</div></div>
+          </div>
+          <div class="pdoc-text">PROCEDA captures the data that procedure-delivery devices already generate — but which no one has ever extracted and linked to patient outcomes at scale. Device logs, DICOM RT objects, HL7 streams, and edge sensors are parsed automatically at the moment of procedure close. <strong>No manual entry. No transcription error. No recall bias.</strong></div>
+          <div class="pdoc-text">The problem is not that clinical data doesn't exist. It's that no one has built the infrastructure to capture it at the point where physics meets patient — and link it to outcomes. That is the only thing PROCEDA does, and it does it better than any system that has ever existed.</div>
+          <div class="pdoc-highlight">
+            <p>"The procedure-level delivery data linked to outcomes is something we cannot get from any EHR source. At 500 cases with 12-month follow-up, this would be relevant for our program."</p>
+            <cite>— Senior Director, Oncology Clinical Science · Major pharma · [name withheld]</cite>
+          </div>
+        </div>
+
+        <!-- ── THE PLATFORM ── -->
+        <div class="pdoc-panel" id="pdoc-platform">
+          <div class="pdoc-section-title">The Platform</div>
+          <div class="pdoc-section-sub">Three-tier automated capture architecture</div>
+          <div class="pdoc-cards">
+            <div class="pdoc-card pdoc-card--t1"><div class="pdoc-card-label">Tier 1 · Device APIs &amp; DICOM</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">LOG / DICOM</div><div class="pdoc-card-desc">Device log parse and DICOM RT object ingestion. Fires on procedure close or plan approval. Zero IT involvement for devices with existing DICOM output (SRS, HDR, robotic).</div></div>
+            <div class="pdoc-card pdoc-card--t2"><div class="pdoc-card-label">Tier 2 · Edge Hardware</div><div class="pdoc-card-val" style="font-size:1rem;color:#d4a000">EDGE / Serial</div><div class="pdoc-card-desc">Raspberry Pi 5 + USB-serial adapter captures RS-232 streams at 1 Hz from RFA/MWA generators and OR environmental sensors. $110/device. Buffers offline. No hospital network required.</div></div>
+            <div class="pdoc-card pdoc-card--t3"><div class="pdoc-card-label">Tier 3 · HL7 / EHR</div><div class="pdoc-card-val" style="font-size:1rem;color:#a08afa">HL7 ADT/ORU</div><div class="pdoc-card-desc">Standard HL7 feeds supplement device data with outcomes context: OR time, EBL, LOS, ICU admission, 30-day readmit. Existing hospital interfaces — no custom integration.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Human Input (Tier 4)</div><div class="pdoc-card-val" style="font-size:1rem;color:#3ada70">~8 Fields</div><div class="pdoc-card-desc">Clinical judgment only: histology, margin status, applicator choice, conversion decision. Everything a machine cannot determine. Average 8 fields across all verticals.</div></div>
+          </div>
+          <div class="pdoc-text"><strong>Platform reuse is ~70% per new vertical.</strong> The ingestion pipeline, federated storage layer, and outcomes linkage logic are shared. Adding a new vertical requires only a device-specific parser and schema extension — not a rebuild.</div>
+          <div class="pdoc-text">All data is stored in a federated architecture: raw device data never leaves the institution's network. Only the structured extracted fields are transmitted to the central PROCEDA registry. HIPAA-compliant by design.</div>
+        </div>
+
+        <!-- ── VERTICALS ── -->
+        <div class="pdoc-panel" id="pdoc-verticals">
+          <div class="pdoc-section-title">Verticals</div>
+          <div class="pdoc-section-sub">Six procedure types · four live · two enrolling</div>
+          <div class="pdoc-vert-grid">
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">IORT</div>
+              <div class="pdoc-vert-sub">Intraoperative Radiation</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">84</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">8</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">97%</div><div class="pdoc-vert-stat-label">Complete</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">SRS / SBRT</div>
+              <div class="pdoc-vert-sub">Stereotactic Radiosurgery</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">142</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">6</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">99%</div><div class="pdoc-vert-stat-label">Complete</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">HDR Brachy</div>
+              <div class="pdoc-vert-sub">High-Dose-Rate Brachytherapy</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">96</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">7</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">98%</div><div class="pdoc-vert-stat-label">Complete</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card">
+              <div class="pdoc-vert-name">Robotic Surgery</div>
+              <div class="pdoc-vert-sub">da Vinci · Hugo · Versius</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">210</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">9</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">2M+</div><div class="pdoc-vert-stat-label">Procs/yr</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card v-ready">
+              <div class="pdoc-vert-name">Thermal Ablation</div>
+              <div class="pdoc-vert-sub">RFA · MWA · Cryoablation</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">78</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">10</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">$110</div><div class="pdoc-vert-stat-label">HW cost</div></div>
+              </div>
+            </div>
+            <div class="pdoc-vert-card v-ready">
+              <div class="pdoc-vert-name">FUS / MRgFUS</div>
+              <div class="pdoc-vert-sub">Focused Ultrasound · Insightec</div>
+              <div class="pdoc-vert-stats">
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">118</div><div class="pdoc-vert-stat-label">Auto fields</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">7</div><div class="pdoc-vert-stat-label">Human</div></div>
+                <div class="pdoc-vert-stat"><div class="pdoc-vert-stat-val">SDR</div><div class="pdoc-vert-stat-label">Key signal</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="pdoc-text"><strong>Live verticals</strong> (IORT, SRS, HDR, Robotic) are actively enrolling cases across 24 sites. <strong>Ready verticals</strong> (Ablation, FUS) have completed schema design and hardware validation — awaiting first site enrollment.</div>
+        </div>
+
+        <!-- ── THE DATASET ── -->
+        <div class="pdoc-panel" id="pdoc-dataset">
+          <div class="pdoc-section-title">The Dataset</div>
+          <div class="pdoc-section-sub">Why 94% automated capture creates an insurmountable data moat</div>
+          <div class="pdoc-cards">
+            <div class="pdoc-card"><div class="pdoc-card-label">No Recall Bias</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Machine</div><div class="pdoc-card-desc">Every field is captured by device at the moment of procedure. No clinician recollection. No transcription delay.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Millisecond Timestamps</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">±2ms</div><div class="pdoc-card-desc">Device-serial-verified. Independently auditable. Traceable to the physical event.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Procedure Physics</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Raw</div><div class="pdoc-card-desc">What the device actually delivered — not what was documented in an EMR note. The gap between these is where insight lives.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Outcome Linkage</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Direct</div><div class="pdoc-card-desc">Delivery parameters linked to CTCAE toxicity grades at 6, 12, and 24 months. No intermediate manual linkage step.</div></div>
+          </div>
+          <div class="pdoc-text">No existing dataset links <strong>procedure-level delivery physics to long-term patient outcomes</strong> across multiple institutions. EHR data captures what was ordered. PROCEDA captures what was delivered — and links it to what happened next.</div>
+          <div class="pdoc-highlight">
+            <p>"The procedure-level delivery data linked to outcomes is something we cannot get from any EHR source. At 500 cases with 12-month follow-up, this would be relevant for our program."</p>
+            <cite>— Senior Director, Oncology Clinical Science · Major pharma · [name withheld]</cite>
+          </div>
+        </div>
+
+        <!-- ── FINANCIALS ── -->
+        <div class="pdoc-panel" id="pdoc-financials">
+          <div class="pdoc-section-title">Financials</div>
+          <div class="pdoc-section-sub">Four revenue streams · $22.7M ARR by Year 3</div>
+          <div class="pdoc-cards">
+            <div class="pdoc-card"><div class="pdoc-card-label">Stream 1</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Site Licensing</div><div class="pdoc-card-desc">Annual SaaS fee per enrolled institution. Scales with case volume and vertical count.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Stream 2</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Pharma Data</div><div class="pdoc-card-desc">Licensing structured registry data to pharma for label expansion, RWE studies, trial enrichment. 3 LOIs active.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Stream 3</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Device Partners</div><div class="pdoc-card-desc">Revenue share with device manufacturers for PROCEDA-certified outcomes data from their installed base.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Stream 4</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Research Grants</div><div class="pdoc-card-desc">Standalone fundable grants from SDR/FUS dataset, HDR late-toxicity dataset. Non-dilutive revenue.</div></div>
+          </div>
+          <div class="pdoc-timeline">
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Year 1 ARR</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill" style="width:15%"></div></div><div class="pdoc-timeline-val">~$3.2M</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Year 2 ARR</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill" style="width:30%"></div></div><div class="pdoc-timeline-val">~$9.8M</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Year 3 ARR</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill" style="width:46%"></div></div><div class="pdoc-timeline-val">~$22.7M</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Year 4 (exit) ARR</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill amber" style="width:100%"></div></div><div class="pdoc-timeline-val">~$49M</div></div>
+          </div>
+        </div>
+
+        <!-- ── EXIT THESIS ── -->
+        <div class="pdoc-panel" id="pdoc-exit">
+          <div class="pdoc-section-title">Exit Thesis</div>
+          <div class="pdoc-section-sub">$400–700M acquisition · Month 36–48 · 8–14× ARR</div>
+          <div class="pdoc-cards">
+            <div class="pdoc-card"><div class="pdoc-card-label">Primary Target</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Owkin</div><div class="pdoc-card-desc">Federated oncology data infrastructure acquirer. Active conversation. Strategic fit: procedure physics fills their clinical data gap.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Secondary Target</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Roche / Flatiron</div><div class="pdoc-card-desc">Flatiron acquisition playbook — structured oncology RWE at scale. PROCEDA's device-level data is complementary, not redundant.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Device Acquirer</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">Varian / Siemens</div><div class="pdoc-card-desc">Bolt-on outcomes registry for installed base monetization. PROCEDA data is already sourced from their devices.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Exit Multiple</div><div class="pdoc-card-val" style="font-size:1rem;color:#00d4aa">8–14×</div><div class="pdoc-card-desc">ARR multiple for defensible, multi-site clinical data registries with pharma data licensing. Benchmark: Flatiron $1.9B at ~12× ARR.</div></div>
+          </div>
+          <div class="pdoc-timeline">
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Multi-vertical proof</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill" style="width:100%"></div></div><div class="pdoc-timeline-val">Done</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Federated arch</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill" style="width:100%"></div></div><div class="pdoc-timeline-val">Done</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">Pharma LOIs (4)</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill amber" style="width:75%"></div></div><div class="pdoc-timeline-val">3 of 4</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">$20M ARR</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill blue" style="width:55%"></div></div><div class="pdoc-timeline-val">M18</div></div>
+            <div class="pdoc-timeline-row"><div class="pdoc-timeline-label">$49M ARR (exit)</div><div class="pdoc-timeline-bar"><div class="pdoc-timeline-fill dim" style="width:30%"></div></div><div class="pdoc-timeline-val">M36–48</div></div>
+          </div>
+        </div>
+
+      </div><!-- /.proceda-docs-content -->
+    </div><!-- /.proceda-docs-body -->
+  </div><!-- /#procedaDocsModal -->
+
   <!-- Arcana Script -->
   <script>
     (function() {
@@ -1233,9 +1461,48 @@
 
       // Close on Escape
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && _arcanaOpen) closeArcana();
+        if (e.key === 'Escape') {
+          if (document.getElementById('procedaModal').classList.contains('open')) { closeProcedaDemo(); return; }
+          if (document.getElementById('procedaDocsModal').classList.contains('open')) { closeProcedaDocs(); return; }
+          if (_arcanaOpen) closeArcana();
+        }
       });
     })();
+
+    // ── PROCEDA DEMO MODAL ──
+    var _procedaDemoLoaded = false;
+    window.openProcedaDemo = function() {
+      var modal = document.getElementById('procedaModal');
+      var iframe = document.getElementById('procedaIframe');
+      if (!_procedaDemoLoaded) {
+        iframe.src = 'proceda-demo.html';
+        _procedaDemoLoaded = true;
+      }
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeProcedaDemo = function() {
+      document.getElementById('procedaModal').classList.remove('open');
+      document.body.style.overflow = 'hidden'; // arcana panel still open
+    };
+
+    // ── PROCEDA DOCS MODAL ──
+    window.openProcedaDocs = function() {
+      document.getElementById('procedaDocsModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeProcedaDocs = function() {
+      document.getElementById('procedaDocsModal').classList.remove('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    // ── DOCS TAB SWITCHER ──
+    window.switchDocTab = function(id, btn) {
+      document.querySelectorAll('.pdoc-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.pdoc-panel').forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('pdoc-' + id).classList.add('active');
+    };
   </script>
 
   <!-- Scripts - defer for non-blocking loading -->
