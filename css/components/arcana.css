@@ -1687,3 +1687,45 @@
     gap: 16px;
   }
 }
+
+/* ── LUCREATIVITY — ldoc-* aliases (same styles as pdoc-* counterparts) ── */
+.ldoc-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #64748b;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+.ldoc-tab:hover { color: #94a3b8; background: rgba(255,255,255,0.03); }
+.ldoc-tab.active { color: #7dd3fc; background: rgba(125,211,252,0.06); }
+.ldoc-tab-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.ldoc-tab.active .ldoc-tab-dot { opacity: 1; }
+.ldoc-panel {
+  display: block;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #0e1f2e;
+  margin-bottom: 40px;
+  scroll-margin-top: 20px;
+}
+.ldoc-panel:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
