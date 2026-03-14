@@ -107,21 +107,26 @@
   stroke: #bae6fd;
   stroke-linecap: round;
   stroke-linejoin: round;
-  pathLength: 1;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
 
-/* Main cracks — thicker, brighter */
+/* Main cracks — thinner than before = more glass-like precision */
 .crack-main {
-  stroke-width: 0.4;
-  stroke: #e0f2fe;
+  stroke-width: 0.28;
+  stroke: #f0f9ff;
 }
 
-/* Branch cracks — thinner */
+/* Branch cracks */
 .crack-branch {
-  stroke-width: 0.18;
+  stroke-width: 0.13;
   stroke: #bae6fd;
+}
+
+/* Ring / spider-web connections — finest lines */
+.crack-ring {
+  stroke-width: 0.09;
+  stroke: #7dd3fc;
 }
 
 /* Impact origin flash */
@@ -143,51 +148,36 @@
 }
 
 /* ---- CRACK DRAW ANIMATIONS ---- */
-/* Main cracks — draw in sequence from origin */
-.arcana-crack-layer.cracking .crack-1 {
-  animation: drawCrack 0.22s 0s cubic-bezier(0.2, 0, 0.4, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-2 {
-  animation: drawCrack 0.20s 0.06s cubic-bezier(0.2, 0, 0.4, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-3 {
-  animation: drawCrack 0.22s 0.10s cubic-bezier(0.2, 0, 0.4, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-4 {
-  animation: drawCrack 0.21s 0.14s cubic-bezier(0.2, 0, 0.4, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-5 {
-  animation: drawCrack 0.19s 0.18s cubic-bezier(0.2, 0, 0.4, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-6 {
-  animation: drawCrack 0.20s 0.22s cubic-bezier(0.2, 0, 0.4, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-7 {
-  animation: drawCrack 0.16s 0.12s cubic-bezier(0.2, 0, 0.4, 1) forwards;
-}
+/* Main cracks — radiate out from impact point with staggered delay */
+.arcana-crack-layer.cracking .crack-1 { animation: drawCrack 0.26s 0s    cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-2 { animation: drawCrack 0.22s 0.07s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-3 { animation: drawCrack 0.28s 0.13s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-4 { animation: drawCrack 0.27s 0.17s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-5 { animation: drawCrack 0.22s 0.21s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-6 { animation: drawCrack 0.26s 0.25s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
+.arcana-crack-layer.cracking .crack-7 { animation: drawCrack 0.20s 0.10s cubic-bezier(0.15, 0, 0.35, 1) forwards; }
 
-/* Branches — follow after main cracks */
-.arcana-crack-layer.cracking .crack-b1 {
-  animation: drawCrack 0.14s 0.26s cubic-bezier(0.2, 0, 0.5, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-b2 {
-  animation: drawCrack 0.12s 0.30s cubic-bezier(0.2, 0, 0.5, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-b3 {
-  animation: drawCrack 0.13s 0.33s cubic-bezier(0.2, 0, 0.5, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-b4 {
-  animation: drawCrack 0.12s 0.28s cubic-bezier(0.2, 0, 0.5, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-b5 {
-  animation: drawCrack 0.13s 0.34s cubic-bezier(0.2, 0, 0.5, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-b6 {
-  animation: drawCrack 0.11s 0.38s cubic-bezier(0.2, 0, 0.5, 1) forwards;
-}
-.arcana-crack-layer.cracking .crack-b7 {
-  animation: drawCrack 0.14s 0.42s cubic-bezier(0.2, 0, 0.5, 1) forwards;
-}
+/* Primary branches — shoot off the main cracks as they pass bend points */
+.arcana-crack-layer.cracking .crack-b1a { animation: drawCrack 0.14s 0.28s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b1b { animation: drawCrack 0.10s 0.34s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b2a { animation: drawCrack 0.14s 0.31s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b2b { animation: drawCrack 0.12s 0.38s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b3a { animation: drawCrack 0.15s 0.35s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b3b { animation: drawCrack 0.10s 0.46s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b4a { animation: drawCrack 0.15s 0.37s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b4b { animation: drawCrack 0.10s 0.48s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b5a { animation: drawCrack 0.14s 0.36s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b5b { animation: drawCrack 0.11s 0.43s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b6a { animation: drawCrack 0.12s 0.40s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b6b { animation: drawCrack 0.10s 0.46s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b7a { animation: drawCrack 0.12s 0.38s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+.arcana-crack-layer.cracking .crack-b7b { animation: drawCrack 0.11s 0.34s cubic-bezier(0.2, 0, 0.6, 1) forwards; }
+
+/* Ring / spider-web arcs — appear slightly after surrounding cracks form */
+.arcana-crack-layer.cracking .crack-r1 { animation: drawCrack 0.09s 0.32s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
+.arcana-crack-layer.cracking .crack-r2 { animation: drawCrack 0.09s 0.42s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
+.arcana-crack-layer.cracking .crack-r3 { animation: drawCrack 0.09s 0.38s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
+.arcana-crack-layer.cracking .crack-r4 { animation: drawCrack 0.09s 0.44s cubic-bezier(0.2, 0, 0.7, 1) forwards; }
 
 @keyframes drawCrack {
   to { stroke-dashoffset: 0; }
