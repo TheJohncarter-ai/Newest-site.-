@@ -461,8 +461,9 @@
 /* ---- PROJECT CARDS GRID ---- */
 .arcana-projects {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 480px));
+  gap: 32px;
+  justify-content: center;
 }
 
 .arcana-card {
