@@ -45,7 +45,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
@@ -61,6 +61,7 @@
   <link rel="stylesheet" href="css/components/slideshow.css">
   <link rel="stylesheet" href="css/components/animations.css">
   <link rel="stylesheet" href="css/components/mobile.css">
+  <link rel="stylesheet" href="css/components/arcana.css">
 
   <!-- Calendly CSS - loaded async -->
   <link rel="preload" href="https://assets.calendly.com/assets/external/widget.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -494,6 +495,12 @@
                 </svg>
                 <span>Email</span>
               </a>
+              <button class="social-link arcana"
+                      aria-label="Open Arcana"
+                      onclick="openArcana()">
+                <span class="arcana-glyph">⬡</span>
+                <span>Arcana</span>
+              </button>
             </div>
           </div>
         </div>
@@ -896,6 +903,319 @@
       <p class="wa-modal__caption">Scan with your WhatsApp camera</p>
     </div>
   </div>
+
+  <!-- ============================================
+       ARCANA PORTAL
+       ============================================ -->
+  <div id="arcanaPortal" class="arcana-portal" role="dialog" aria-modal="true" aria-label="Arcana — Passion Projects">
+
+    <!-- Phase 1 & 2: The Void + Crack Layer -->
+    <div class="arcana-void" id="arcanaVoid"></div>
+
+    <svg class="arcana-crack-layer" id="arcanaCracks"
+         viewBox="0 0 100 100"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Glow filter for cracks — light bleeding from the other side -->
+        <filter id="crackGlow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="blur"/>
+          <feColorMatrix in="blur" type="matrix"
+            values="0.5 1 1.5 0 0
+                    0.5 1 1.5 0 0
+                    0.5 1 2   0 0
+                    0   0 0   1 0"
+            result="tinted"/>
+          <feMerge>
+            <feMergeNode in="tinted"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="crackGlowBright" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur"/>
+          <feColorMatrix in="blur" type="matrix"
+            values="0.3 0.8 1.5 0 0.2
+                    0.3 0.8 1.5 0 0.3
+                    0.3 0.8 2   0 0.5
+                    0   0   0   1 0"
+            result="tinted"/>
+          <feMerge>
+            <feMergeNode in="tinted"/>
+            <feMergeNode in="tinted"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Impact origin flash -->
+      <circle class="crack-origin" cx="50" cy="45" r="0"/>
+
+      <!-- ── MAIN CRACKS (radiate from impact point 50,45) ── -->
+      <!-- Crack 1: upper-right -->
+      <path class="crack crack-main crack-1"
+            pathLength="1"
+            d="M 50 45 L 68 22 L 88 5 L 100 0"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 2: right -->
+      <path class="crack crack-main crack-2"
+            pathLength="1"
+            d="M 50 45 L 82 38 L 100 44"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 3: lower-right -->
+      <path class="crack crack-main crack-3"
+            pathLength="1"
+            d="M 50 45 L 72 68 L 92 88 L 100 100"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 4: lower-left -->
+      <path class="crack crack-main crack-4"
+            pathLength="1"
+            d="M 50 45 L 30 70 L 12 90 L 0 100"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 5: left -->
+      <path class="crack crack-main crack-5"
+            pathLength="1"
+            d="M 50 45 L 15 50 L 0 38"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 6: upper-left -->
+      <path class="crack crack-main crack-6"
+            pathLength="1"
+            d="M 50 45 L 25 20 L 8 6 L 0 0"
+            filter="url(#crackGlowBright)"/>
+      <!-- Crack 7: short downward spur from center -->
+      <path class="crack crack-main crack-7"
+            pathLength="1"
+            d="M 50 45 L 53 62 L 50 80"
+            filter="url(#crackGlow)"/>
+
+      <!-- ── BRANCH CRACKS ── -->
+      <path class="crack crack-branch crack-b1"
+            pathLength="1"
+            d="M 68 22 L 78 10"
+            filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b2"
+            pathLength="1"
+            d="M 82 38 L 95 55 L 100 62"
+            filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b3"
+            pathLength="1"
+            d="M 72 68 L 88 74"
+            filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b4"
+            pathLength="1"
+            d="M 30 70 L 18 82"
+            filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b5"
+            pathLength="1"
+            d="M 15 50 L 4 62"
+            filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b6"
+            pathLength="1"
+            d="M 25 20 L 18 8"
+            filter="url(#crackGlow)"/>
+      <path class="crack crack-branch crack-b7"
+            pathLength="1"
+            d="M 53 62 L 62 70"
+            filter="url(#crackGlow)"/>
+    </svg>
+
+    <!-- Phase 3: The Arcana Panel -->
+    <div class="arcana-panel" id="arcanaPanel">
+      <!-- Moving status bar across the top handled by ::before in CSS -->
+
+      <!-- Close -->
+      <button class="arcana-close" onclick="closeArcana()" aria-label="Return to main site">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Return
+      </button>
+
+      <div class="arcana-panel-inner">
+
+        <!-- Header -->
+        <header class="arcana-header">
+          <div class="arcana-classification">Unfinished Transmissions · Works in Progress</div>
+          <h1 class="arcana-title">ARCANA</h1>
+          <p class="arcana-subtitle">Experiments. Concepts. Things not yet ready for the world.</p>
+        </header>
+
+        <!-- Divider -->
+        <div class="arcana-divider">
+          <span class="arcana-divider-glyph">⬡ &nbsp; Active Files &nbsp; ⬡</span>
+        </div>
+
+        <!-- Project Cards -->
+        <div class="arcana-projects">
+
+          <!-- Card 1 -->
+          <div class="arcana-card" data-status="development">
+            <div class="arcana-card-status">In Development</div>
+            <h3 class="arcana-card-title">LATAM Velocity Index</h3>
+            <p class="arcana-card-desc">A proprietary scoring framework for tracking business development momentum across emerging markets — turning relationship density into measurable signal.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Framework</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="arcana-card" data-status="progress">
+            <div class="arcana-card-status">In Progress</div>
+            <h3 class="arcana-card-title">Family Office Network Map</h3>
+            <p class="arcana-card-desc">A visual intelligence layer for relationship mapping across six LATAM markets — charting the invisible architecture of private capital flows.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Intelligence</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="arcana-card" data-status="drafting">
+            <div class="arcana-card-status">Drafting</div>
+            <h3 class="arcana-card-title">The Bilingual Pitch Protocol</h3>
+            <p class="arcana-card-desc">A structured system for translating investment narratives across cultural registers — not just EN/ES, but the unspoken language of trust.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Methodology</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="arcana-card" data-status="concept">
+            <div class="arcana-card-status">Concept Stage</div>
+            <h3 class="arcana-card-title">Capital Access Protocol</h3>
+            <p class="arcana-card-desc">A field-tested framework for navigating warm introductions into closed-door networks. The architecture of the introduction that actually gets answered.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Protocol</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="arcana-card" data-status="concept">
+            <div class="arcana-card-status">Concept Stage</div>
+            <h3 class="arcana-card-title">The Annex</h3>
+            <p class="arcana-card-desc">A long-form conversation series at the intersection of capital, culture, and language — for the people doing the work that never makes it into the pitch deck.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Series</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="arcana-card" data-status="research">
+            <div class="arcana-card-status">Early Research</div>
+            <h3 class="arcana-card-title">Colombia Venture Atlas</h3>
+            <p class="arcana-card-desc">Mapping the emerging startup and investment ecosystem across Bogotá, Medellín, and Cali — tracking the founders and capital pools forming outside the noise.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Research</span>
+              <span class="arcana-card-link">Classified ⬡</span>
+            </div>
+          </div>
+
+          <!-- Card 7 — Placeholder -->
+          <div class="arcana-card arcana-card--placeholder" data-status="placeholder">
+            <div class="arcana-card-status" style="color:#cbd5e1;">Forthcoming</div>
+            <h3 class="arcana-card-title">Transmission Pending</h3>
+            <p class="arcana-card-desc">Something is forming. Not ready to be named yet.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Unknown</span>
+            </div>
+          </div>
+
+          <!-- Card 8 — Placeholder -->
+          <div class="arcana-card arcana-card--placeholder" data-status="placeholder">
+            <div class="arcana-card-status" style="color:#cbd5e1;">Forthcoming</div>
+            <h3 class="arcana-card-title">Transmission Pending</h3>
+            <p class="arcana-card-desc">Something is forming. Not ready to be named yet.</p>
+            <div class="arcana-card-footer">
+              <span class="arcana-card-tag">Unknown</span>
+            </div>
+          </div>
+
+        </div><!-- /.arcana-projects -->
+
+        <!-- Footer -->
+        <footer class="arcana-panel-footer">
+          <p>// End of current transmissions // More to follow //</p>
+        </footer>
+
+      </div><!-- /.arcana-panel-inner -->
+    </div><!-- /#arcanaPanel -->
+
+  </div><!-- /#arcanaPortal -->
+
+  <!-- Arcana Script -->
+  <script>
+    (function() {
+      var portal    = document.getElementById('arcanaPortal');
+      var void_     = document.getElementById('arcanaVoid');
+      var cracks    = document.getElementById('arcanaCracks');
+      var panel     = document.getElementById('arcanaPanel');
+      var _arcanaOpen = false;
+
+      window.openArcana = function() {
+        if (_arcanaOpen) return;
+        _arcanaOpen = true;
+
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+
+        // Show portal container
+        portal.classList.add('is-open');
+
+        // Phase 1: Fade to black (20ms delay to allow display:block to render)
+        setTimeout(function() {
+          void_.classList.add('fade-in');
+        }, 20);
+
+        // Phase 2: Show & animate cracks (after black fade ~900ms)
+        setTimeout(function() {
+          cracks.classList.add('visible');
+          setTimeout(function() {
+            cracks.classList.add('cracking');
+          }, 40);
+        }, 920);
+
+        // Phase 3: Explosion flash — void & cracks dissolve (after cracks drawn ~1650ms)
+        setTimeout(function() {
+          void_.classList.add('exploding');
+          cracks.classList.add('exploding');
+        }, 1700);
+
+        // Phase 4: Reveal Arcana panel (after flash peak ~2200ms)
+        setTimeout(function() {
+          void_.style.display = 'none';
+          cracks.style.display = 'none';
+          panel.classList.add('revealed');
+        }, 2200);
+      };
+
+      window.closeArcana = function() {
+        if (!_arcanaOpen) return;
+
+        // Fade panel out
+        panel.classList.remove('revealed');
+
+        setTimeout(function() {
+          // Reset everything
+          portal.classList.remove('is-open');
+          void_.classList.remove('fade-in', 'exploding');
+          void_.style.display = '';
+          cracks.classList.remove('visible', 'cracking', 'exploding');
+          cracks.style.display = '';
+          panel.classList.remove('revealed');
+          document.body.style.overflow = '';
+          _arcanaOpen = false;
+        }, 950);
+      };
+
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && _arcanaOpen) closeArcana();
+      });
+    })();
+  </script>
 
   <!-- Scripts - defer for non-blocking loading -->
   <script src="js/i18n.js" defer></script>
