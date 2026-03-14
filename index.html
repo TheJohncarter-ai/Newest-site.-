@@ -1117,13 +1117,45 @@
             </div>
           </div>
 
-          <!-- Card 2 -->
-          <div class="arcana-card arcana-card--placeholder" data-status="placeholder">
-            <div class="arcana-card-status" style="color:#cbd5e1;" data-i18n="arcana.status.forthcoming">Forthcoming</div>
-            <h3 class="arcana-card-title" data-i18n="arcana.placeholder.title">Transmission Pending</h3>
-            <p class="arcana-card-desc" data-i18n="arcana.placeholder.desc">Something is forming. Not ready to be named yet.</p>
-            <div class="arcana-card-footer">
-              <span class="arcana-card-tag" data-i18n="arcana.tag.unknown">Unknown</span>
+          <!-- Card 2 — LUCREATIVITY -->
+          <div class="arcana-card arcana-card--featured" data-status="concept">
+            <div class="arcana-card-status" data-i18n="arcana.lucreativity.status">Concept Stage</div>
+
+            <div class="proceda-teaser-header">
+              <div class="proceda-teaser-wordmark">LUCREATIVITY</div>
+              <div class="proceda-teaser-sub" data-i18n="arcana.lucreativity.sub">Community Infrastructure Finance Platform</div>
+            </div>
+
+            <p class="proceda-teaser-hook" data-i18n="arcana.lucreativity.hook">Every $100 invested funds a building, earns a verified return, and creates a living impact record tracking every patient, every surgery, every life changed — forever. Exit whenever you want. Keep the certificate for life.</p>
+
+            <div class="proceda-teaser-stats">
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">$800B<span class="proceda-teaser-sup">+</span></div>
+                <div class="proceda-teaser-label" data-i18n="arcana.lucreativity.s1.label">Addressable Market Entry Point</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.lucreativity.s1.desc">Annual global diaspora remittances — currently directed to consumption, not investment</div>
+              </div>
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">6</div>
+                <div class="proceda-teaser-label" data-i18n="arcana.lucreativity.s2.label">Revenue Streams</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.lucreativity.s2.desc">Listing · origination · contribution fee · syndication · secondary market · Evergreen Fund spread</div>
+              </div>
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">$160K<span class="proceda-teaser-sup">+</span></div>
+                <div class="proceda-teaser-label" data-i18n="arcana.lucreativity.s3.label">Fee Revenue Per Project</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.lucreativity.s3.desc">Across both financing phases on a single $5M hospital — before Evergreen Fund AUM spread</div>
+              </div>
+              <div class="proceda-teaser-stat">
+                <div class="proceda-teaser-val">4</div>
+                <div class="proceda-teaser-label" data-i18n="arcana.lucreativity.s4.label">Retail Liquidity Windows</div>
+                <div class="proceda-teaser-desc" data-i18n="arcana.lucreativity.s4.desc">Secondary market · Evergreen Fund quarterly · milestone buyouts · bank completion buyout</div>
+              </div>
+            </div>
+
+            <div class="arcana-card-actions">
+              <button class="arcana-action-btn arcana-action-btn--primary" onclick="openLucreativityDocs()">
+                <span class="proceda-btn-pulse"></span>
+                <span data-i18n="arcana.lucreativity.cta">Read the Intelligence Briefing</span>
+              </button>
             </div>
           </div>
 
@@ -1733,6 +1765,324 @@
     </div><!-- /.proceda-docs-body -->
   </div><!-- /#procedaDocsModal -->
 
+  <!-- ══════════════════════════════════════════════════════════
+       LUCREATIVITY INTELLIGENCE BRIEFING MODAL
+       ══════════════════════════════════════════════════════════ -->
+  <div id="lucreativityDocsModal" class="proceda-docs-modal" role="dialog" aria-modal="true" aria-label="LUCREATIVITY Intelligence Briefing">
+    <div class="proceda-docs-topbar">
+      <div class="proceda-docs-wordmark">
+        <span class="proceda-docs-title-txt">LUCREATIVITY</span>
+        <span class="proceda-docs-sep"></span>
+        <span class="proceda-docs-classification">Intelligence Briefing</span>
+      </div>
+      <button class="proceda-docs-close" onclick="closeLucreativityDocs()">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        <span data-i18n="arcana.return">Return</span>
+      </button>
+    </div>
+
+    <!-- ── EMAIL GATE ── -->
+    <div class="proceda-gate" id="lucreativityGate">
+      <div class="proceda-gate__inner">
+        <div class="proceda-gate__badge">CONFIDENTIAL BRIEFING</div>
+        <div class="proceda-gate__title">LUCREATIVITY</div>
+        <div class="proceda-gate__sub">Community Infrastructure Finance Platform · Business Plan v3.0</div>
+        <p class="proceda-gate__text">This document contains proprietary business intelligence. Enter your email address to access the full briefing. Your access will be logged and the Lucreativity team will be notified.</p>
+        <form class="proceda-gate__form" id="lucreativityGateForm" onsubmit="submitLucreativityGate(event)">
+          <input type="email" class="proceda-gate__input" id="lucreativityGateEmail" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit" class="proceda-gate__btn" id="lucreativityGateBtn">Access Briefing →</button>
+        </form>
+        <div class="proceda-gate__status" id="lucreativityGateStatus"></div>
+      </div>
+    </div>
+
+    <div class="proceda-docs-body">
+
+      <!-- Sidebar nav -->
+      <nav class="proceda-docs-nav">
+        <div class="proceda-docs-nav-label">Sections</div>
+        <button class="ldoc-tab active" data-section="ldoc-insight" onclick="scrollToLucSection('ldoc-insight',this)"><span class="ldoc-tab-dot"></span>The Insight</button>
+        <button class="ldoc-tab" data-section="ldoc-model" onclick="scrollToLucSection('ldoc-model',this)"><span class="ldoc-tab-dot"></span>The Model</button>
+        <button class="ldoc-tab" data-section="ldoc-exit" onclick="scrollToLucSection('ldoc-exit',this)"><span class="ldoc-tab-dot"></span>Exit Ladder</button>
+        <button class="ldoc-tab" data-section="ldoc-certificate" onclick="scrollToLucSection('ldoc-certificate',this)"><span class="ldoc-tab-dot"></span>Certificate</button>
+        <button class="ldoc-tab" data-section="ldoc-revenue" onclick="scrollToLucSection('ldoc-revenue',this)"><span class="ldoc-tab-dot"></span>Revenue Model</button>
+        <button class="ldoc-tab" data-section="ldoc-financials" onclick="scrollToLucSection('ldoc-financials',this)"><span class="ldoc-tab-dot"></span>Financials</button>
+        <button class="ldoc-tab" data-section="ldoc-acquisition" onclick="scrollToLucSection('ldoc-acquisition',this)"><span class="ldoc-tab-dot"></span>Exit Thesis</button>
+      </nav>
+
+      <!-- Content area -->
+      <div class="proceda-docs-content" id="lucreativityDocsContent">
+
+        <!-- ── THE INSIGHT ── -->
+        <div class="ldoc-panel" id="ldoc-insight">
+          <div class="pdoc-section-title">The Founding Insight</div>
+          <div class="pdoc-section-sub">Democratizing Capital. Building Communities. Proving Impact.</div>
+
+          <div class="pdoc-callout">
+            <div class="pdoc-callout-label">Core Insight</div>
+            <div class="pdoc-callout-text">Global diaspora remittances exceed $800 billion annually, almost entirely directed to family consumption. Lucreativity creates an alternative: invest in your home region's infrastructure, exit whenever you want, earn a verified return, and hold a living digital certificate that proves your impact for the rest of your life.</div>
+          </div>
+
+          <div class="pdoc-cards">
+            <div class="pdoc-card"><div class="pdoc-card-label">Minimum Investment</div><div class="pdoc-card-val">$100</div><div class="pdoc-card-desc">First infrastructure lending platform accessible to unaccredited retail investors at any scale</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Retail Target Return</div><div class="pdoc-card-val">2×</div><div class="pdoc-card-desc">~4.7% annualized — or exit early at any milestone for a proportional return. No lock-in required.</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">ARR at Year 5</div><div class="pdoc-card-val">~$2M+</div><div class="pdoc-card-desc">Evergreen Fund spread on $200M AUM plus fee revenue across 20+ concurrent projects annually</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Impact Certificate</div><div class="pdoc-card-val">Perpetual</div><div class="pdoc-card-desc">Tracks patients treated, cancer surgeries, births, jobs — updated forever after exit. Displayable anywhere.</div></div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Executive Summary</div>
+          <div class="pdoc-text">Lucreativity is a FINRA-registered Regulation CF funding portal that enables retail investors to make micro-loans starting at $100 toward community infrastructure projects — beginning with hospitals and healthcare facilities in underserved rural US regions and developing countries. The platform combines accessible consumer finance, photorealistic AI-generated and drone-documented project visualization, a flexible exit ladder with multiple liquidity windows, and a perpetual living impact certificate that transforms investors into permanent stakeholders in the communities they help build.</div>
+          <div class="pdoc-text">The platform operates a two-phase capital structure. In Phase 1, retail creditors fund construction at higher short-term returns — with four distinct exit mechanisms available from day one, allowing investors to exit as early as the first construction milestone if desired. At project completion, Phase 2 triggers a bank marketplace where institutional lenders bid to refinance the now-collateralized asset, buying out all remaining retail creditors at their full agreed return.</div>
+          <div class="pdoc-text">A parallel Reg A+ Evergreen Fund serves as the liquidity engine — acting as a standing buyer for retail positions at every exit window, capturing the spread between early buyout price and eventual bank buyout value. Lucreativity earns fees at every stage of both phases and on every exit transaction, meaning retail liquidity is not a cost to the platform but an additional revenue stream.</div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Problem Statement</div>
+          <ul class="pdoc-bullet-list">
+            <li><strong>Access:</strong> Traditional capital markets are inaccessible to small communities. Private equity and institutional lenders require scale, credit history, and collateral that rural and developing-world projects cannot provide.</li>
+            <li><strong>Exclusion:</strong> Retail investors are entirely excluded from infrastructure investment. Municipal bonds and infrastructure funds require accredited investor status, locking out the very communities most affected.</li>
+            <li><strong>Misalignment:</strong> Existing platforms treat contributors as donors, not investors. There is no financial return, no flexibility, no ongoing relationship, and no mechanism to witness or share the impact of a contribution.</li>
+            <li><strong>Risk pricing:</strong> Construction financing in emerging markets carries risk premiums that price out community-scale projects, even when long-term operational economics are sound.</li>
+          </ul>
+        </div>
+
+        <!-- ── THE MODEL ── -->
+        <div class="ldoc-panel" id="ldoc-model">
+          <div class="pdoc-section-title">The Capital Structure</div>
+          <div class="pdoc-section-sub">Construction-to-permanent financing — now accessible at $100 entry points</div>
+
+          <table class="pdoc-table">
+            <thead><tr><th></th><th>Phase 1 — Construction</th><th>Phase 2 — Permanent</th></tr></thead>
+            <tbody>
+              <tr><td class="cell-label">Lender</td><td>Retail creditors ($100+)</td><td>Banks, CDFIs, institutions</td></tr>
+              <tr><td class="cell-label">Term</td><td>3–4 years (with early exit options)</td><td>15–25 years</td></tr>
+              <tr><td class="cell-label">Return / Rate</td><td>15–20% total at completion</td><td>5–7% annually</td></tr>
+              <tr><td class="cell-label">Risk profile</td><td>Construction risk — no collateral yet</td><td>Operational — fully collateralized</td></tr>
+              <tr><td class="cell-label">Collateral</td><td>None during build</td><td>Building, equipment, revenue stream</td></tr>
+              <tr><td class="cell-label">Exit</td><td>4 liquidity windows</td><td>Loan maturity or secondary sale</td></tr>
+              <tr><td class="cell-label">Lucreativity role</td><td>Originator + platform + liquidity provider</td><td>Syndication desk + placement agent</td></tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-text" style="margin-top:20px">At project completion, Lucreativity opens a bank bidding marketplace. Competing banks pay out all remaining retail creditors at full agreed return and take over the loan with the collateralized asset as security. Every party wins at every stage.</div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">The Visual Experience</div>
+          <div class="pdoc-text">Lucreativity's most differentiated product feature is the visual documentation layer. Investors watch a building come into existence. This emotional continuity between investor and asset is unprecedented in retail finance and is the platform's primary driver of organic growth and community loyalty.</div>
+          <ul class="pdoc-bullet-list">
+            <li><strong>Pre-construction renders:</strong> At project listing, AI render pipeline generates photorealistic visualizations of the completed building and each construction stage from submitted architectural plans.</li>
+            <li><strong>Mandatory drone schedule:</strong> Contractual drone footage at each milestone — timestamped, verified, tied to the project's on-chain record. Platform covers drone operator cost from listing fee.</li>
+            <li><strong>AI progress overlay:</strong> Each drone upload is processed through an AI overlay compositing the completed render against current progress — showing investors exactly how close reality is to the vision.</li>
+            <li><strong>Live impact dashboard:</strong> Once operational, the project page displays live impact statistics pulled from the hospital's reporting API, updating continuously.</li>
+            <li><strong>Push notifications:</strong> Each milestone completion triggers a dispatch to every contributor. These are not transactional alerts — they are dispatches from a place the investor helped build.</li>
+          </ul>
+        </div>
+
+        <!-- ── EXIT LADDER ── -->
+        <div class="ldoc-panel" id="ldoc-exit">
+          <div class="pdoc-section-title">The Exit Ladder</div>
+          <div class="pdoc-section-sub">Invest whenever. Exit whenever. The certificate is yours forever.</div>
+
+          <div class="pdoc-callout">
+            <div class="pdoc-callout-label">The Unlock</div>
+            <div class="pdoc-callout-text">The single biggest barrier to retail infrastructure investment has always been illiquidity. Lucreativity eliminates this barrier entirely through four distinct exit mechanisms, each generating its own revenue for the platform. Investors choose their own timeline. The certificate — and its perpetual impact record — is retained regardless of when they exit.</div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Exit Mechanism 1 — Secondary Market (Day One Onwards)</div>
+          <div class="pdoc-text">Certificate positions are tradeable peer-to-peer from the moment of contribution. Any investor can list their position at any price they choose. The buyer receives the certificate and all remaining return rights. The seller exits immediately. Lucreativity earns a transaction fee on every trade.</div>
+
+          <div class="pdoc-section-sub" style="margin-bottom:10px;margin-top:18px">Exit Mechanism 2 — Evergreen Fund Quarterly Buyout</div>
+          <div class="pdoc-text">The Evergreen Fund acts as a standing buyer, purchasing retail positions every quarter at a slight discount to full return. Investors who want out do not need to find a peer buyer — the Fund is always available. The Fund holds acquired positions until the Phase 2 bank buyout, capturing the remaining spread as profit.</div>
+
+          <div class="pdoc-section-sub" style="margin-bottom:10px;margin-top:18px">Exit Mechanism 3 — Milestone Buyouts (7 Windows)</div>
+          <div class="pdoc-text">At each of the seven verified construction milestones — land acquired, site cleared, foundation poured, steel frame, exterior sealed, interior fit-out, operational — the Evergreen Fund and participating banks offer a buyout window at risk-adjusted pricing. Earlier exits command slightly lower returns because more construction risk remains. Each milestone is verified on-chain before the buyout window opens.</div>
+
+          <div class="pdoc-section-sub" style="margin-bottom:10px;margin-top:18px">Exit Mechanism 4 — Bank Buyout at Completion</div>
+          <div class="pdoc-text">All remaining retail creditors receive their full agreed return when the permanent bank financing is placed at project completion. Maximum return for investors who held through the full construction period. The impact certificate is retained regardless of exit timing.</div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Illustrative Return Table — $500 Investment</div>
+          <table class="pdoc-table">
+            <thead><tr><th>Exit Point</th><th>Approx. Timing</th><th>Return on $500</th><th>Mechanism</th></tr></thead>
+            <tbody>
+              <tr><td>Secondary market</td><td>Any time</td><td>Market price</td><td>Peer-to-peer sale</td></tr>
+              <tr><td>Foundation poured</td><td>~6 months</td><td class="cell-green">~$525 (+5%)</td><td>Evergreen Fund buyout</td></tr>
+              <tr><td>Steel frame complete</td><td>~14 months</td><td class="cell-green">~$540 (+8%)</td><td>Evergreen Fund / milestone</td></tr>
+              <tr><td>Exterior sealed</td><td>~22 months</td><td class="cell-green">~$558 (+11.5%)</td><td>Evergreen Fund / milestone</td></tr>
+              <tr><td>Interior fit-out</td><td>~30 months</td><td class="cell-green">~$572 (+14.5%)</td><td>Evergreen Fund / milestone</td></tr>
+              <tr><td>Bank buyout at completion</td><td>~36 months</td><td class="cell-green">$575–600 (+15–20%)</td><td>Bank placement — full return</td></tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-highlight" style="margin-top:24px">
+            <p>Instead of 'invest $100 and wait 3–4 years,' the proposition becomes: invest $100, exit at any construction milestone for a proportional return, or hold to completion for maximum return. Your impact certificate stays with you either way, updating forever with the story of what your money helped build. No lock-in. No forced patience. No exit anxiety.</p>
+          </div>
+        </div>
+
+        <!-- ── IMPACT CERTIFICATE ── -->
+        <div class="ldoc-panel" id="ldoc-certificate">
+          <div class="pdoc-section-title">The Living Impact Certificate</div>
+          <div class="pdoc-section-sub">A permanent record of human impact — updated forever after exit</div>
+
+          <div class="pdoc-text">When investors exit — at any point through any mechanism — they are offered the opportunity to retain their digital certificate as a perpetual living proof of impact. The certificate connects in real time to the hospital's reporting API and updates every metric automatically for the operational lifetime of the facility. It is not a static receipt. It is a document that gets richer and more meaningful every year.</div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Healthcare Impact Metrics — Tracked Perpetually</div>
+          <ul class="pdoc-bullet-list">
+            <li><strong>Core patient volume:</strong> Total patients treated (lifetime cumulative), monthly and annual throughput, emergency department admissions, average patient travel time saved versus nearest prior facility.</li>
+            <li><strong>Surgical and procedural impact:</strong> Total surgical procedures by type, cancer surgeries (breast, cervical, colorectal, prostate, lung), cardiac procedures, orthopedic, neurological, pediatric surgeries, minimally invasive volumes.</li>
+            <li><strong>Oncology and chronic disease:</strong> Cancer diagnoses by type and stage, treatment courses completed, five-year survival rate tracking, diabetes management, cardiovascular, HIV/AIDS, tuberculosis, chronic kidney disease volumes.</li>
+            <li><strong>Maternal and child health:</strong> Total births including high-risk deliveries, maternal mortality rate versus regional baseline, neonatal intensive care, vaccinations administered, child malnutrition treatment.</li>
+            <li><strong>Diagnostics and preventive services:</strong> Imaging studies (X-ray, MRI, CT, ultrasound), laboratory tests, cancer screenings (mammography, colonoscopy, Pap smear), mental health consultations.</li>
+            <li><strong>Economic and community impact:</strong> Full-time and part-time jobs sustained, local supplier spend, annual revenue generated, medical professionals trained, community health education participants.</li>
+          </ul>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Proportional Attribution</div>
+          <div class="pdoc-text">Every metric is expressed as the investor's proportional contribution. A $500 investor in a $2M project holds 0.025% of the funding. The certificate expresses this as: "Your contribution has proportionally enabled approximately 6 patient treatments, 0.3 surgical procedures, and 0.002 full-time healthcare jobs." These numbers grow every year.</div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Display and Shareability</div>
+          <ul class="pdoc-bullet-list">
+            <li><strong>Digital picture frames</strong> — Samsung Art Mode, Meural, any smart display. Live data updates in place.</li>
+            <li><strong>Social media</strong> — shareable as a live link or static snapshot. LinkedIn as a verified credential.</li>
+            <li><strong>Personal websites</strong> — embeddable as a live widget pulling real-time data from the hospital API.</li>
+            <li><strong>Printable certificate</strong> — high-resolution with QR code linking to the live digital card.</li>
+            <li><strong>Corporate display</strong> — organizations investing through Lucreativity display certificates in ESG disclosures, lobbies, and annual reports.</li>
+          </ul>
+
+          <div class="pdoc-highlight">
+            <p>"Legacy Holder Status": when a project's loan is fully repaid, the certificate transitions permanently. The financial relationship is closed. The impact relationship is permanent. A Legacy Holder certificate continues updating every metric for the operational lifetime of the facility — potentially a century. There is no equivalent to this in any financial product currently in existence.</p>
+          </div>
+        </div>
+
+        <!-- ── REVENUE MODEL ── -->
+        <div class="ldoc-panel" id="ldoc-revenue">
+          <div class="pdoc-section-title">Revenue Model</div>
+          <div class="pdoc-section-sub">Six complementary streams — every exit type is a revenue event, not a concession</div>
+
+          <div class="pdoc-cards">
+            <div class="pdoc-card"><div class="pdoc-card-label">Project Listing Fee</div><div class="pdoc-card-val" style="font-size:1rem;line-height:1.3">One-time</div><div class="pdoc-card-desc">Covers due diligence, KYC, drone operator coordination, AI render production</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Contribution Fee</div><div class="pdoc-card-val" style="font-size:1rem;line-height:1.3">1–3%</div><div class="pdoc-card-desc">Of total retail raise at point of contribution</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Construction Origination</div><div class="pdoc-card-val" style="font-size:1rem;line-height:1.3">1–2%</div><div class="pdoc-card-desc">Of Phase 1 loan value charged to institution</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Syndication Fee</div><div class="pdoc-card-val" style="font-size:1rem;line-height:1.3">1–2%</div><div class="pdoc-card-desc">Of Phase 2 permanent loan value at bank buyout event</div></div>
+          </div>
+
+          <div class="pdoc-cards" style="margin-top:12px">
+            <div class="pdoc-card"><div class="pdoc-card-label">Secondary Market Fee</div><div class="pdoc-card-val" style="font-size:1rem;line-height:1.3">Per trade</div><div class="pdoc-card-desc">Charged on every peer-to-peer certificate trade from day one</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Evergreen Fund Spread</div><div class="pdoc-card-val" style="font-size:1rem;line-height:1.3">AUM %</div><div class="pdoc-card-desc">Spread between milestone exit discount and bank buyout price on every early retail buyout, plus continuous AUM management spread</div></div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Revenue Example — Single $5M Hospital</div>
+          <div class="pdoc-callout">
+            <div class="pdoc-callout-label">Illustrative Fee Stack</div>
+            <div class="pdoc-callout-text">~$25K listing + ~$40K contribution fee + ~$20K origination + ~$75K placement fee = <strong>$160K+ in direct fees per project</strong>. Plus Evergreen Fund spread on every early exit throughout the 36-month construction period. At 20 projects annually: $3.2M+ in project fee revenue before AUM spread.</div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">The Evergreen Fund</div>
+          <div class="pdoc-text">The Evergreen Fund is a separately incorporated Reg A+ investment vehicle operating as a two-sided liquidity engine. It is the mechanism that makes the exit ladder possible — providing guaranteed buyout liquidity to retail investors at every window while capturing the spread between early exit pricing and eventual institutional buyout value.</div>
+          <table class="pdoc-table">
+            <thead><tr><th>Parameter</th><th>Detail</th></tr></thead>
+            <tbody>
+              <tr><td>Retail investor expectation</td><td>~4.7% annualized — full return at completion or proportional return at any milestone</td></tr>
+              <tr><td>Institutional acceptance rate</td><td>3.5–4% annually on proven, de-risked infrastructure assets</td></tr>
+              <tr><td>Fund spread (illustrative)</td><td>0.7–1.2% on AUM plus milestone exit spread capture</td></tr>
+              <tr><td>Structure</td><td>Reg A+ — allows both retail and institutional participation</td></tr>
+              <tr><td>Dual function</td><td>Liquidity provider to retail investors AND portfolio builder for institutional sale</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ── FINANCIALS ── -->
+        <div class="ldoc-panel" id="ldoc-financials">
+          <div class="pdoc-section-title">Financials &amp; Go-to-Market</div>
+          <div class="pdoc-section-sub">Phase-gated growth from fee revenue to AUM management to balance sheet lending</div>
+
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Financial Projections (Illustrative)</div>
+          <table class="pdoc-table">
+            <thead><tr><th>Year</th><th>Milestone</th><th>Revenue focus</th></tr></thead>
+            <tbody>
+              <tr><td>Year 1</td><td>$2M total project funding. Single flagship.</td><td>Listing and contribution fees only</td></tr>
+              <tr><td>Year 2</td><td>$10M across 3–5 projects. Evergreen Fund established. First Phase 2 buyout.</td><td>First syndication revenue</td></tr>
+              <tr><td>Year 3</td><td>$50M AUM across 10+ projects. CDFI certification.</td><td>First institutional Evergreen Fund sale</td></tr>
+              <tr><td>Year 5</td><td>$200M+ AUM. Balance sheet lending begins.</td><td>~$2M+ ARR from Evergreen Fund spread alone</td></tr>
+              <tr><td>Year 10</td><td>Community development bank. Full charter or acquisition on mission-preserving terms.</td><td>Full interest spread + placement fees</td></tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Go-to-Market Strategy</div>
+          <ul class="pdoc-bullet-list">
+            <li><strong>Phase 1 — Flagship project:</strong> Single hospital. Prove full model end-to-end including all four exit mechanisms. First impact certificates issued.</li>
+            <li><strong>Phase 2 — Diaspora activation:</strong> Certificate shareability as distribution. Diaspora-serving organization partnerships. Remittance-alternative positioning.</li>
+            <li><strong>Phase 3 — Institutional relationships:</strong> Evergreen Fund portfolio seasoned. Active outreach to institutional buyers. Bank deal flow partnerships.</li>
+            <li><strong>Phase 4 — Global expansion:</strong> International project listings. Diaspora community targeting by region. UK/EU regulatory sandbox evaluation.</li>
+          </ul>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Regulatory Strategy</div>
+          <table class="pdoc-table">
+            <thead><tr><th>Pathway</th><th>Detail</th></tr></thead>
+            <tbody>
+              <tr><td>Reg CF — FINRA portal</td><td>Up to $5M annually from unaccredited retail investors. Fastest path to market.</td></tr>
+              <tr><td>Reg A+ — Evergreen Fund</td><td>Up to $75M annually. Retail and institutional participation. Powers the exit ladder.</td></tr>
+              <tr><td>Loan-based structure</td><td>Lending regulations rather than securities law. Significantly reduces compliance complexity.</td></tr>
+              <tr><td>CDFI certification</td><td>US Treasury certification. Government grant access, tax credits, institutional credibility.</td></tr>
+              <tr><td>Regulatory sandbox</td><td>SEC, CFPB, OCC, UK FCA innovation programs. On-chain transparency is direct sandbox argument.</td></tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Competitive White Space</div>
+          <div class="pdoc-text">No existing platform combines $100 retail micro-lending, a four-mechanism exit ladder, two-phase construction-to-permanent financing, institutional syndication, photorealistic visual documentation, and a perpetual living impact certificate. Municipal bonds: same infrastructure focus, inaccessible below accredited threshold. Reg CF platforms: startup equity not infrastructure loans. CDFIs: no retail on-ramp, no exit mechanism. Impact investing platforms: larger minimums, equity not debt. Donation platforms: no return, no exit, no tracking. DeFi lending: regulatory uncertainty, retail trust deficit.</div>
+        </div>
+
+        <!-- ── EXIT THESIS ── -->
+        <div class="ldoc-panel" id="ldoc-acquisition">
+          <div class="pdoc-section-title">Exit Thesis</div>
+          <div class="pdoc-section-sub">Preferred acquirer profile · strategic position · mission preservation</div>
+
+          <div class="pdoc-callout">
+            <div class="pdoc-callout-label">Preferred Acquirer — Crypto Exchange</div>
+            <div class="pdoc-callout-text">The preferred acquirer is a major cryptocurrency exchange rather than a traditional banking institution. A crypto exchange has direct infrastructure fit (wallet technology, global liquidity, cross-border rails), urgent need for a real-world utility narrative beyond speculation, and stated financial inclusion missions that would be undermined by dismantling the $100 investor model. A traditional bank has none of these alignment properties.</div>
+          </div>
+
+          <div class="pdoc-cards" style="margin-top:20px">
+            <div class="pdoc-card"><div class="pdoc-card-label">Acquirer Profile 1</div><div class="pdoc-card-val" style="font-size:0.95rem">Coinbase</div><div class="pdoc-card-desc">Real-world asset infrastructure</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Acquirer Profile 2</div><div class="pdoc-card-val" style="font-size:0.95rem">Binance</div><div class="pdoc-card-desc">Emerging market financial inclusion</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Acquirer Profile 3</div><div class="pdoc-card-val" style="font-size:0.95rem">Kraken</div><div class="pdoc-card-desc">Regulated impact finance</div></div>
+            <div class="pdoc-card"><div class="pdoc-card-label">Acquirer Profile 4</div><div class="pdoc-card-val" style="font-size:0.95rem">OKX</div><div class="pdoc-card-desc">Community capital platform</div></div>
+          </div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">The Negotiating Position</div>
+          <div class="pdoc-text">Lucreativity does not need to pursue acquisition. At balance sheet lender stage with a CDFI charter and documented track record, multiple exchanges will compete to acquire it. That competition is the leverage to choose the mission-preserving partner. The community of investors whose $100 built real hospitals is a structural constituency that any acquirer must reckon with — an acquisition that dismantled the model would face public backlash from thousands of people with living certificates proving their personal stake.</div>
+
+          <div class="pdoc-divider"></div>
+          <div class="pdoc-section-sub" style="margin-bottom:10px">Platform Evolution — Becoming the Bank</div>
+          <table class="pdoc-table">
+            <thead><tr><th>Phase</th><th>Timeline</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Reg CF portal</td><td>Year 1–2</td><td>Single flagship. Asset-light. Fee revenue only. Prove model.</td></tr>
+              <tr><td>Marketplace + Evergreen Fund</td><td>Year 2–4</td><td>Reg A+ Evergreen Fund live. All four exits operational. Syndication desk active. CDFI certification.</td></tr>
+              <tr><td>Balance sheet lender</td><td>Year 4–7</td><td>Select loans held on Lucreativity balance sheet. Full interest spread not just placement fee.</td></tr>
+              <tr><td>Community development bank</td><td>Year 7–10</td><td>Full banking charter or strategic acquisition. Mission-preserving partner selected on Lucreativity's terms.</td></tr>
+            </tbody>
+          </table>
+
+          <div class="pdoc-highlight" style="margin-top:28px">
+            <p>A person who invested $100 in 2024 and exited at the foundation milestone six months later still holds a certificate in 2054 that has tracked half a million patient treatments, thousands of cancer surgeries, and hundreds of lives saved. They held for six months. The impact is forever.</p>
+            <cite>— That is not a financial product. That is a new category. · Lucreativity · Confidential · v3.0</cite>
+          </div>
+        </div>
+
+      </div><!-- /#lucreativityDocsContent -->
+    </div><!-- /.proceda-docs-body -->
+  </div><!-- /#lucreativityDocsModal -->
+
   <!-- Arcana Script -->
   <script>
     (function() {
@@ -1802,6 +2152,7 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           if (document.getElementById('procedaDocsModal').classList.contains('open')) { closeProcedaDocs(); return; }
+          if (document.getElementById('lucreativityDocsModal').classList.contains('open')) { closeLucreativityDocs(); return; }
           if (_arcanaOpen) closeArcana();
         }
       });
@@ -1906,6 +2257,97 @@
         });
       }, { root: content, threshold: 0.25 });
       document.querySelectorAll('.pdoc-panel').forEach(function(p) { observer.observe(p); });
+    })();
+
+    // ── LUCREATIVITY DOCS MODAL ──
+    window.openLucreativityDocs = function() {
+      var modal = document.getElementById('lucreativityDocsModal');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      var gate = document.getElementById('lucreativityGate');
+      if (sessionStorage.getItem('lucreativity_gate_passed')) {
+        gate.style.display = 'none';
+      } else {
+        gate.style.display = 'flex';
+        var content = document.getElementById('lucreativityDocsContent');
+        if (content) content.scrollTop = 0;
+      }
+    };
+
+    window.closeLucreativityDocs = function() {
+      document.getElementById('lucreativityDocsModal').classList.remove('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    // ── LUCREATIVITY EMAIL GATE ──
+    var LUCREATIVITY_FORM_ID = 'mgonzllw';
+
+    window.submitLucreativityGate = function(e) {
+      e.preventDefault();
+      var email  = document.getElementById('lucreativityGateEmail').value.trim();
+      var btn    = document.getElementById('lucreativityGateBtn');
+      var status = document.getElementById('lucreativityGateStatus');
+      if (!email) return;
+
+      var unlock = function() {
+        sessionStorage.setItem('lucreativity_gate_passed', '1');
+        document.getElementById('lucreativityGate').style.display = 'none';
+      };
+
+      if (LUCREATIVITY_FORM_ID === 'FORM_ID') { unlock(); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+      status.textContent = '';
+
+      fetch('https://formspree.io/f/' + LUCREATIVITY_FORM_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          subject: 'Lucreativity Intelligence Briefing \u2014 Access Request',
+          message: 'Lucreativity Briefing access requested by: ' + email
+        })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.ok) {
+          unlock();
+        } else {
+          status.textContent = 'Could not verify. Please try again.';
+          btn.disabled = false;
+          btn.textContent = 'Access Briefing \u2192';
+        }
+      })
+      .catch(function() { unlock(); });
+    };
+
+    // ── LUCREATIVITY SCROLL NAV ──
+    window.scrollToLucSection = function(id, btn) {
+      var el = document.getElementById(id);
+      var content = document.getElementById('lucreativityDocsContent');
+      if (!el || !content) return;
+      document.querySelectorAll('.ldoc-tab').forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      content.scrollTo({ top: el.offsetTop - 20, behavior: 'smooth' });
+    };
+
+    // IntersectionObserver for lucreativity nav sync
+    (function() {
+      var content = document.getElementById('lucreativityDocsContent');
+      if (!content || !window.IntersectionObserver) return;
+      var tabs = document.querySelectorAll('.ldoc-tab[data-section]');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            tabs.forEach(function(t) {
+              t.classList.toggle('active', t.dataset.section === id);
+            });
+          }
+        });
+      }, { root: content, threshold: 0.25 });
+      document.querySelectorAll('.ldoc-panel').forEach(function(p) { observer.observe(p); });
     })();
   </script>
 
