@@ -1114,6 +1114,10 @@
                 <span class="proceda-btn-pulse"></span>
                 <span data-i18n="arcana.proceda.cta">Read the Intelligence Briefing</span>
               </button>
+              <button class="arcana-action-btn arcana-action-btn--secondary arcana-share-btn" onclick="copyIntakeLink('proceda', this)" title="Copy direct link to PROCEDA intake form">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 9.5a3.536 3.536 0 0 0 5 0l2-2a3.536 3.536 0 0 0-5-5l-1.5 1.5"/><path d="M9.5 6.5a3.536 3.536 0 0 0-5 0l-2 2a3.536 3.536 0 0 0 5 5L9 12"/></svg>
+                <span class="arcana-share-label">Copy intake link</span>
+              </button>
             </div>
           </div>
 
@@ -1155,6 +1159,10 @@
               <button class="arcana-action-btn arcana-action-btn--primary" onclick="openLucreativityDocs()">
                 <span class="proceda-btn-pulse"></span>
                 <span data-i18n="arcana.lucreativity.cta">Read the Intelligence Briefing</span>
+              </button>
+              <button class="arcana-action-btn arcana-action-btn--secondary arcana-share-btn" onclick="copyIntakeLink('lucreativity', this)" title="Copy direct link to Lucreativity intake form">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 9.5a3.536 3.536 0 0 0 5 0l2-2a3.536 3.536 0 0 0-5-5l-1.5 1.5"/><path d="M9.5 6.5a3.536 3.536 0 0 0-5 0l-2 2a3.536 3.536 0 0 0 5 5L9 12"/></svg>
+                <span class="arcana-share-label">Copy intake link</span>
               </button>
             </div>
           </div>
@@ -2161,6 +2169,17 @@
         }, 950);
       };
 
+      // Instant open — skips animation (used for deep links)
+      window.openArcanaInstant = function() {
+        if (_arcanaOpen) return;
+        _arcanaOpen = true;
+        document.body.style.overflow = 'hidden';
+        void_.style.display = 'none';
+        cracks.style.display = 'none';
+        portal.classList.add('is-open');
+        panel.classList.add('revealed');
+      };
+
       // Close on Escape
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
@@ -2368,6 +2387,56 @@
       }, { root: content, threshold: 0.25 });
       document.querySelectorAll('.ldoc-panel').forEach(function(p) { observer.observe(p); });
     })();
+
+    // ── INTAKE LINK SHARING ──
+    window.copyIntakeLink = function(project, btn) {
+      var url = window.location.origin + window.location.pathname + '?intake=' + project;
+      var label = btn.querySelector('.arcana-share-label');
+      navigator.clipboard.writeText(url).then(function() {
+        label.textContent = 'Copied!';
+        btn.style.color = '#00d4aa';
+        btn.style.borderColor = '#00d4aa';
+        setTimeout(function() {
+          label.textContent = 'Copy intake link';
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      }).catch(function() {
+        // Fallback for browsers without clipboard API
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        label.textContent = 'Copied!';
+        setTimeout(function() { label.textContent = 'Copy intake link'; }, 2000);
+      });
+    };
+
+    // ── DEEP LINK HANDLER ──
+    // Handles URLs like ?intake=proceda or ?intake=lucreativity
+    // Opens Arcana instantly and shows the correct intake form
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var intake = params.get('intake');
+      if (!intake) return;
+      // Small delay to ensure all scripts are initialized
+      setTimeout(function() {
+        if (typeof openArcanaInstant === 'function') {
+          openArcanaInstant();
+        }
+        setTimeout(function() {
+          if (intake === 'proceda' && typeof openProcedaDocs === 'function') {
+            openProcedaDocs();
+          } else if (intake === 'lucreativity' && typeof openLucreativityDocs === 'function') {
+            openLucreativityDocs();
+          }
+        }, 100);
+      }, 50);
+    });
   </script>
 
   <!-- Scripts - defer for non-blocking loading -->
