@@ -16,7 +16,7 @@ const translations = {
     // Hero Section
     'hero.badge': 'LATAM · Family Office · Venture Capital',
     'hero.subtitle': 'Strategic Advisor · Investor Intelligence · LATAM Capital',
-    'hero.description': "Trusted by a late-stage private technology fund and a $4M cleantech raise to build the investor relationships that institutional BD firms miss — LATAM family offices, emerging-market HNWIs, and conference-native capital networks across six countries.",
+    'hero.description': "International business development and strategic advising for private capital funds and clean-energy ventures — building the investor relationships that institutional BD firms miss: LATAM family offices, emerging-market HNWIs, and conference-native capital networks across six countries.",
     'hero.cta': "Let's Talk",
     'hero.services': 'View Services',
     // Who This Is For
@@ -63,7 +63,7 @@ const translations = {
     // About Section
     'about.badge': 'About',
     'about.title': 'Two Active Engagements. Six Markets. One Methodology.',
-    'about.text1': 'Currently retained as Strategic Consultant at Firsthand Capital Management and Strategic Advisor at H2Unity (Accelerate Hydrogen Energy) — a late-stage private technology fund and a $4M cleantech raise.',
+    'about.text1': 'Currently retained as Strategic Consultant at Firsthand Capital Management and Strategic Advisor at H2Unity (Accelerate Hydrogen Energy), providing international business development and strategic advising across private capital and clean-energy ventures.',
     'about.text2': 'The through-line across both: building investor intelligence infrastructure where none exists — translating raw conference data, warm introductions, and open-source research into actionable LP profiles, outreach sequences, and fundraising strategy.',
     'about.text3': "A decade of grounded sales and operational experience across banking, project management, international medtech sales, and multi-unit business operations brings an operator's perspective to work most advisors approach purely theoretically. Bilingual English/Spanish — available for retained consulting, advisory board positions, and international BD engagements across LATAM, Europe, and the Middle East.",
     'about.h1.title': 'LATAM Network',
@@ -224,7 +224,7 @@ const translations = {
     // Hero Section
     'hero.badge': 'LATAM · Family Office · Capital de Riesgo',
     'hero.subtitle': 'Asesor Estratégico · Inteligencia de Inversionistas · Capital LATAM',
-    'hero.description': 'Contratado por un fondo privado de tecnología en etapa avanzada y una ronda cleantech de $4M para construir las relaciones con inversionistas que las firmas institucionales de BD no alcanzan — family offices de LATAM, HNWIs de mercados emergentes y redes de capital nativas de conferencias en seis países.',
+    'hero.description': 'Desarrollo de negocios internacional y asesoría estratégica para fondos de capital privado y empresas de energía limpia — construyendo las relaciones con inversionistas que las firmas institucionales de BD no alcanzan: family offices de LATAM, HNWIs de mercados emergentes y redes de capital nativas de conferencias en seis países.',
     'hero.cta': 'Hablemos',
     'hero.services': 'Ver Servicios',
     // Who This Is For (ES)
@@ -271,7 +271,7 @@ const translations = {
     // About Section
     'about.badge': 'Acerca',
     'about.title': 'Dos Compromisos Activos. Seis Mercados. Una Metodología.',
-    'about.text1': 'Actualmente contratado como Consultor Estratégico en Firsthand Capital Management y Asesor Estratégico en H2Unity (Accelerate Hydrogen Energy) — un fondo privado de tecnología en etapa avanzada y una ronda cleantech de $4M.',
+    'about.text1': 'Actualmente contratado como Consultor Estratégico en Firsthand Capital Management y Asesor Estratégico en H2Unity (Accelerate Hydrogen Energy), brindando desarrollo de negocios internacional y asesoría estratégica en capital privado y energía limpia.',
     'about.text2': 'El hilo conductor en ambos: construir infraestructura de inteligencia de inversionistas donde no existe — convirtiendo datos crudos de conferencias, presentaciones cálidas e investigación de fuentes abiertas en perfiles accionables de LPs, secuencias de contacto y estrategia de recaudación.',
     'about.text3': 'Una década de experiencia comercial y operativa en banca, gestión de proyectos, ventas internacionales de tecnología médica y operaciones de negocios multiunidad aporta una perspectiva de operador a un trabajo que la mayoría de los asesores abordan de forma puramente teórica. Bilingüe inglés/español — disponible para consultoría por contrato, posiciones en juntas asesoras y compromisos de BD internacional en LATAM, Europa y Medio Oriente.',
     'about.h1.title': 'Red LATAM',
