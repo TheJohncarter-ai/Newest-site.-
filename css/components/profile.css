@@ -53,7 +53,7 @@
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--color-primary);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 30px rgba(74, 111, 165, 0.3);
 }
 
 .profile-avatar img {
@@ -137,8 +137,8 @@
 
 .tag {
   padding: var(--space-2) var(--space-4);
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: rgba(74, 111, 165, 0.1);
+  border: 1px solid rgba(74, 111, 165, 0.2);
   border-radius: var(--radius-full);
   font-size: var(--text-sm);
   color: var(--color-primary-light);
@@ -146,8 +146,8 @@
 }
 
 .tag:hover {
-  background: rgba(99, 102, 241, 0.2);
-  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(74, 111, 165, 0.2);
+  border-color: rgba(74, 111, 165, 0.4);
 }
 
 /* Profile Social */
@@ -206,7 +206,7 @@
 }
 
 .social-link.twitter:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(13, 27, 42, 0.05);
 }
 
 /* Email */
@@ -215,8 +215,8 @@
 }
 
 .social-link.email:hover {
-  background: rgba(99, 102, 241, 0.1);
-  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(74, 111, 165, 0.1);
+  border-color: rgba(74, 111, 165, 0.3);
 }
 
 /* ============================================

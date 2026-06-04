@@ -1,12 +1,13 @@
 /* ============================================
    FOOTER STYLES
-   Site footer with links and social
+   Dark navy footer — second anchored dark zone
    ============================================ */
 
 .footer {
   padding: var(--space-16) 0 var(--space-8);
-  background: var(--bg-tertiary);
-  border-top: 1px solid var(--border-color);
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  border-top: 1px solid rgba(244, 244, 242, 0.1);
 }
 
 /* Footer Content */
@@ -16,7 +17,7 @@
   gap: var(--space-16);
   margin-bottom: var(--space-12);
   padding-bottom: var(--space-12);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(244, 244, 242, 0.1);
 }
 
 /* Footer Brand */
@@ -33,15 +34,13 @@
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
-  background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: 0.04em;
+  color: var(--text-on-dark);
 }
 
 .footer-tagline {
   font-size: var(--text-sm);
-  color: var(--text-secondary);
+  color: var(--text-on-dark-muted);
   line-height: 1.6;
 }
 
@@ -55,7 +54,7 @@
 .footer-column h4 {
   font-size: var(--text-sm);
   font-weight: var(--font-semibold);
-  color: var(--text-primary);
+  color: var(--text-on-dark);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: var(--space-4);
@@ -69,12 +68,12 @@
 
 .footer-column a {
   font-size: var(--text-sm);
-  color: var(--text-secondary);
+  color: var(--text-on-dark-muted);
   transition: color var(--transition-base);
 }
 
 .footer-column a:hover {
-  color: var(--color-primary-light);
+  color: var(--color-accent-light);
 }
 
 /* Footer Social */
@@ -89,8 +88,8 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: rgba(244, 244, 242, 0.05);
+  border: 1px solid rgba(244, 244, 242, 0.14);
   border-radius: var(--radius-lg);
   transition: all var(--transition-base);
 }
@@ -98,18 +97,18 @@
 .footer-social a svg {
   width: 18px;
   height: 18px;
-  fill: var(--text-secondary);
+  fill: var(--text-on-dark-muted);
   transition: fill var(--transition-base);
 }
 
 .footer-social a:hover {
-  border-color: var(--border-color-hover);
-  background: var(--bg-card-hover);
+  border-color: rgba(107, 140, 191, 0.6);
+  background: rgba(74, 111, 165, 0.22);
   transform: translateY(-2px);
 }
 
 .footer-social a:hover svg {
-  fill: var(--color-primary-light);
+  fill: var(--text-on-dark);
 }
 
 /* Footer Bottom */
@@ -119,7 +118,7 @@
 
 .footer-bottom p {
   font-size: var(--text-sm);
-  color: var(--text-muted);
+  color: var(--text-on-dark-muted);
 }
 
 /* ============================================

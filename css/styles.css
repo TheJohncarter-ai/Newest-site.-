@@ -7,12 +7,19 @@
    CSS CUSTOM PROPERTIES (VARIABLES)
    ============================================ */
 :root {
-  /* Color Palette */
-  --color-primary: #6366f1;
-  --color-primary-dark: #4f46e5;
-  --color-primary-light: #818cf8;
-  --color-accent: #06b6d4;
-  --color-accent-light: #22d3ee;
+  /* Color Palette — Editorial / Capital Markets (light) */
+  --color-primary: #4A6FA5;        /* Steel blue — CTAs, accents, underlines */
+  --color-primary-dark: #3A5A8A;   /* Steel blue, deeper — hover/gradient end */
+  --color-primary-light: #3F5E8C;  /* Steel blue, readable as accent text on light */
+  --color-accent: #4A6FA5;         /* Single restrained accent */
+  --color-accent-light: #6B8CBF;   /* Lighter steel — tag/chip text */
+
+  /* Brand neutrals */
+  --color-navy: #0D1B2A;           /* Deep navy — primary text + dark sections */
+  --color-cream: #F4F1EB;          /* Warm surface — cards */
+  --color-cream-deep: #ECE7DD;     /* Warm surface, hover */
+  --color-divider: #E2DDD6;        /* Warm hairline divider */
+  --color-steel-tint: #EEF2F7;     /* Steel-blue light — chip fills */
 
   /* Neutral Colors */
   --color-white: #ffffff;
@@ -29,24 +36,27 @@
   --color-black: #0a0a0a;
 
   /* Background Colors */
-  --bg-primary: var(--color-black);
-  --bg-secondary: #0f0f0f;
-  --bg-tertiary: #161616;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.05);
+  --bg-primary: #FAFAF8;           /* Warm near-white — page background */
+  --bg-secondary: #FAFAF8;         /* Sections kept uniformly warm white */
+  --bg-tertiary: #F4F1EB;          /* Cream surface */
+  --bg-card: #F4F1EB;              /* Cream cards */
+  --bg-card-hover: #ECE7DD;        /* Cream cards, hover */
+  --bg-dark: #0D1B2A;              /* Hero / footer / Nexivant dark sections */
 
   /* Text Colors */
-  --text-primary: var(--color-white);
-  --text-secondary: var(--color-gray-400);
-  --text-muted: var(--color-gray-500);
+  --text-primary: #0D1B2A;         /* Deep navy */
+  --text-secondary: #6B7A8D;       /* Slate gray */
+  --text-muted: #8A97A6;           /* Light slate */
+  --text-on-dark: #F4F4F2;         /* Near-white text on dark sections */
+  --text-on-dark-muted: rgba(244, 244, 242, 0.66);
 
   /* Border Colors */
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-hover: rgba(255, 255, 255, 0.15);
+  --border-color: #E2DDD6;         /* Warm hairline */
+  --border-color-hover: #CFC8BE;   /* Warm hairline, hover */
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Playfair Display', Georgia, serif;
+  --font-display: Georgia, 'Times New Roman', 'Playfair Display', serif;
 
   /* Font Sizes */
   --text-xs: 0.75rem;
@@ -90,11 +100,11 @@
   --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+  --shadow-sm: 0 1px 2px 0 rgba(13, 27, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(13, 27, 42, 0.06), 0 2px 4px -2px rgba(13, 27, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(13, 27, 42, 0.08), 0 4px 6px -4px rgba(13, 27, 42, 0.06);
+  --shadow-xl: 0 20px 30px -8px rgba(13, 27, 42, 0.12), 0 8px 10px -6px rgba(13, 27, 42, 0.06);
+  --shadow-glow: 0 12px 28px -10px rgba(13, 27, 42, 0.18);
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -212,8 +222,8 @@ button {
 .section-badge {
   display: inline-block;
   padding: var(--space-2) var(--space-4);
-  background: rgba(99, 102, 241, 0.1);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  background: rgba(74, 111, 165, 0.1);
+  border: 1px solid rgba(74, 111, 165, 0.2);
   border-radius: var(--radius-full);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
@@ -256,12 +266,12 @@ button {
 .btn-primary {
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: var(--color-white);
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 4px 15px rgba(74, 111, 165, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 6px 25px rgba(74, 111, 165, 0.4);
 }
 
 .btn-secondary {
@@ -300,10 +310,10 @@ button {
 /* Pulse Glow */
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(74, 111, 165, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 40px rgba(74, 111, 165, 0.5);
   }
 }
 
@@ -325,13 +335,13 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gray-700);
+  background: var(--color-divider);
   border-radius: var(--radius-full);
   border: 2px solid var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gray-600);
+  background: var(--border-color-hover);
 }
 
 /* ============================================
