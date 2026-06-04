@@ -78,6 +78,10 @@
   text-align: left;
 }
 
+.opportunity-columns--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .opportunity-column {
   padding: var(--space-8);
   background: var(--bg-card);
