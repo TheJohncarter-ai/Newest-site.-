@@ -69,7 +69,7 @@ const translations = {
     'about.h1.title': 'LATAM Network',
     'about.h1.text': '60+ warm family office contacts · 218+ LP profiles built across six conferences — Monterrey, Bogotá, Miami, Mexico City, San Diego & Honduras',
     'about.h2.title': 'Investor Intelligence · Nexivant',
-    'about.h2.text': 'Nexivant — a proprietary investor-intelligence concept: LP profiling, conflict screening & 60-day strike lists, applied across current engagements',
+    'about.h2.text': 'Nexivant — a proprietary, purpose-built investor-intelligence platform: 218+ LP profiles with conflict screening, priority tiers & 60-day strike lists, deployed across current engagements',
     'about.h3.title': 'Certifications',
     'about.h3.text': 'Economics of Blockchain & Digital Assets — Wharton (2022) · Blockchain in Business — Columbia Business School (2022)',
 
@@ -277,7 +277,7 @@ const translations = {
     'about.h1.title': 'Red LATAM',
     'about.h1.text': '60+ contactos cálidos de family office · 218+ perfiles de LP construidos en seis conferencias — Monterrey, Bogotá, Miami, Ciudad de México, San Diego y Honduras',
     'about.h2.title': 'Inteligencia de Inversionistas · Nexivant',
-    'about.h2.text': 'Nexivant — un concepto propietario de inteligencia de inversionistas: perfilado de LPs, detección de conflictos y listas de objetivos a 60 días, aplicado en los compromisos actuales',
+    'about.h2.text': 'Nexivant — una plataforma propietaria de inteligencia de inversionistas, construida a medida: 218+ perfiles de LP con detección de conflictos, niveles de prioridad y listas de objetivos a 60 días, desplegada en los compromisos actuales',
     'about.h3.title': 'Certificaciones',
     'about.h3.text': 'Economics of Blockchain & Digital Assets — Wharton (2022) · Blockchain in Business — Columbia Business School (2022)',
 
