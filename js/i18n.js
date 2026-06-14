@@ -143,6 +143,8 @@ const translations = {
     'contact.form.message': 'Message',
     'contact.form.submit': 'Send Message',
 
+    'close.headline': 'Selectively available to the right partners.',
+
     // Footer
     'footer.tagline': 'Strategic advisory · investor intelligence · LATAM capital.',
     'footer.navigation': 'Navigation',
@@ -350,6 +352,8 @@ const translations = {
     'contact.form.org5': 'Otro',
     'contact.form.message': 'Mensaje',
     'contact.form.submit': 'Enviar Mensaje',
+
+    'close.headline': 'Disponible selectivamente para los socios adecuados.',
 
     // Footer
     'footer.tagline': 'Asesoría estratégica · inteligencia de inversionistas · capital LATAM.',
